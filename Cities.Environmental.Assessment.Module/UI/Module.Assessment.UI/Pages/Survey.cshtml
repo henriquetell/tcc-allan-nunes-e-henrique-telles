@@ -1,0 +1,102 @@
+﻿@page
+@model SurveyModel
+@{
+    ViewData["Title"] = "Pesquisa Ambiental Municipal";
+}
+
+<form id="sendSurveyForm" method="post" asp-antiforgery="true">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Nome<small>(opcional)</small></label>
+        <input type="text" class="form-control" asp-for="Name" aria-describedby="nameHelp" placeholder="Digite seu nome(opcional)" maxlength="100">
+        <small id="nameHelp" class="form-text text-info text-muted">Nunca iremos compartilhar seu nome.</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Estado</label>
+        <select class="form-control" asp-for="State">
+            <option value="">Selecione...</option>
+            <option value="AC">AC</option>
+            <option value="AL">AL</option>
+            <option value="AM">AM</option>
+            <option value="AP">AP</option>
+            <option value="BA">BA</option>
+            <option value="CE">CE</option>
+            <option value="DF">DF</option>
+            <option value="ES">ES</option>
+            <option value="GO">GO</option>
+            <option value="MA">MA</option>
+            <option value="MT">MT</option>
+            <option value="MS">MS</option>
+            <option value="MG">MG</option>
+            <option value="PA">PA</option>
+            <option value="PB">PB</option>
+            <option value="PR">PR</option>
+            <option value="PE">PE</option>
+            <option value="PI">PI</option>
+            <option value="RJ">RJ</option>
+            <option value="RN">RN</option>
+            <option value="RO">RO</option>
+            <option value="RS">RS</option>
+            <option value="RR">RR</option>
+            <option value="SC">SC</option>
+            <option value="SE">SE</option>
+            <option value="SP">SP</option>
+            <option value="TO">TO</option>
+        </select>
+        <span asp-validation-for="State" class="form-text text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">Cidade</label>
+        <select class="form-control" asp-for="City" load>
+            <option value="">Selecione...</option>
+        </select>
+        <span asp-validation-for="City" class="form-text text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="formControlRange">
+            Pergunta sobre Qualidade?
+        </label>
+        <input type="range" min="0" max="10" class="form-control-range" asp-for="Quality">
+        <span asp-validation-for="Quality" class="form-text text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="formControlRange">
+            Pergunta sobre Politicas?
+        </label>
+        <input type="range" min="0" max="10" class="form-control-range" asp-for="Political">
+        <span asp-validation-for="Political" class="form-text text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="formControlRange">
+            Pergunta sobre Crimes?
+        </label>
+        <input type="range" min="0" max="10" class="form-control-range" asp-for="Crimes">
+        <span asp-validation-for="Crimes" class="form-text text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Quer fazer algum comentário ou sugestão?</label>
+        <textarea class="form-control" asp-for="FreeResponse" placeholder="Digite aqui" rows="3"></textarea>
+        <span asp-validation-for="FreeResponse" class="form-text text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary" load>Responder a Pesquisa</button>
+</form>
+<!-- Modal -->
+<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p modal-body>
+
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
