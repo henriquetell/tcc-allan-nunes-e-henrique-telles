@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "wwwroot/css/curso-detalhe.css",
+    "inputFile": "wwwroot/css/curso-detalhe.scss"
+  },
+  {
+    "outputFile": "wwwroot/css/cursos.css",
+    "inputFile": "wwwroot/css/cursos.scss"
+  }
+]

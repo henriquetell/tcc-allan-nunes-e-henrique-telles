@@ -1,0 +1,133 @@
+﻿@model Admin.ViewModels.Conteudo.ConteudoFiltroViewModel
+@{
+    ViewData["Title"] = ConteudoPermissoes.NomeGrupo;
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-8">
+        <h2>
+            @ConteudoPermissoes.Descricao
+        </h2>
+        <ol class="breadcrumb">
+            <li class="active">
+                <a href="">Consulta</a>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-4">
+        <div class="title-action">
+            <a asp-action="Form" class="btn btn-default btn-rounded" asp-auth-perm="@ConteudoPermissoes.Gerenciar" asp-auth-acao="Escrever">
+                <i class="fa fa-plus"></i> Cadastrar
+            </a>
+        </div>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>
+                        <i class="fa fa-search"></i> Consulta
+                    </h5>
+                </div>
+                <div class="ibox-content">
+                    <form asp-action="Index" method="get" role="form">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label asp-for="IdConteudoChave"></label>
+                                <div class="form-group">
+                                        <select asp-for="IdConteudoChave" class="form-control">
+                                            <option value="">Selecione...</option>
+                                            @foreach (var item in EConteudoChave.GetAll())
+                                            {
+                                                <option value="@item.Id">@item.Titulo</option>
+                                            }
+                                        </select>
+                                    <span asp-validation-for="IdConteudoChave" class="text-danger small"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <label asp-for="Descricao"></label>
+                                <div class="form-group">
+                                    <div class="input-group m-b no-margins">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-search"></i>
+                                        </span>
+                                        <input asp-for="Descricao" type="text" asp-placeholder="" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Descricao" class="text-danger small"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-actions">
+                                    <a asp-action="Index" class="btn btn-default pull-left btn-rounded">
+                                        <i class="fa fa-trash-o"></i> Limpar
+                                    </a>
+                                    <button type="submit" class="btn btn-primary btn-rounded pull-right">
+                                        <i class="fa fa-search"></i> Consultar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>
+                        <i class="fa fa-table"></i> Registros
+                    </h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p class="text-muted text-center" asp-visibility="!Model.Itens.Any()">
+                                <strong>
+                                    <i class="fa fa-info-circle"></i> Nenhum registro encontrado!
+                                </strong>
+                            </p>
+                            <asp asp-visibility="Model.Itens.Any()">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Nome</th>
+                                                <th>Conteúdo Chave</th>
+                                                <th status>Status</th>
+                                                <th>Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.Itens)
+                                            {
+                                            <tr>
+                                                <td>@item.Titulo</td>
+                                                <td>@item.ConteudoChave.Titulo</td>
+                                                <td status>
+                                                    @item.Status.CriarBadge()
+                                                </td>
+                                                <td>
+                                                    <a asp-action="Form" asp-route-id="@item.Id" class="btn btn-sm btn-primary btn-outline btn-circle">
+                                                        <i class="fa fa-check"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <partial name="_PaginadorPartial" for="Paginador" />
+                            </asp>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

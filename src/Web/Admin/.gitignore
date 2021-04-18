@@ -1,0 +1,16 @@
+﻿wwwroot/lib/**/*
+wwwroot/scripts/**/*
+wwwroot/css/**/*
+wwwroot/scss/*.css
+
+
+Scripts/**/*.map
+Scripts/**/*.js
+
+![Ss]cripts/[Ll]ib/*.js
+
+Properties/PublishProfiles/*
+Properties/PublishProfiles/launchSettings.json
+web.config
+
+node_modules

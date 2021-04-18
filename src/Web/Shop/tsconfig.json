@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "removeComments": true,
+    "target": "es5",
+    "types": [
+      "jquery",
+      "jquery.validation",
+      "jquery-validation-unobtrusive",
+      "jquery.pjax"
+    ],
+    "lib": [ "es2015", "dom" ]
+  },
+  "include": [
+    "./Scripts/**/*.ts"
+  ],
+  "compileOnSave": true
+}

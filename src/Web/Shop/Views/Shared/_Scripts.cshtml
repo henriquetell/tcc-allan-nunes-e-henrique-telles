@@ -1,0 +1,19 @@
+﻿<script src="~/js/lib/jquery-3.4.1.js"></script>
+<script src="~/js/jquery.mask.min.js"></script>
+<script src="~/js/lib/slick.min.js"></script>
+<script src="~/js/main.js"></script>
+
+<environment names="Development">
+    <script src="~/js/lib.js"></script>
+    <script src="~/js/sitemask.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</environment>
+<environment names="Staging,Production">
+    <script src="~/js/lib.min.js" asp-append-version="true"></script>
+    <script src="~/js/sitemask.min.js" asp-append-version="true"></script>
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
+</environment>
+<script type="text/javascript">
+        var e = new Site();
+        e.init();
+</script>

@@ -1,0 +1,38 @@
+﻿@model AlterarSenhaViewModel
+
+<div class="modal inmodal" id="alterarSenhaModal" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+    <form asp-action="AlterarSenha" asp-controller="Login" asp-antiforgery="true" method="post">
+        <input type="hidden" asp-for="ReturnUrl" />
+        <div class="modal-dialog">
+            <div class="modal-content animated bounceInRight">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <i class="fa fa-lock modal-icon"></i>
+                    <h4 class="modal-title">Alteração de Senha</h4>
+                    <small class="font-bold">Preencha o dados para alterar sua senha.</small>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label asp-for="SenhaAtual"></label>
+                        <input type="password" asp-for="SenhaAtual" placeholder="Senha" class="form-control">
+                        <span asp-validation-for="SenhaAtual" class="text-danger small"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NovaSenha"></label>
+                        <input type="password" asp-for="NovaSenha" placeholder="Nova Senha" class="form-control">
+                        <span asp-validation-for="NovaSenha" class="text-danger small"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ConfirmarNovaSenha"></label>
+                        <input type="password" asp-for="ConfirmarNovaSenha" placeholder="Confirmação da nova senha" class="form-control">
+                        <span asp-validation-for="ConfirmarNovaSenha" class="text-danger small"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white btn-rounded" data-dismiss="modal"><i class="fa fa-close"></i> Fechar</button>
+                    <button type="submit" class="btn btn-primary btn-rounded"><i class="fa fa-check"></i> Alterar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

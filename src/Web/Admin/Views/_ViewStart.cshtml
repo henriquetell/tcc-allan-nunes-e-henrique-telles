@@ -1,0 +1,5 @@
+﻿@{
+    Layout = !Context.Request.Headers.ContainsKey("X-PJAX")
+        ? "_Layout"
+        : "_LayoutPjax";
+}

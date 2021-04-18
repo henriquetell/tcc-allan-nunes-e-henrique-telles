@@ -1,0 +1,192 @@
+﻿@using Admin.ViewModels.Produto
+@model ProdutoViewModel
+@inject ICloudStorage CloudStorage
+@{
+    ViewData["Title"] = ProdutoPermissoes.Descricao;
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-8">
+        <h2>
+            @ProdutoPermissoes.Descricao
+        </h2>
+        <ol class="breadcrumb">
+            <li>
+                <a asp-action="Index">Consulta</a>
+            </li>
+            <li class="active">
+                <strong>
+                    @Model.Id.LabelOperacao()
+                </strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-4">
+        <div class="title-action">
+            <a asp-action="Index" class="btn btn-default btn-rounded"><i class="fa fa-arrow-left"></i> Voltar</a>
+        </div>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>
+                        <i class="fa fa-shopping-bag"></i> @Model.Id.LabelOperacao() Produto
+                    </h5>
+                </div>
+                <div class="ibox-content" data-pagina="Produto">
+                    <form asp-antiforgery="true" asp-action="Form">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Titulo"></label>
+                                    <input asp-for="Titulo" class="form-control" asp-placeholder="" maxlength="1000" />
+                                    <span asp-validation-for="Titulo" class="text-danger small"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="Status"></label>
+                                    <select asp-for="Status" asp-enum-itens="typeof(EStatus)" class="form-control">
+                                        <option value="">Selecione...</option>
+                                    </select>
+                                    <span asp-validation-for="Status" class="text-danger small"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Codigo"></label>
+                                    <input asp-for="Codigo" class="form-control" asp-placeholder="" maxlength="200" />
+                                    <span asp-validation-for="Codigo" class="text-danger small"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Preco"></label>
+                                    <input asp-for="Preco" class="form-control" asp-placeholder="" asp-mascara="Moeda" />
+                                    <span asp-validation-for="Preco" class="text-danger small"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="DescricaoCurta"></label>
+                                    <input asp-for="DescricaoCurta" class="form-control" asp-placeholder="" maxlength="3000" />
+                                    <span asp-validation-for="DescricaoCurta" class="text-danger small"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label asp-for="CategoriaProduto"></label>
+                                    <select asp-for="CategoriaProduto" asp-enum-itens="typeof(ECategoriaProduto)" class="form-control">
+                                        <option value="">Selecione...</option>
+                                    </select>
+                                    <span asp-validation-for="CategoriaProduto" class="text-danger small"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <br />
+                                    <label class="checkbox-inline i-checks no-margins">
+                                        <input type="checkbox" asp-for="Destaque"> <strong>Exibir como Destaque</strong>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="DescricaoLonga"></label>
+                                    <textarea asp-for="DescricaoLonga" class="form-control" summernote data-height="250"></textarea>
+                                    <span asp-validation-for="DescricaoLonga" class="text-danger small"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions text-right" asp-auth-perm="@ProdutoPermissoes.Gerenciar" asp-auth-acao="Escrever">
+                            <button type="submit" class="btn btn-primary btn-rounded">
+                                <i class="fa fa-check"></i> Salvar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" asp-visibility="Model.Id > 0">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>
+                        <i class="fa fa-automobile"></i> SKUS do Produto
+                    </h5>
+                </div>
+                <div class="ibox-content">
+                    @foreach (var item in Model.Skus)
+                    {
+                        var viewData = new ViewDataDictionary(ViewData);
+                        viewData.TemplateInfo.HtmlFieldPrefix = $"SKU_{item.IdProdutoSku}";
+                        @await Html.PartialAsync("_FormSku", item, viewData)
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" asp-visibility="Model.Id > 0">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>
+                        <i class="fa fa-image"></i> Imagens do Produto
+                    </h5>
+                </div>
+                <div class="ibox-content">
+                    <form method="post" asp-action="OrdernarImagens" asp-antiforgery="true" id="FormOrdernarImagens" asp-auth-perm="@ProdutoPermissoes.Gerenciar" asp-auth-acao="Escrever"></form>
+                    <div class="row" id="row-imagens">
+                        @foreach (var imagem in Model.Imagens.OrderBy(c => c.Ordem))
+                        {
+                            <div class="col-md-3">
+                                <div class="ibox product-edit no-margins">
+                                    <div class="ibox-content product-box">
+                                        <div class="product-imitation no-padding">
+                                            <figure data-id="@imagem.Id">
+                                                <img src="@CloudStorage.RecuperarImagemUrl(imagem.Original)" alt="Imagem Produto" class="img-responsive m-b-md" />
+                                            </figure>
+                                        </div>
+                                        <div class="product-desc">
+                                            <span class="product-price">
+                                                @imagem.Ordem
+                                            </span>
+                                            <form method="post" asp-action="ExcluirImagem" asp-route-id="@imagem.Id" data-form-excluir="false" asp-auth-perm="@ProdutoPermissoes.Gerenciar" asp-auth-acao="Excluir">
+                                                <button type="button" data-clipboard-text="@CloudStorage.RecuperarImagemUrl(imagem.Original)" class="btn btn-sm btn-primary btn-outline btn-rounded" title="Copiar URL">
+                                                    <i class="fa fa-copy"></i>
+                                                </button>
+                                                <button type="submit" class="btn btn-sm btn-danger btn-outline btn-rounded" title="Excluir">
+                                                    <i class="fa fa-trash-o"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <asp asp-auth-perm="@ProdutoPermissoes.Gerenciar" asp-auth-acao="Escrever">
+                        <div class="hr-line-dashed" asp-visibility="@Model.Imagens.Any()" asp-suppress="true"></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form asp-antiforgery="true" asp-action="UploadImagem" id="UploadDropzone" class="dropzone" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" name="IdProduto" value="@Model.Id" />
+                                </form>
+                            </div>
+                        </div>
+                    </asp>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

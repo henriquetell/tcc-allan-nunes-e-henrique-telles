@@ -1,0 +1,112 @@
+﻿header {
+    background-image: url(../img/bg/bg-header-cursos.png);
+    height: 470px;
+}
+
+.cursos {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    /* CATEGORIAS */
+    .categorias {
+        padding: 20px;
+        margin-top: 63px;
+        border: solid 1px #ccc;
+        /*width: 276px;*/
+        height: 296px;
+
+        .select-categorias {
+            display: none;
+        }
+
+        h2 {
+            font-family: Montserrat;
+            font-size: 16px;
+            font-weight: 600;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            color: #424242;
+        }
+
+        ul {
+            li {
+                margin: 15px 0px;
+
+                a {
+                    font-family: Montserrat;
+                    font-size: 16px;
+                    font-weight: normal;
+                    font-stretch: normal;
+                    font-style: normal;
+                    line-height: normal;
+                    letter-spacing: normal;
+                    color: #f28d24;
+                    display: block;
+                    padding: 5px 0;
+                }
+            }
+        }
+    }
+    
+    /* mais cursos*/
+    .mais-cursos {
+        margin: 0 auto 20px;
+        grid-column: 2/3;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .cursos {
+
+
+        .categorias {
+            /*width: 207px;*/
+        }
+
+        #box-cursos {
+
+            .box {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 100%;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    header {
+        height: 290px;
+    }
+    .cursos {
+        display: block;
+
+        #box-cursos {
+            margin: 0;
+            padding: 0;
+
+            .box {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+
+        .categorias {
+            padding: 0;
+            height: 120px;
+            border: none;
+            h2 {
+                margin-bottom: 10px;
+            }
+
+            ul {
+                display: none;
+            }
+
+            .select-categorias {
+                display: block;
+                width: 100%;
+            }
+        }
+    }
+}

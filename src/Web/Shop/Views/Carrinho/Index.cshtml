@@ -1,0 +1,73 @@
+﻿@model Shop.ViewModels.Carrinho.CarrinhoViewModel
+@inject ICloudStorage CloudStorage
+
+<div class="container" data-pagina="Carrinho">
+
+    @if (Model.Itens.Any())
+    {
+        <form asp-controller="Carrinho" asp-action="Index" method="post" asp-antiforgery="true">
+            <input type="hidden" asp-for="IdCarrinho" />
+            <article class="esh-basket-titles row">
+                <br />
+                <section class="esh-basket-title col-xs-3">&nbsp;</section>
+                <section class="esh-basket-title col-xs-3 hidden-lg-down"></section>
+                <section class="esh-basket-title col-xs-2">Preço</section>
+                <section class="esh-basket-title col-xs-2">Quantidade</section>
+                <section class="esh-basket-title col-xs-2">Total</section>
+            </article>
+            <div class="esh-catalog-items row">
+                @for (int i = 0; i < Model.Itens.Count; i++)
+                {
+                    var item = Model.Itens[i];
+                    <article class="esh-basket-items row">
+                        <div>
+                            <section class="esh-basket-item esh-basket-item--middle col-lg-2 hidden-lg-down">
+                                <img class="esh-basket-image" src="@CloudStorage.RecuperarImagemUrl(item.Imagem)" />
+                            </section>
+                            <section class="esh-basket-item col-xs-4">
+                                <span>@item.Titulo (@item.Descricao)</span>
+                                <a asp-controller="Carrinho" asp-action="Remover" data-idprodutosku="@item.IdProdutoSku" data-idcarrinho="@item.IdCarrinho" data-idcarrinhoitem="@item.Id" class="esh-basket-remove">
+                                    Remover
+                                </a>
+                            </section>
+                            <section class="esh-basket-item esh-basket-item--middle col-xs-2">@item.PrecoPor.ToString("C2")</section>
+                            <section class="esh-basket-item esh-basket-item--middle col-xs-2">
+                                <input type="hidden" name="@("Items[" + i + "].Key")" value="@item.Id" />
+                                <a class="esh-basket-minus" asp-controller="Carrinho" asp-action="DiminuirProduto" data-idprodutosku="@item.IdProdutoSku" data-idcarrinho="@item.IdCarrinho" data-idcarrinhoitem="@item.Id">-</a>
+                                <input type="number" class="esh-basket-input" min="1" name="@("Items[" + i + "].Value")" value="@item.Quantidade" readonly="readonly" />
+                                <a class="esh-basket-plus" asp-controller="Carrinho" asp-action="AumentarProduto" data-idprodutosku="@item.IdProdutoSku" data-idcarrinho="@item.IdCarrinho" data-idcarrinhoitem="@item.Id">+</a>
+                            </section>
+                            <section class="esh-basket-item esh-basket-item--middle esh-basket-item--mark col-xs-2">@Math.Round(item.Quantidade * item.PrecoPor, 2).ToString("C2")</section>
+                        </div>
+                    </article>
+                }
+
+                <div class="container">
+                    <article class="esh-basket-titles esh-basket-titles--clean row">
+                        <section class="esh-basket-title col-xs-10"></section>
+                        <section class="esh-basket-title col-xs-2">Total</section>
+                    </article>
+                    <article class="esh-basket-items row">
+                        <section class="esh-basket-item col-xs-10"></section>
+                        <section class="esh-basket-item esh-basket-item--mark col-xs-2">
+                            @Math.Round(Model.Itens.Sum(item => item.Quantidade * item.PrecoPor), 2).ToString("C2")
+                        </section>
+                    </article>
+                </div>
+
+                <section class="esh-basket-item col-xs-push-8 col-xs-4">
+                    <input type="submit"
+                           class="btn esh-basket-checkout"
+                           value="[ Checkout ]" name="action" />
+                </section>
+
+            </div>
+        </form>
+    }
+    else
+    {
+        <div class="esh-catalog-items row text-center">
+            Seu carrinho está vazio
+        </div>
+    }
+</div>

@@ -1,0 +1,330 @@
+﻿body {
+    margin: 0px;
+}
+
+.header {
+    height: 117px;
+    background-color: #1e1e1e;
+    margin-bottom: 100px;
+}
+
+    .header .wrapper-header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+        .header .wrapper-header svg {
+            background-color: #191919;
+        }
+
+
+        .header .wrapper-header ul {
+            padding-top: 35px;
+            list-style: none;
+        }
+
+            .header .wrapper-header ul li a {
+                font-weight: 500;
+                color: #fff;
+                text-decoration: none;
+            }
+
+                .header .wrapper-header ul li a:hover {
+                    color: #f28d24;
+                    transition: all 200ms ease;
+                }
+
+        .header .wrapper-header .menu-mobile {
+            display: none;
+        }
+
+.content-contato {
+    margin-bottom: 200px;
+}
+
+    .content-contato h2 {
+        font-size: 30px;
+        letter-spacing: normal;
+        color: #424242;
+        font-weight: normal;
+    }
+
+    .content-contato .main-contato {
+        display: flex;
+        justify-content: space-between;
+    }
+
+.quem-somos-img {
+    position: relative;
+    width: 50%;
+}
+
+    .quem-somos-img::after {
+        content: '';
+        position: absolute;
+        background-image: url(../img/gr/rectangle.png);
+        width: 456px;
+        height: 262px;
+        object-fit: contain;
+        right: -45px;
+        bottom: -105px;
+        z-index: -1;
+    }
+
+    .quem-somos-img img {
+        max-width: 100%;
+    }
+
+    .quem-somos-img h4 {
+        position: absolute;
+        right: 0;
+        bottom: -225px;
+        font-size: 90px;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-align: right;
+        color: #e7e7e7;
+    }
+
+
+.form-contato {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+    .form-contato h3 {
+        font-size: 16px;
+        font-weight: 500;
+        color: #424242;
+        margin-bottom: 30px;
+    }
+
+    .form-contato textarea {
+        width: 100%;
+        height: 74px;
+        border-bottom: 0.1rem solid #f28d24;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        padding: 8px;
+        outline: none;
+    }
+    }
+
+
+
+
+
+
+
+/* FLOATING INPUT */
+.material-textfield {
+    display: inline-block;
+    height: 40px;
+    padding-top: 25px;
+}
+
+    .material-textfield input {
+        background: none;
+        border: none;
+        box-sizing: border-box;
+        display: block;
+        font-family: Roboto, Arial, sans-serif;
+        font-size: 1rem;
+        padding: 0.25rem 0.1rem;
+        width: 100%;
+    }
+
+        .material-textfield input:invalid {
+            box-shadow: none;
+        }
+
+        .material-textfield input:focus {
+            outline: none;
+        }
+
+    .material-textfield label {
+        display: inline-block;
+        font-family: Roboto, Arial, sans-serif;
+        font-size: 0;
+        pointer-events: none;
+        position: relative;
+        text-transform: uppercase;
+        width: 100%;
+    }
+
+        .material-textfield label::before {
+            content: attr(data-content);
+            position: relative;
+            transition: all 0.2s ease;
+            will-change: font-size, top;
+        }
+
+
+        .material-textfield label::before, .material-textfield input[required]:focus ~ label::before {
+            font-size: 0.75rem;
+            top: -3.25rem;
+        }
+
+    .material-textfield input:focus ~ label::after {
+        left: 0%;
+        width: 100%;
+    }
+
+    .material-textfield input:invalid ~ label::before {
+        font-size: 1rem;
+        top: -2rem;
+    }
+
+    .material-textfield.blue input {
+        border-bottom: 0.1rem solid #f28d24;
+        color: #000;
+        margin-bottom: 10px;
+    }
+
+    .material-textfield.blue label::after {
+        background: #f28d24;
+    }
+
+    .material-textfield.blue label::before, .material-textfield.blue input[required]:focus ~ label::before {
+        color: #7b7b7b;
+        font-size: 10px;
+        text-transform: capitalize;
+    }
+
+    .material-textfield.blue input:invalid ~ label::before {
+        font-size: 14px;
+        color: #191919;
+    }
+
+    .material-textfield.red input {
+        border-bottom: 0.1rem solid #f28d24;
+        color: #d2190b;
+    }
+
+    .material-textfield.red label::after {
+        background: #F44336;
+    }
+
+    .material-textfield.red label::before, .material-textfield.red input[required]:focus ~ label::before {
+        color: #f8877f;
+    }
+
+    .material-textfield.red input:invalid ~ label::before {
+        color: #F44336;
+    }
+
+
+
+#btn-form {
+    width: 194px;
+    height: 40px;
+    border-radius: 59.5px;
+    border: solid 1px #f28d24;
+    background-color: #f28d24;
+    margin-top: 45px;
+    color: #fff;
+    font-weight: bold;
+    margin: 45px auto 0 0;
+    float: right;
+}
+
+#logo-desktop {
+    display: block;
+}
+
+#svg-side {
+    display: none;
+}
+/* RESPONSIVE */
+@media only screen and (max-width: 1200px) {
+    .header .wrapper-header {
+        position: fixed;
+        width: 100%;
+        left: 0px;
+        background-color: #1e1e1e;
+        height: 95px;
+        z-index: 99999;
+    }
+
+    #svg-side {
+        display: block;
+        margin-left: 20px;
+    }
+
+    #logo-desktop {
+        display: none;
+    }
+
+    .header .wrapper-header ul {
+        display: none;
+    }
+
+    .header .wrapper-header .menu-mobile {
+        display: block;
+        padding: 24px 18px 0 0px;
+    }
+
+        .header .wrapper-header .menu-mobile .menu-hamburger {
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+            .header .wrapper-header .menu-mobile .menu-hamburger .line {
+                background-color: #f28d24;
+                display: block;
+                height: 5px;
+                margin-bottom: 6px;
+                width: 37px;
+            }
+
+
+    .main-contato {
+        flex-direction: column-reverse;
+    }
+
+    .form-contato {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 50px;
+    }
+
+    .quem-somos-img::after {
+        content: none;
+    }
+
+    .quem-somos-img h4 {
+        position: absolute;
+        right: 0px;
+        bottom: -170px;
+        font-size: 60px;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-align: right;
+        color: #e7e7e7;
+    }
+
+    .quem-somos-img {
+        width: 100%;
+    }
+
+        .quem-somos-img img {
+            width: 100%;
+        }
+
+    .logo {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 25px;
+    }
+
+    .footer-contato {
+        margin-bottom: 30px;
+    }
+}
+
+
+@media only screen and (max-width: 900px) {
+}

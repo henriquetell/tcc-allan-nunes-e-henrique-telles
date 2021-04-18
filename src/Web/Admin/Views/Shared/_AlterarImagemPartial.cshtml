@@ -1,0 +1,37 @@
+﻿<div class="modal inmodal" id="alterarImagemModal" data-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content animated bounceInRight">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <i class="fa fa-camera modal-icon"></i>
+                <h4 class="modal-title">Alterar Imagem</h4>
+                <small class="font-bold">Selecione uma imagem para o seu usuário.</small>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12 no-padding">
+                        <img id="imagemCropper" alt="Imagem Local" src="~/images/default.jpg" class="img-responsive center-block" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-3 col-sm-12 col-xs-12  text-left">
+                    <div class="btn-group">
+                        <button class="btn btn-white" id="zoomIn" type="button"><i class="fa fa-search-plus"></i></button>
+                        <button class="btn btn-white" id="zoomOut" type="button"><i class="fa fa-search-minus"></i></button>
+                    </div>
+                </div>
+                <div class="col-md-9 col-sm-12 col-xs-12  text-right">
+                    <button type="button" class="btn btn-white btn-labeled" data-dismiss="modal">
+                        <span class="btn-label"><i class="fa fa-close"></i></span> Cancelar
+                    </button>
+                    <label for="inputImage" class="btn btn-warning btn-labeled">
+                        <input type="file" accept="image/*" name="ImagemCliente" id="inputImage" class="hide">
+                        <span class="btn-label"><i class="fa fa-upload"></i></span> Upload
+                    </label>
+                    <button id="SalvarImagem" type="button" class="btn btn-primary btn-labeled" data-url="@Url.Action("Imagem", "Usuario")"><span class="btn-label"><i class="fa fa-camera"></i></span> Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

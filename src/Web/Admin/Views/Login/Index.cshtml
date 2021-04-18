@@ -1,0 +1,55 @@
+﻿@inject IOptions<AppConfig> App
+@model LoginViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login - @App?.Value?.Admin?.Name</title>
+    <partial name="_StylePartial" />
+</head>
+<body class="bg-login">
+    <partial name="_LoadingPartial" />
+    <div class="middle-box loginscreen  animated fadeInDown" data-script="init" data-pagina="Login">
+        <div>
+            <div>
+                <h1 class="logo-name" data-tilt>
+                    <img src="@App?.Value?.Admin?.Logo" alt="IMG" class="img-responsive img-logo">
+                </h1>
+            </div>
+            <form class="m-t" role="form" asp-action="Index" method="post" asp-antiforgery="true" id="formLogin">
+                <div class="form-group">
+                    <input type="text" asp-for="Email" class="form-control input-lg" placeholder="E-mail">
+                    <span asp-validation-for="Email" class="text-danger small"></span>
+                </div>
+                <div class="form-group">
+                    <input type="password" asp-for="Senha" class="form-control input-lg" placeholder="Senha">
+                    <span asp-validation-for="Senha" class="text-danger small"></span>
+                </div>
+                <div class="form-group text-right">
+                    <div class="i-checks">
+                        <label>
+                            <input type="checkbox" asp-for="LembrarMe"><i></i> Lembre-me
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg full-width btn-rounded">ENTRAR</button>
+                <p class="text-center">
+                    <a asp-action="RecuperarSenha" class="btn btn-link text-navy">
+                        <small>
+                            <i class="fa fa-envelope"></i> Esqueceu sua senha?
+                        </small>
+                    </a>
+                </p>
+            </form>
+            <p class="m-t company-name text-center"> <small>&copy; @DateTime.Now.Year | @App.Value.Projeto</small> </p>
+        </div>
+    </div>
+    <partial name="_ScriptsPartial" />
+    <partial name="_MensagemPartial" />
+</body>
+</html>

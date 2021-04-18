@@ -1,0 +1,97 @@
+﻿@using Microsoft.Extensions.Primitives
+@model Framework.Data.PaginadorInfo
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@functions{
+    string CreateUrl(int? numeroPagina = null, int? tamanhoPagina = null)
+    {
+        numeroPagina = numeroPagina ?? Model.NumeroPagina;
+        tamanhoPagina = tamanhoPagina ?? Model.TamanhoPagina;
+
+        var url = string.IsNullOrWhiteSpace(Model.CustomAction)
+            ? Url.RouteUrl("consultas", new { numeroPagina, tamanhoPagina })
+            : Url.Action(Model.CustomAction, new { numeroPagina, tamanhoPagina });
+
+        var request = HttpContextAccessor.HttpContext.Request;
+
+        if (request.QueryString.HasValue)
+        {
+            var queryString = new List<KeyValuePair<string, StringValues>>();
+            foreach (var item in request.Query)
+            {
+                if (item.Key != nameof(numeroPagina) && item.Key != nameof(tamanhoPagina))
+                    queryString.Add(new KeyValuePair<string, StringValues>(item.Key, item.Value));
+            }
+
+
+            url += Microsoft.AspNetCore.Http.QueryString.Create(queryString).Value;
+        }
+
+        return url;
+    }
+}
+<asp asp-visibility="Model != null && Model.TotalPaginas > 0">
+    @{
+        var permiteVoltar = Model.NumeroPagina > 0;
+        var permiteAvancar = Model.NumeroPagina + 1 < Model.TotalPaginas;
+        var tamanhosPagina = new[] { 10, 25, 50, 100 }
+            .Where(item => Model.TamanhoPagina != item && Model.TotalRegistros > 0 && (int)Math.Round((decimal)Model.TotalRegistros / item) > 0)
+            .ToArray();
+    }
+    <div class="dataTables_paginate paging_simple_numbers clearfix">
+        <div class="row">
+            <div class="col-lg-4 col-sm-12">
+                <div class="form-group visible-lg-inline-block visible-md-inline-block visible-sm-inline-block visible-xs-inline-block">
+                    <div class="dropdown dropup">
+                        @if (Model.TotalPaginas > 0 && tamanhosPagina.Any())
+                        {
+                            <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown">
+                                @Model.TamanhoPagina <small>registros por página</small> <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu animated fadeIn">
+                                @foreach (var item in tamanhosPagina)
+                                {
+                                    <li><a href="@CreateUrl(tamanhoPagina: item)">@item registros por página</a></li>
+                                }
+                            </ul>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+                <small class="text-center block">@Model.TotalRegistros.ToString("N0") registro(s) encontrado(s).</small>
+            </div>
+            <div class="col-lg-4 col-sm-12">
+                <div class="pull-right">
+                    @if (Model.TotalPaginas > 1)
+                    {
+                        <ul class="pagination pull-right no-margins">
+
+                            <li class="paginate_button previous @(!permiteVoltar ? "disabled" : "")">
+                                <a href="@(!permiteVoltar ? "#" : CreateUrl(numeroPagina: Model.NumeroPagina - 1))" title="Voltar">
+                                    <i class="fa fa-arrow-left"></i>
+                                </a>
+                            </li>
+
+                            @for (var i = Model.NumeroPagina - 5; i < (Model.NumeroPagina + 5 >= Model.TotalPaginas ? Model.TotalPaginas : Model.NumeroPagina + 5); i++)
+                            {
+                                if (i >= 0)
+                                {
+                                    <li class="paginate_button @(i == Model.NumeroPagina ? "active" : "")">
+                                        <a href="@(i == Model.NumeroPagina ? "#" : CreateUrl(numeroPagina: i))" title="Página @(i + 1)">@(i + 1)</a>
+                                    </li>
+                                }
+                            }
+
+                            <li class="paginate_button next @(!permiteAvancar ? "disabled" : "")" title="Avançar">
+                                <a href="@(!permiteAvancar ? "#" : CreateUrl(numeroPagina: Model.NumeroPagina + 1))">
+                                    <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+
+                        </ul>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</asp>

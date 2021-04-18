@@ -1,0 +1,81 @@
+﻿@model Shop.ViewModels.Pedido.PedidoDetalhesViewModel
+@inject ICloudStorage CloudStorage
+@{
+    Layout = null;
+}
+
+<div class="esh-orders_detail">
+    <div class="container">
+
+        @*<section class="esh-orders_detail-section">
+                <article class="esh-orders_detail-titles row">
+                    <section class="esh-orders_detail-title col-xs-12">Description</section>
+                </article>
+
+                <article class="esh-orders_detail-items row">
+                    <section class="esh-orders_detail-item col-xs-12">@Model.Description</section>
+                </article>
+            </section>*@
+
+        @*<section class="esh-orders_detail-section">
+                <article class="esh-orders_detail-titles row">
+                    <section class="esh-orders_detail-title col-xs-12">Shipping Address</section>
+                </article>
+
+                <article class="esh-orders_detail-items row">
+                    <section class="esh-orders_detail-item col-xs-12">@Model.ShippingAddress.Street</section>
+                </article>
+
+                <article class="esh-orders_detail-items row">
+                    <section class="esh-orders_detail-item col-xs-12">@Model.ShippingAddress.City</section>
+                </article>
+
+                <article class="esh-orders_detail-items row">
+                    <section class="esh-orders_detail-item col-xs-12">@Model.ShippingAddress.Country</section>
+                </article>
+            </section>*@
+
+        <section class="esh-orders_detail-section">
+            <article class="esh-orders_detail-titles row">
+                <section class="esh-orders_detail-title col-xs-12">Detalhes</section>
+            </article>
+            @foreach (var item in Model.Itens)
+            {
+                <article class="esh-orders_detail-items esh-orders_detail-items--border row">
+                    <section class="esh-orders_detail-item col-md-2 hidden-md-down" asp-visibility="string.IsNullOrWhiteSpace(item.Imagem)">
+                        <img class="esh-orders_detail-image img-responsive" src="~/images/produto-sem-foto-a.gif">
+                    </section>
+                    <section class="esh-orders_detail-item col-md-2 hidden-md-down" asp-visibility="!string.IsNullOrWhiteSpace(item.Imagem)">
+                        <img class="esh-orders_detail-image img-responsive" src="@CloudStorage.RecuperarImagemUrl(item.Imagem)">
+                    </section>
+                    <section class="esh-orders_detail-item esh-orders_detail-item--middle col-xs-4">@item.Produto<small> @item.Sku</small></section>
+                    <section class="esh-orders_detail-item esh-orders_detail-item--middle col-xs-2">$ @item.Valor.ToString("N2")</section>
+                    <section class="esh-orders_detail-item esh-orders_detail-item--middle col-xs-2">@item.Quantidade</section>
+                    <section class="esh-orders_detail-item esh-orders_detail-item--middle col-xs-2">@((item.Valor * item.Quantidade).ToString("C2"))</section>
+                </article>
+            }
+        </section>
+
+        <section class="esh-orders_detail-section esh-orders_detail-section--right">
+            <article class="esh-orders_detail-titles esh-basket-titles--clean row">
+                <section class="esh-orders_detail-title col-xs-9"></section>
+                <section class="esh-orders_detail-title col-xs-2"></section>
+            </article>
+
+            <article class="esh-orders_detail-items row" asp-visibility="Model.ValorTotalFrete.HasValue">
+                <section class="esh-orders_detail-item col-xs-10 text-right">FRETE</section>
+                <section class="esh-orders_detail-item esh-orders_detail-item--middle esh-orders_detail-item--mark col-xs-2">@Model.ValorTotalFrete?.ToString("C2")</section>
+            </article>
+
+            <article class="esh-orders_detail-items row" asp-visibility="Model.ValorTotalTaxas.HasValue">
+                <section class="esh-orders_detail-item col-xs-10 text-right">TAXAS</section>
+                <section class="esh-orders_detail-item esh-orders_detail-item--middle esh-orders_detail-item--mark col-xs-2">@Model.ValorTotalTaxas?.ToString("C2")</section>
+            </article>
+
+            <article class="esh-orders_detail-items row">
+                <section class="esh-orders_detail-item col-xs-10 text-right">TOTAL</section>
+                <section class="esh-orders_detail-item esh-orders_detail-item--middle esh-orders_detail-item--mark col-xs-2">@Model.ValorTotal.ToString("C2")</section>
+            </article>
+        </section>
+    </div>
+</div>

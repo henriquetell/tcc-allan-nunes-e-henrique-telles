@@ -1,0 +1,26 @@
+﻿@*FAVICON*@
+<link rel="icon" type="image/x-icon" href="~/favicon.ico">
+
+<environment include="Development">
+    @*LIBS*@
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" />
+    <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="~/lib/metisMenu/dist/metisMenu.css" />
+    <link rel="stylesheet" href="~/lib/animate.css/animate.css" />
+    <link rel="stylesheet" href="~/lib/toastr/toastr.css" />
+    <link rel="stylesheet" href="~/lib/iCheck/skins/square/green.css" />
+    <link rel="stylesheet" href="~/lib/sweetalert2/dist/sweetalert2.css" />
+    <link rel="stylesheet" href="~/lib/summernote/dist/summernote.css" />
+    <link rel="stylesheet" href="~/lib/dropzone/dist/dropzone.css" />
+    <link rel="stylesheet" href="~/lib/chosen/chosen.css" />
+    <link rel="stylesheet" href="~/lib/cropper/dist/cropper.css" />
+    <link rel="stylesheet" href="~/lib/magnific-popup/dist/magnific-popup.css" />
+
+    @*CSS*@
+    <link rel="stylesheet" href="~/css/style.css" />
+</environment>
+<environment exclude="Development">
+    <link rel="stylesheet" href="~/css/bundle.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/style.min.css" asp-append-version="true" />
+</environment>

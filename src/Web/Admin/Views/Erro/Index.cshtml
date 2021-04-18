@@ -1,0 +1,31 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>[Nome Projeto] | Erro</title>
+
+    <partial name="_StylePartial" />
+</head>
+
+<body class="gray-bg">
+    <div class="middle-box text-center animated fadeInDown">
+        <h1>500</h1>
+        <h3 class="font-bold">Erro Interno do Servidor</h3>
+
+        <div class="error-desc">
+            O servidor encontrou algo inesperado que não lhe permitiu concluir o pedido. Nós pedimos desculpas.<br />
+            Você pode voltar para a página principal: <br /><a asp-controller="Home" class="btn btn-primary btn-lg btn-labeled m-t"><span class="btn-label"><i class="fa fa-home"></i></span>   Inicio</a>
+        </div>
+    </div>
+    <partial name="_ScriptsPartial" />
+</body>
+</html>
+
+

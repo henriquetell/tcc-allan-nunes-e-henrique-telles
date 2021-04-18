@@ -1,0 +1,151 @@
+﻿@model MinhaContaViewModel
+@{
+    ViewData["Title"] = "Profile";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <section data-pagina="MinhaConta">
+                <form asp-antiforgery="true" asp-controller="MinhaConta" asp-action="Index" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal">
+                    <div class="form-group">
+                        <label asp-for="Nome" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Nome" class="form-control" type="text" autocomplete="off" />
+                            <span asp-validation-for="Nome" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Documento" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Documento" class="form-control" type="text" asp-mascara="Cpf" autocomplete="off" />
+                            <span asp-validation-for="Documento" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DataNascimento" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="DataNascimento" class="form-control" type="text" asp-mascara="Data" autocomplete="off" />
+                            <span asp-validation-for="DataNascimento" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Email" class="form-control" type="text" autocomplete="off" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="EmailSecundario" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="EmailSecundario" class="form-control" type="text" autocomplete="off" />
+                            <span asp-validation-for="EmailSecundario" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Celular" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Celular" class="form-control" type="text" asp-mascara="DDDTelefone" autocomplete="off" />
+                            <span asp-validation-for="Celular" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TelefoneResidencial" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="TelefoneResidencial" class="form-control" type="text" asp-mascara="DDDTelefone" autocomplete="off" />
+                            <span asp-validation-for="TelefoneResidencial" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="TelefoneComercial" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="TelefoneComercial" class="form-control" type="text" asp-mascara="DDDTelefone" autocomplete="off" />
+                            <span asp-validation-for="TelefoneComercial" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        <label asp-for="Endereco.Logradouro" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Endereco.Logradouro" class="form-control" type="text" autocomplete="off" />
+                            <span asp-validation-for="Endereco.Logradouro" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Endereco.Complemento" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Endereco.Complemento" class="form-control" type="text" autocomplete="off" />
+                            <span asp-validation-for="Endereco.Complemento" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Endereco.Numero" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Endereco.Numero" class="form-control" type="text" autocomplete="off" />
+                            <span asp-validation-for="Endereco.Numero" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Endereco.Cep" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Endereco.Cep" class="form-control" type="text" autocomplete="off" asp-mascara="Cep" />
+                            <span asp-validation-for="Endereco.Cep" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Endereco.Bairro" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Endereco.Bairro" class="form-control" type="text" autocomplete="off" />
+                            <span asp-validation-for="Endereco.Bairro" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Endereco.Cidade" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Endereco.Cidade" class="form-control" type="text" autocomplete="off" />
+                            <span asp-validation-for="Endereco.Cidade" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Endereco.Uf" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <select asp-for="Endereco.Uf" asp-enum-itens="typeof(EUf)" class="form-control" ></select>
+                            <span asp-validation-for="Endereco.Uf" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" asp-for="AlterarSenha"> @Html.DisplayNameFor(m => m.AlterarSenha)
+                        </label>
+                    </div>
+                    <div class="form-group" alterar-senha>
+                        <label asp-for="Senha" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="Senha" class="form-control" type="password" />
+                            <span asp-validation-for="Senha" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group" alterar-senha>
+                        <label asp-for="NovaSenha" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="NovaSenha" class="form-control" type="password" />
+                            <span asp-validation-for="NovaSenha" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group" alterar-senha>
+                        <label asp-for="ConfirmarNovaSenha" class="col-md-2 control-label"></label>
+                        <div class="col-md-10">
+                            <input asp-for="ConfirmarNovaSenha" class="form-control" type="password" />
+                            <span asp-validation-for="ConfirmarNovaSenha" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default">Registrar</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+

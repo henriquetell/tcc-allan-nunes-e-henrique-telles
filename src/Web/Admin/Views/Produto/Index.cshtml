@@ -1,0 +1,125 @@
+﻿@using Admin.Extenders
+@inject ICloudStorage CloudStorage
+@model Admin.ViewModels.Produto.ProdutoFiltroViewModel
+@{
+    ViewData["Title"] = ProdutoPermissoes.NomeGrupo;
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-8">
+        <h2>
+            @ProdutoPermissoes.Descricao
+        </h2>
+        <ol class="breadcrumb">
+            <li class="active">
+                <a href="">Consulta</a>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-4">
+        <div class="title-action">
+            <a asp-action="Form" class="btn btn-default btn-rounded" asp-auth-perm="@ProdutoPermissoes.Gerenciar" asp-auth-acao="Escrever"><i class="fa fa-plus"></i> Cadastrar</a>
+        </div>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>
+                        <i class="fa fa-search"></i> Consulta
+                    </h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-lg-10 col-lg-offset-1">
+                            <p>Informe os parâmetros para a consulta</p>
+                            <form asp-action="Index" method="get" role="form">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-search"></i>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="Consulta" asp-for="Consulta" />
+                                        <span class="input-group-btn">
+                                            <a asp-action="Index" asp-route-numeroPagina="" asp-route-tamanhoPagina="" class="btn btn-default btn-rounded no-margins">
+                                                <i class="fa fa-trash-o"></i>
+                                            </a>
+                                            <button type="submit" class="btn btn-primary btn-rounded no-margins">
+                                                Consultar
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>
+                        <i class="fa fa-table"></i> Registros
+                    </h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <p class="text-muted text-center" asp-visibility="!Model.Itens.Any()">
+                                <strong>
+                                    <i class="fa fa-info-circle"></i> Nenhum registro encontrado!
+                                </strong>
+                            </p>
+                            <asp asp-visibility="Model.Itens.Any()">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th img>&nbsp;</th>
+                                                <th>Produto</th>
+                                                <th status>Status</th>
+                                                <th>Ações</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model.Itens)
+                                            {
+                                                <tr>
+                                                    <td img>
+                                                        <asp asp-visibility="!string.IsNullOrEmpty(item.ImagemPrincipal)">
+                                                            <img alt="Produto" src="@CloudStorage.RecuperarImagemUrl(item.ImagemPrincipal)" class="img-responsive img-circle img-small" />
+                                                        </asp>
+                                                        <asp asp-visibility="string.IsNullOrEmpty(item.ImagemPrincipal)">
+                                                            <img alt="Produto" src="~/images/produto-sem-foto-a.gif" class="img-responsive img-circle img-small" />
+                                                        </asp>
+                                                    </td>
+                                                    <td>@item.Titulo</td>
+                                                    <td status>@item.Status?.CriarBadge()</td>
+                                                    <td>
+                                                        <a asp-action="Form" asp-route-id="@item.Id" class="btn btn-sm btn-primary btn-outline btn-circle">
+                                                            <i class="fa fa-check"></i>
+                                                        </a>
+                                                        @*<form method="post" asp-action="Excluir" asp-route-id="@item.Id" data-form-excluir="false" asp-auth-perm="@ProdutoPermissoes.Gerenciar" asp-auth-acao="Excluir">
+                                                            <button type="submit" class="btn btn-sm btn-danger btn-outline btn-circle">
+                                                                <i class="fa fa-trash-o"></i>
+                                                            </button>
+                                                        </form>*@
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <partial name="_PaginadorPartial" for="Paginador" />
+                            </asp>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

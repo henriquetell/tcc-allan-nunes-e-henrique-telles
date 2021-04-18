@@ -1,0 +1,198 @@
+﻿header {
+  background-image: none;
+  background-color: #1e1e1e;
+  height: 77px;
+  margin-bottom: 54px; }
+  header .logo-normal {
+    display: none; }
+  header .logo-fixed {
+    display: block; }
+  header .fixed {
+    padding: 0 75px; }
+    header .fixed .logo-normal {
+      display: none; }
+
+.curso-detalhe {
+  padding: 20px 60px;
+  margin-bottom: 50px;
+  box-sizing: border-box; }
+  .curso-detalhe h2 {
+    font-size: 28px;
+    color: #424242;
+    margin-bottom: 25px; }
+  .curso-detalhe .box-detalhe {
+    display: flex;
+    margin-bottom: 50px; }
+    .curso-detalhe .box-detalhe .box-imagem {
+      width: 366px;
+      height: 366px; }
+      .curso-detalhe .box-detalhe .box-imagem img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover; }
+    .curso-detalhe .box-detalhe .box-preco {
+      max-width: 719px;
+      box-sizing: border-box;
+      padding: 15px 20px;
+      border: solid 1px #ccc;
+      border-left: none;
+      width: 719px;
+      height: 312px;
+      margin-top: 27px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between; }
+      .curso-detalhe .box-detalhe .box-preco .titulo {
+        font-size: 32px;
+        margin-bottom: 10px; }
+      .curso-detalhe .box-detalhe .box-preco .categoria {
+        font-size: 10px;
+        margin-bottom: 10px; }
+      .curso-detalhe .box-detalhe .box-preco .preco {
+        display: flex;
+        margin-bottom: 10px; }
+        .curso-detalhe .box-detalhe .box-preco .preco .valor {
+          margin-right: 20px; }
+          .curso-detalhe .box-detalhe .box-preco .preco .valor p {
+            font-weight: 600;
+            font-size: 20px; }
+            .curso-detalhe .box-detalhe .box-preco .preco .valor p span {
+              font-size: 36px; }
+        .curso-detalhe .box-detalhe .box-preco .preco .parcelas {
+          display: flex;
+          justify-content: center;
+          flex-direction: column; }
+          .curso-detalhe .box-detalhe .box-preco .preco .parcelas p {
+            font-size: 12px; }
+            .curso-detalhe .box-detalhe .box-preco .preco .parcelas p.valor-parcela {
+              font-size: 14px;
+              font-weight: bold; }
+            .curso-detalhe .box-detalhe .box-preco .preco .parcelas p strong {
+              font-weight: bold; }
+      .curso-detalhe .box-detalhe .box-preco .turmas-select {
+        display: none; }
+      .curso-detalhe .box-detalhe .box-preco .turmas {
+        display: flex;
+        flex-wrap: wrap; }
+        .curso-detalhe .box-detalhe .box-preco .turmas .turmas-item {
+          width: 121px;
+          height: 64px;
+          object-fit: contain;
+          border: solid 1px #f28d24;
+          margin: 0px 10px 10px 0;
+          padding: 12px;
+          box-sizing: border-box; }
+          .curso-detalhe .box-detalhe .box-preco .turmas .turmas-item.ativo {
+            background-color: #f28d24; }
+            .curso-detalhe .box-detalhe .box-preco .turmas .turmas-item.ativo p {
+              color: #FFF; }
+          .curso-detalhe .box-detalhe .box-preco .turmas .turmas-item p {
+            font-size: 12px;
+            text-align: center; }
+  .curso-detalhe .box-info {
+    display: flex;
+    justify-content: space-between; }
+    .curso-detalhe .box-info .box-descricao .descricao {
+      margin-bottom: 25px;
+      max-width: 584px; }
+      .curso-detalhe .box-info .box-descricao .descricao .instrutores {
+        display: flex; }
+        .curso-detalhe .box-info .box-descricao .descricao .instrutores .avatar {
+          width: 71px;
+          flex: 0 0 71px;
+          margin: 5px 20px 20px 0; }
+          .curso-detalhe .box-info .box-descricao .descricao .instrutores .avatar img {
+            height: 71px;
+            width: 100%;
+            object-fit: cover; }
+    .curso-detalhe .box-info .box-programacao {
+      max-width: 379px;
+      padding: 0 20px; }
+      .curso-detalhe .box-info .box-programacao ul li {
+        margin-bottom: 5px;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #424242;
+        display: flex;
+        justify-content: space-between; }
+      .curso-detalhe .box-info .box-programacao .carga-horaria {
+        display: block;
+        float: right;
+        font-weight: 600;
+        width: 65px;
+        text-align: right; }
+
+@media only screen and (max-width: 900px) {
+  .curso-detalhe .box-info {
+    display: block; }
+    .curso-detalhe .box-info .box-descricao .descricao {
+      max-width: 100%; }
+    .curso-detalhe .box-info .box-programacao {
+      max-width: 100%; } }
+
+@media only screen and (max-width: 1024px) {
+  .curso-detalhe .box-info {
+    display: block; }
+    .curso-detalhe .box-info .box-descricao .descricao {
+      max-width: 100%;
+      padding-bottom: 25px;
+      border-bottom: 1px solid #ccc; }
+    .curso-detalhe .box-info .box-programacao {
+      max-width: 100%;
+      padding: 0; }
+      .curso-detalhe .box-info .box-programacao ul li {
+        font-size: 14px; } }
+
+/* MOBILE */
+@media only screen and (max-width: 600px) {
+  header {
+    background-image: none;
+    background-color: #1e1e1e;
+    height: 77px;
+    margin-bottom: 54px; }
+    header .logo-normal {
+      display: none; }
+    header .logo-fixed {
+      display: block; }
+    header .fixed {
+      padding: 0; }
+      header .fixed .logo-normal {
+        display: none; }
+  .curso-detalhe {
+    padding: 0; }
+    .curso-detalhe h2 {
+      font-size: 22px; }
+    .curso-detalhe .box-detalhe {
+      display: block;
+      margin-bottom: 0px; }
+      .curso-detalhe .box-detalhe .box-imagem {
+        margin: 0 auto -105px;
+        height: 166px;
+        width: 166px; }
+      .curso-detalhe .box-detalhe .box-preco {
+        border: solid 1px #ccc;
+        max-width: 100%;
+        padding: 100px 10px 0;
+        height: auto;
+        margin-bottom: 32px; }
+        .curso-detalhe .box-detalhe .box-preco .titulo {
+          font-size: 24px; }
+        .curso-detalhe .box-detalhe .box-preco .preco {
+          justify-content: space-between; }
+        .curso-detalhe .box-detalhe .box-preco .turmas {
+          display: none; }
+        .curso-detalhe .box-detalhe .box-preco .turmas-select {
+          display: block; }
+          .curso-detalhe .box-detalhe .box-preco .turmas-select select {
+            width: 100%; }
+    .curso-detalhe .box-info {
+      display: block; }
+      .curso-detalhe .box-info .box-descricao .descricao {
+        max-width: 100%;
+        padding-bottom: 25px;
+        border-bottom: 1px solid #ccc; }
+      .curso-detalhe .box-info .box-programacao {
+        max-width: 100%;
+        padding: 0; }
+        .curso-detalhe .box-info .box-programacao ul li {
+          font-size: 14px; } }

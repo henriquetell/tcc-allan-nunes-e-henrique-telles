@@ -1,0 +1,16 @@
+﻿wwwroot/lib/**/*
+wwwroot/scripts/**/*.js
+wwwroot/scripts/*.js
+wwwroot/scripts/**/*.map
+wwwroot/scripts/*.map
+wwwroot/css/**/*.min.css
+wwwroot/css/**/*.map
+wwwroot/scss/*.css
+wwwroot/scss/*.map
+
+Scripts/**/*.map
+Scripts/**/*.js
+
+![Ss]cripts/[Ll]ib/*.js
+
+Properties/PublishProfiles/*

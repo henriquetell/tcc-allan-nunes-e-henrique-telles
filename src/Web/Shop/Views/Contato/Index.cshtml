@@ -1,0 +1,50 @@
+﻿@section styles{
+    <link href="~/css/contato.css" rel="stylesheet" />
+}
+
+<div class="container" data-pagina="FaleConosco">
+    <div class="content-contato">
+        <h2>Fale conosco</h2>
+        <form asp-antiforgery="true" asp-action="Index" method="post">
+
+            <div class="main-contato">
+                <div class="quem-somos-img">
+                    <img src="~/img/gr/gr-somos.jpg" alt="Imagem do Quem somos">
+                    <h4>Vem <br> Pro <br> Mappa</h4>
+                </div>
+                <div class="form-contato">
+                    <h3>Dados pessoais</h3>
+                    <div class="material-textfield blue">
+                        <input type="text" name="Nome" required maxlength="100" />
+                        <label data-content="Nome" required>Nome</label>
+                    </div>
+                    <div class="material-textfield blue">
+                        <input type="email" name="Email" required maxlength="100" />
+                        <label data-content="E-mail">E-mail</label>
+                    </div>
+                    <div class="material-textfield blue">
+                        <input type="text" class="telefone" name="Telefone" required maxlength="100" />
+                        <label data-content="Telefone">Telefone</label>
+                    </div>
+                    <div class="material-textfield blue">
+                        <textarea placeholder="Mensagem" name="Mensagem" rows="3" maxlength="1000"></textarea>
+                    </div>
+                    <div>
+                        <button type="submit" id="btn-form">
+                            Enviar
+                        </button>
+                    </div>
+                    @if (!string.IsNullOrWhiteSpace(ViewData["Mensagem"] as string))
+                    {
+                        <p>
+                            @ViewData["Mensagem"].ToString()
+                        </p>
+                    }
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

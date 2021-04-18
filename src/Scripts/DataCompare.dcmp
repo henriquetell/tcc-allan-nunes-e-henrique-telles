@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DataComparison>
+  <Version>10</Version>
+  <ConnectionProperties1>
+    <ConnectionString>Data Source=estudiomappa.database.windows.net;Initial Catalog=EstudioMappa;Persist Security Info=True;User ID=usrMappa;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=False</ConnectionString>
+    <FullDisplayName>estudiomappa.database.windows.net.EstudioMappa (usrMappa)</FullDisplayName>
+  </ConnectionProperties1>
+  <ConnectionProperties2>
+    <ConnectionString>Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=EstudioMappa;Integrated Security=True;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False</ConnectionString>
+    <FullDisplayName>(localdb)\MSSQLLocalDB.EstudioMappa (ANR7LENOVO\allan)</FullDisplayName>
+  </ConnectionProperties2>
+  <SessionSettings>Default</SessionSettings>
+</DataComparison>

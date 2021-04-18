@@ -1,0 +1,186 @@
+﻿@using Admin.ViewModels.Conteudo
+@model ConteudoViewModel
+@inject ICloudStorage CloudStorage
+@{
+    ViewData["Title"] = ConteudoPermissoes.NomeGrupo;
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-8">
+        <h2>
+            @ConteudoPermissoes.Descricao
+        </h2>
+        <ol class="breadcrumb">
+            <li>
+                <a asp-action="Index">Consulta</a>
+            </li>
+            <li class="active">
+                <strong>
+                    @Model.Id.LabelOperacao()
+                </strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-4">
+        <div class="title-action">
+            <a asp-action="Index" class="btn btn-default btn-rounded"><i class="fa fa-arrow-left"></i> Voltar</a>
+        </div>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>
+                        <i class="fa fa-file-text"></i> @Model.Id.LabelOperacao() Conteúdo
+                    </h5>
+                </div>
+                <div class="ibox-content" data-pagina="Conteudo">
+                    <form asp-antiforgery="true" asp-action="Form" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="row">
+                            <div class="col-md-10">
+                                <div class="form-group">
+                                    <label asp-for="IdConteudoChave"></label>
+                                    <select asp-for="IdConteudoChave" class="form-control">
+                                        <option value="" asp-visibility="Model.Id == 0">Selecione...</option>
+                                        @foreach (var item in EConteudoChave.GetAll().Where(c => Model.Id == 0 || c.Id == Model.ConteudoChave.Id).OrderBy(c => c.Id))
+                                        {
+                                            <option value="@item.Id">@item.Titulo</option>
+                                        }
+                                    </select>
+                                    <span asp-validation-for="IdConteudoChave" class="text-danger small"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <label asp-for="Status"></label>
+                                    <select asp-for="Status" asp-enum-itens="typeof(EStatus)" class="form-control">
+                                        <option value="">Selecione...</option>
+                                    </select>
+                                    <span asp-validation-for="Status" class="text-danger small"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Titulo"></label>
+                                    <input asp-for="Titulo" type="text" class="form-control" maxlength="500" asp-placeholder="" />
+                                    <span asp-validation-for="Titulo" class="text-danger small"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Assunto"></label>
+                                    <input asp-for="Assunto" type="text" class="form-control" maxlength="500" asp-placeholder="" />
+                                    <span asp-validation-for="Assunto" class="text-danger small"></span>
+                                </div>
+                            </div>
+                        </div>
+                        @foreach (var item in EConteudoChave.GetAll().Where(c => Model.Id == 0 || c.Id == Model.ConteudoChave.Id).OrderBy(c => c.Titulo))
+                        {
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Variáveis Disponíveis</label>
+                                    <pre data-conteudochave="@item.Id">@Html.Raw(item.Descricao)</pre>
+                                </div>
+                            </div>
+                        }
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Descricao"></label>
+                                    <p class="text-muted"><i class="fa fa-info-circle"></i> Não utilize as variáveis do <b>DescricaoComplementoObject</b>.</p>
+                                    <textarea asp-for="Descricao" class="form-control" summernote data-height="400"></textarea>
+                                    <span asp-validation-for="Descricao" class="text-danger small"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="DescricaoComplemento"></label>
+                                    <p class="text-muted"><i class="fa fa-info-circle"></i> Utilize as variáveis do <b>DescricaoComplementoObject</b> diretamente ex: <b>{PrecoDe}</b>.</p>
+                                    <textarea asp-for="DescricaoComplemento" class="form-control" summernote data-height="300"></textarea>
+                                    <span asp-validation-for="DescricaoComplemento" class="text-danger small"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions text-right" asp-auth-perm="@ConteudoPermissoes.Gerenciar" asp-auth-acao="Escrever">
+                            <button type="submit" class="btn btn-primary btn-rounded">
+                                <i class="fa fa-check"></i> Salvar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" asp-visibility="Model.Id > 0">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>
+                        <i class="fa fa-file-text-o"></i> Anexos do Conteúdo
+                    </h5>
+                </div>
+                <div class="ibox-content">
+                    <asp asp-auth-perm="@ProdutoPermissoes.Gerenciar" asp-auth-acao="Escrever">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form asp-antiforgery="true" asp-action="UploadAnexoAsync" id="UploadDropzone" class="dropzone" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" name="IdConteudo" value="@Model.Id" />
+                                </form>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed" asp-visibility="@Model.Anexos.Any()" asp-suppress="true"></div>
+                    </asp>
+                    <div class="row">
+                        @foreach (var item in Model.Anexos.OrderBy(c => c.Id))
+                        {
+                            <div class="col-md-3">
+                                <div class="ibox product-edit">
+                                    <div class="ibox-content product-box">
+                                        <div class="product-imitation no-padding">
+                                            @if (item.NomeOriginal.Contains(".pdf"))
+                                            {
+                                                <i class="fa fa-file-pdf-o fa-5x text-danger img-pdf"></i>
+                                            }
+                                            else
+                                            {
+                                                <figure>
+                                                    <img src="@CloudStorage.RecuperarAnexoUrl(item.Anexo)" alt="Imagem Produto" class="img-responsive m-b-md" />
+                                                </figure>
+                                            }
+                                        </div>
+                                        <div class="product-desc">
+                                            <span class="product-price">
+                                                @System.IO.Path.GetExtension(item.Anexo).ToUpper()
+                                            </span>
+                                            <div class="small m-t-xs nome-original">
+                                                @item.NomeOriginal
+                                            </div>
+                                            <div class="m-t text-center">
+                                                <form method="post" asp-action="ExcluirAnexoAsync" asp-route-id="@item.Id" data-form-excluir="false" class="text-center">
+                                                    <button type="button" data-clipboard-text="@CloudStorage.RecuperarAnexoUrl(item.Anexo)" class="btn btn-sm btn-primary btn-outline btn-rounded" title="Copiar URL">
+                                                        <i class="fa fa-copy"></i> Copiar
+                                                    </button>
+                                                    <button type="submit" class="btn btn-sm btn-danger btn-outline btn-rounded" title="Excluir Anexo" asp-auth-perm="@ConteudoPermissoes.Gerenciar" asp-auth-acao="Excluir">
+                                                        <i class="fa fa-trash-o"></i> Excluir
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+[
+  {
+    "outputFileName": "wwwroot/css/bundle.css",
+    "inputFiles": [
+      "wwwroot/css/lib/slick.css",
+      "wwwroot/css/lib/slick-theme.css",
+      "wwwroot/css/reset.css",
+      "wwwroot/css/main.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "preserveImportantComments": false
+    }
+  },
+  {
+
+    "outputFileName": "wwwroot/js/sitemask.js",
+    "inputFiles": [ "../../Common/Framework.UI/Scripts/Mascara/Site-mask.js" ],
+    "minify": {
+      "enabled": true,
+      "preserveImportantComments": false
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/site.js",
+    "inputFiles": [
+      "Scripts/Site.js",
+      "Scripts/Paginas/*.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "preserveImportantComments": false
+    }
+  },
+  {
+    "outputFileName": "wwwroot/js/lib.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery/jquery.js",
+      "wwwroot/lib/jquery-validate/jquery.validate.js",
+      "wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "wwwroot/lib/jquery-mask/jquery.mask.js",
+      "wwwroot/lib/magnific-popup/jquery.magnific-popup.js",
+      "wwwroot/lib/bootstrap/js/bootstrap.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "preserveImportantComments": false
+    }
+  }
+]

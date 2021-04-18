@@ -1,0 +1,340 @@
+﻿header {
+    background-image: none;
+    background-color: #1e1e1e;
+    height: 77px;
+    margin-bottom: 54px;
+
+    .logo-normal {
+        display: none;
+    }
+
+    .logo-fixed {
+        display: block;
+    }
+
+    .fixed {
+        padding: 0 75px;
+
+        .logo-normal {
+            display: none;
+        }
+    }
+}
+
+.curso-detalhe {
+    padding: 20px 60px;
+    margin-bottom: 50px;
+    box-sizing: border-box;
+
+    h2 {
+        font-size: 28px;
+        color: #424242;
+        margin-bottom: 25px;
+    }
+
+    .box-detalhe {
+        display: flex;
+        margin-bottom: 50px;
+
+        .box-imagem {
+            width: 366px;
+            height: 366px;
+
+            img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .box-preco {
+            max-width: 719px;
+            box-sizing: border-box;
+            padding: 15px 20px;
+            border: solid 1px #ccc;
+            border-left: none;
+            width: 719px;
+            height: 312px;
+            margin-top: 27px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .titulo {
+                font-size: 32px;
+                margin-bottom: 10px;
+            }
+
+            .categoria {
+                font-size: 10px;
+                margin-bottom: 10px;
+            }
+
+            .preco {
+                display: flex;
+                margin-bottom: 10px;
+
+                .valor {
+                    margin-right: 20px;
+
+                    p {
+                        font-weight: 600;
+                        font-size: 20px;
+
+                        span {
+                            font-size: 36px;
+                        }
+                    }
+                }
+
+                .parcelas {
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+
+                    p {
+                        font-size: 12px;
+
+                        &.valor-parcela {
+                            font-size: 14px;
+                            font-weight: bold;
+                        }
+
+                        strong {
+                            font-weight: bold;
+                        }
+                    }
+                }
+            }
+
+            .turmas-select {
+                display: none;
+            }
+
+            .turmas {
+                display: flex;
+                flex-wrap: wrap;
+
+                .turmas-item {
+                    width: 121px;
+                    height: 64px;
+                    object-fit: contain;
+                    border: solid 1px #f28d24;
+                    margin: 0px 10px 10px 0;
+                    padding: 12px;
+                    box-sizing: border-box;
+
+                    &.ativo {
+                        background-color: #f28d24;
+
+                        p {
+                            color: #FFF;
+                        }
+                    }
+
+                    p {
+                        font-size: 12px;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+
+    .box-info {
+        display: flex;
+        justify-content: space-between;
+
+        .box-descricao {
+
+            .descricao {
+                margin-bottom: 25px;
+                max-width: 584px;
+
+                .instrutores {
+                    display: flex;
+
+                    .avatar {
+                        width: 71px;
+                        flex: 0 0 71px;
+                        margin: 5px 20px 20px 0;
+
+                        img {
+                            height: 71px;
+                            width: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+            }
+        }
+
+        .box-programacao {
+            max-width: 379px;
+            padding: 0 20px;
+
+
+
+            ul {
+                li {
+                    margin-bottom: 5px;
+                    font-size: 16px;
+                    line-height: 1.5;
+                    color: #424242;
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+
+            .carga-horaria {
+                display: block;
+                float: right;
+                font-weight: 600;
+                width: 65px;
+                text-align: right;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .curso-detalhe {
+        .box-info {
+            display: block;
+
+            .box-descricao {
+                .descricao {
+                    max-width: 100%;
+                }
+            }
+
+            .box-programacao {
+                max-width: 100%;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .curso-detalhe {
+        .box-info {
+            display: block;
+
+            .box-descricao {
+                .descricao {
+                    max-width: 100%;
+                    padding-bottom: 25px;
+                    border-bottom: 1px solid #ccc;
+                }
+            }
+
+            .box-programacao {
+                max-width: 100%;
+                padding: 0;
+
+                ul {
+                    li {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* MOBILE */
+
+@media only screen and (max-width: 600px) {
+    header {
+        background-image: none;
+        background-color: #1e1e1e;
+        height: 77px;
+        margin-bottom: 54px;
+
+        .logo-normal {
+            display: none;
+        }
+
+        .logo-fixed {
+            display: block;
+        }
+
+        .fixed {
+            padding: 0;
+
+            .logo-normal {
+                display: none;
+            }
+        }
+    }
+
+    .curso-detalhe {
+        padding: 0;
+
+        h2 {
+            font-size: 22px;
+        }
+
+        .box-detalhe {
+            display: block;
+            margin-bottom: 0px;
+
+            .box-imagem {
+                margin: 0 auto -105px;
+                height: 166px;
+                width: 166px;
+            }
+
+            .box-preco {
+                border: solid 1px #ccc;
+                max-width: 100%;
+                padding: 100px 10px 0;
+                height: auto;
+                margin-bottom: 32px;
+
+                .titulo {
+                    font-size: 24px;
+                }
+
+                .preco {
+                    justify-content: space-between;
+                }
+
+                .turmas {
+                    display: none;
+                }
+
+                .turmas-select {
+                    display: block;
+
+                    select {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+        .box-info {
+            display: block;
+
+            .box-descricao {
+                .descricao {
+                    max-width: 100%;
+                    padding-bottom: 25px;
+                    border-bottom: 1px solid #ccc;
+                }
+            }
+
+            .box-programacao {
+                max-width: 100%;
+                padding: 0;
+
+                ul {
+                    li {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}

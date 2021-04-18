@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "removeComments": true,
+    "target": "es5",
+    "types": [
+      "jquery",
+      "jquery.validation",
+      "dropzone",
+      "toastr",
+      "jquery-validation-unobtrusive",
+      "bootstrap-datepicker",
+      "icheck",
+      "clipboard",
+      "jquery.pjax",
+      "cropperjs"
+    ],
+    "lib": [ "es2015", "dom" ]
+  },
+  "include": [
+    "./Scripts/**/*.ts"
+  ],
+  "compileOnSave": true
+}

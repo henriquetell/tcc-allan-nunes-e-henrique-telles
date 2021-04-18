@@ -1,0 +1,43 @@
+﻿@model StatusCodeViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>[Nome Projeto] | Erro</title>
+
+    <partial name="_StylePartial" />
+</head>
+
+<body class="gray-bg">
+    <div class="middle-box text-center animated fadeInDown">
+        <h1>@Model.StatusCode</h1>
+        <h3 class="font-bold">@Model.Titulo</h3>
+
+        <div class="error-desc">
+            @Model.Mensagem Nós pedimos desculpas.<br />
+            @if (Model.StatusCode == 401)
+            {
+                <p>
+                    Você pode acessar a página anterior ou efetuar login: <br />
+                    <a href="javascript:window.history.go(-1)" class="btn btn-primary btn-lg btn-labeled m-t"><span class="btn-label"><i class="fa fa-arrow-left"></i></span>   VOLTAR</a>
+                    <a asp-action="Index" asp-controller="Login" class="btn btn-primary btn-lg btn-labeled m-t"><span class="btn-label"><i class="fa fa-sign-in"></i></span>   ENTRAR</a>
+                </p>
+            }
+            else
+            {
+                <p>Você pode acessar a página anterior: <br /><a href="javascript:window.history.go(-1)" class="btn btn-primary btn-lg btn-labeled m-t"><span class="btn-label"><i class="fa fa-arrow-left"></i></span>   Voltar</a></p>
+            }
+        </div>
+    </div>
+    <partial name="_ScriptsPartial" />
+</body>
+</html>
+
+

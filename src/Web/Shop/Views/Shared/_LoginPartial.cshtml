@@ -1,0 +1,51 @@
+﻿@if (Context.User.Identity.IsAuthenticated)
+{
+    <section class="col-lg-4 col-md-5 col-xs-12">
+        <div class="esh-identity">
+            <div class="navbar-right">
+                <section class="esh-identity-section">
+                    <div class="esh-identity-name">@Context.User.Identity.Name</div>
+                    <img class="esh-identity-image" src="~/images/arrow-down.png">
+                </section>
+                <section class="esh-identity-drop">
+                    <a class="esh-identity-item"
+                       asp-controller="MeusPedidos"
+                       asp-action="Index">
+                        <div class="esh-identity-name esh-identity-name--upper">Meus Pedidos</div>
+                    </a>
+                    <a class="esh-identity-item"
+                       asp-controller="MinhaConta"
+                       asp-action="Index">
+                        <div class="esh-identity-name esh-identity-name--upper">Minha Conta</div>
+                    </a>
+                    <a class="esh-identity-item" asp-controller="Login" asp-action="Sair">
+                        <div class="esh-identity-name esh-identity-name--upper">Sair</div>
+                        <img class="esh-identity-image" src="~/images/logout.png">
+                    </a>
+                </section>
+            </div>
+        </div>
+    </section>
+
+    <section class="col-lg-1 col-xs-12">
+        @await Component.InvokeAsync("Carrinho")
+    </section>
+
+}
+else
+{
+    <section class="col-lg-5 col-md-5 col-xs-12">
+        <div class="esh-identity">
+            <section class="esh-identity-section">
+                <div class="esh-identity-item">
+                    <a asp-action="Registrar" asp-controller="Login" class="esh-identity-name esh-identity-name--upper">
+                        Cadastre-se
+                    </a>
+                    <a asp-action="Entrar" asp-controller="Login" class="esh-identity-name esh-identity-name--upper">
+                        Login
+                    </a>
+                </div>
+            </section>
+        </div>
+    </section>
+}

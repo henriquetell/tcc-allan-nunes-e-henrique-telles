@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Shop.ViewModels.Pedido.PedidoDetalhesViewModel>
+@{
+    ViewData["Title"] = "Meus Pedidos";
+}
+
+<div class="esh-orders">
+    <div class="container" data-pagina="MeusPedidos">
+        <h1>@ViewData["Title"]</h1>
+        <article class="esh-orders-titles row">
+            <section class="esh-orders-title col-xs-2">Nº Pedido</section>
+            <section class="esh-orders-title col-xs-4">Data</section>
+            <section class="esh-orders-title col-xs-2">Total</section>
+            <section class="esh-orders-title col-xs-2">Status</section>
+            <section class="esh-orders-title col-xs-2"></section>
+        </article>
+        @if (Model != null && Model.Any())
+        {
+            <div id="meus-pedidos" role="tablist" aria-multiselectable="true">
+                @foreach (var item in Model)
+                {
+                    <div>
+                        <article class="esh-orders-items row" role="tab" id="@($"head-{item.Id}")" >
+                            <section class="esh-orders-item col-xs-2">@Html.DisplayFor(modelItem => item.Id)</section>
+                            <section class="esh-orders-item col-xs-4">@Html.DisplayFor(modelItem => item.DataCriacao)</section>
+                            <section class="esh-orders-item col-xs-2">R$ @Html.DisplayFor(modelItem => item.ValorTotal)</section>
+                            <section class="esh-orders-item col-xs-2">@Html.DisplayFor(modelItem => item.StatusPedido)</section>
+                            <section class="esh-orders-item col-xs-2">
+                                <a href="#" role="button" class="esh-orders-link" data-target="@($"#detalhes-{item.Id}")"  data-action="@Url.Action("Detalhes","MeusPedidos",new { idPedido = item.Id })"  aria-expanded="true" aria-controls="@($"head-{item.Id}")">
+                                    Detalhes
+                                </a>
+                            </section>
+                        </article>
+                        <div id="@($"detalhes-{item.Id}")"  class="panel-collapse collapse in" role="tabpanel" aria-labelledby="@($"head-{item.Id}")">
+
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+
+    </div>
+</div>

@@ -1,0 +1,91 @@
+﻿@model Admin.ViewModels.Usuario.UsuarioViewModel
+@inject GrupoUsuarioServiceWeb GrupoUsuarioServiceWeb
+@{
+    ViewData["Title"] = "Grupo de Usuários";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-8">
+        <h2>
+            Usuários
+        </h2>
+        <ol class="breadcrumb">
+            <li>
+                <a asp-action="Index">Consulta</a>
+            </li>
+            <li class="active">
+                <strong>
+                    @Model.Id.LabelOperacao()
+                </strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-4">
+        <div class="title-action">
+            <a asp-action="Index" class="btn btn-default btn-rounded"><i class="fa fa-arrow-left"></i> Voltar</a>
+        </div>
+    </div>
+</div>
+<div class="wrapper wrapper-content animated fadeIn">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>
+                        <i class="fa fa-file-text"></i> @Model.Id.LabelOperacao() Usuário
+                    </h5>
+                </div>
+                <div class="ibox-content">
+                    <form asp-antiforgery="true" asp-action="Form">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="form-group">
+                                            <label asp-for="Nome"></label>
+                                            <input asp-for="Nome" class="form-control" type="text" asp-placeholder=""/>
+                                            <span asp-validation-for="Nome" class="text-danger small"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label asp-for="IdGrupoUsuario"></label>
+                                            <select asp-for="IdGrupoUsuario" asp-select-itens="GrupoUsuarioServiceWeb.Listar()" class="form-control">
+                                                <option value="">Selecione...</option>
+                                            </select>
+                                            <span asp-validation-for="IdGrupoUsuario" class="text-danger small"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="form-group">
+                                            <label asp-for="Email"></label>
+                                            <input asp-for="Email" class="form-control" type="text" asp-placeholder=""/>
+                                            <span asp-validation-for="Email" class="text-danger small"></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label asp-for="Status"></label>
+                                            <select asp-for="Status" asp-enum-itens="typeof(EStatus)" class="form-control">
+                                                <option value="">Selecione...</option>
+                                            </select>
+                                            <span asp-validation-for="Status" class="text-danger small"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions text-right" asp-auth-perm="@UsuarioPermissoes.Gerenciar" asp-auth-acao="Escrever">
+                            <button type="submit" class="btn btn-primary btn-rounded">
+                                <i class="fa fa-check"></i> Salvar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,95 @@
+[
+  {
+    "outputFileName": "wwwroot/css/style.css",
+    "inputFiles": [ "wwwroot/scss/style.css" ],
+    "minify": {
+      "enabled": true,
+      "removeHtmlComments": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/scripts/sitelib.js",
+    "inputFiles": [ "Scripts/Lib/**.js" ],
+    "minify": {
+      "enabled": true,
+      "removeHtmlComments": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/scripts/sitemask.js",
+    "inputFiles": [ "../../Common/Framework.UI/Scripts/Mascara/Site-mask.js" ],
+    "minify": {
+      "enabled": true,
+      "removeHtmlComments": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/scripts/admin.js",
+    "inputFiles": [
+      "Scripts/Admin.js",
+      "Scripts/Admin-ajaxloader.js",
+      "Scripts/Admin-pjax.js",
+      "Scripts/Paginas/*(*.js|!(*.min.js))"
+    ],
+    "minify": {
+      "enabled": true,
+      "removeHtmlComments": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/scripts/bundle.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery/dist/jquery.min.js",
+      "wwwroot/lib/jquery-validation/dist/jquery.validate.min.js",
+      "wwwroot/lib/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js",
+      "wwwroot/lib/jquery-mask-plugin/dist/jquery.mask.min.js",
+      "wwwroot/lib/jquery-pjax/jquery.pjax.js",
+      "wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
+      "wwwroot/lib/moment/min/moment.min.js",
+      "wwwroot/lib/moment/locale/pt-br.js",
+      "wwwroot/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js",
+      "wwwroot/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js",
+      "wwwroot/lib/metisMenu/dist/metisMenu.min.js",
+      "wwwroot/lib/PACE/pace.min.js",
+      "wwwroot/lib/jquery-slimscroll/jquery.slimscroll.min.js",
+      "wwwroot/lib/tilt/dest/tilt.jquery.js",
+      "wwwroot/lib/toastr/toastr.min.js",
+      "wwwroot/lib/iCheck/icheck.min.js",
+      "wwwroot/lib/sweetalert2/dist/sweetalert2.min.js",
+      "wwwroot/lib/summernote/dist/summernote.min.js",
+      "wwwroot/lib/summernote/lang/summernote-pt-BR.js",
+      "wwwroot/lib/dropzone/dist/min/dropzone.min.js",
+      "wwwroot/lib/chosen/chosen.jquery.min.js",
+      "wwwroot/lib/clipboard/dist/clipboard.min.js",
+      "wwwroot/lib/cropper/dist/cropper.min.js",
+      "wwwroot/lib/magnific-popup/dist/jquery.magnific-popup.min.js",
+      "wwwroot/lib/jquery-ui/jquery-ui.min.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "removeHtmlComments": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/css/bundle.css",
+    "inputFiles": [
+      "wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
+      "wwwroot/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css",
+      "wwwroot/lib/font-awesome/css/font-awesome.min.css",
+      "wwwroot/lib/metisMenu/dist/metisMenu.min.css",
+      "wwwroot/lib/animate.css/animate.min.css",
+      "wwwroot/lib/toastr/toastr.min.css",
+      "wwwroot/lib/iCheck/skins/square/green.css",
+      "wwwroot/lib/sweetalert2/dist/sweetalert2.css",
+      "wwwroot/lib/summernote/dist/summernote.css",
+      "wwwroot/lib/dropzone/dist/min/dropzone.min.css",
+      "wwwroot/lib/chosen/chosen.min.css",
+      "wwwroot/lib/cropper/dist/cropper.min.css",
+      "wwwroot/lib/magnific-popup/dist/magnific-popup.css"
+    ],
+    "minify": {
+      "enabled": true,
+      "removeHtmlComments": true
+    }
+  }
+]
