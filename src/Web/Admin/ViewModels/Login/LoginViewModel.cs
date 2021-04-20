@@ -10,7 +10,5 @@ namespace Admin.ViewModels.Login
 
         [Required(ErrorMessageResourceType = typeof(ModelStateResource), ErrorMessageResourceName = nameof(ModelStateResource.Obrigatorio))]
         public string Senha { get; set; }
-
-        public bool LembrarMe { get; set; }
     }
 }

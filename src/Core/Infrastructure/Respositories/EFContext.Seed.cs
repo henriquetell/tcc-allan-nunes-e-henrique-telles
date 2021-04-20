@@ -40,7 +40,7 @@ namespace Infrastructure.Respositories
 
             var usrAdmin = SeedEntity(new UsuarioEntity
             {
-                IdGrupoUsuario = grupoAcesso.Id,
+                GrupoUsuario = grupoAcesso,
                 Status = EStatus.Ativo,
                 Email = "allan.n.rodrigues@hotmail.com",
                 Nome = "Administrador",
@@ -62,7 +62,7 @@ namespace Infrastructure.Respositories
             {
                 SeedEntity(new GrupoUsuarioPermisaoAcaoEntity
                 {
-                    IdGrupoUsuario = grupoAcesso.Id,
+                    GrupoUsuario = grupoAcesso,
                     IdPermissaoAcao = permissao.Key.ToGuid()
                 }, new[] { nameof(GrupoUsuarioPermisaoAcaoEntity.IdGrupoUsuario), nameof(GrupoUsuarioPermisaoAcaoEntity.IdPermissaoAcao) }, false);
             }

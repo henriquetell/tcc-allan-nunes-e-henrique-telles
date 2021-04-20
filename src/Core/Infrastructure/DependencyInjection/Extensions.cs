@@ -5,15 +5,12 @@ using ApplicationCore.Interfaces.Email;
 using ApplicationCore.Interfaces.Logging;
 using ApplicationCore.Respositories;
 using CNA.BemMaisAgro.Infrastructure.Logging;
-using Framework.Extenders;
 using Infrastructure.CloudServices;
 using Infrastructure.Configurations;
 using Infrastructure.Email;
 using Infrastructure.Respositories;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,10 +22,7 @@ namespace Infrastructure.DependencyInjection
         private const string ConfigSectionName = nameof(Infrastructure);
 
         public static IServiceCollection AddInfrastructure(this IServiceCollection services,
-            Func<IServiceProvider, InfrastructureConfig> infrastructureConfigFactory,
-            Type appLoggerType = null,
-            ILoggerProvider efContextLoggerProvider = null,
-            bool healthCheck = false)
+            Func<IServiceProvider, InfrastructureConfig> infrastructureConfigFactory)
         {
 
             var repositoriesImplemented = GetRepositoriesImplemented();
@@ -43,6 +37,12 @@ namespace Infrastructure.DependencyInjection
                 .AddScoped<ICloudQueueService, AzureQueue>()
                 .AddScoped<ICloudStorage, AzureStorage>();
 
+            return services;
+        }
+
+        public static IServiceCollection AddDbContext(this IServiceCollection services, string connectionString)
+        {
+            services.AddDbContext<EfContext>(options => options.UseSqlServer(connectionString));
             return services;
         }
 
@@ -88,27 +88,6 @@ namespace Infrastructure.DependencyInjection
         private static IServiceCollection AddAppLogger(this IServiceCollection services) =>
             services.AddTransient<IAppLoggerFactory, AppLoggerFactory>()
                     .AddTransient(typeof(IAppLogger<>), typeof(BasicAppLogger<>));
-
-        public static IServiceCollection AddEntityFramework(this IServiceCollection services, ILoggerProvider efContextLoggerProvider)
-        {
-            LoggerFactory loggerFactory = null;
-            if (efContextLoggerProvider != null)
-            {
-                loggerFactory = new LoggerFactory();
-                loggerFactory.AddProvider(efContextLoggerProvider);
-            }
-
-            services.AddEntityFrameworkSqlServer()
-                .AddDbContext<EfContext>((sp, b) =>
-                    b.ConfigureWarnings(warnings => warnings.Throw(RelationalEventId.QueryClientEvaluationWarning))
-                        .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking)
-                        .EnableSensitiveDataLogging(EnvironmentHelper.Desenvolvimento)
-                        .UseSqlServer(sp.GetService<InfrastructureConfig>().ConnectionString)
-                        .UseLoggerFactory(loggerFactory)
-                );
-
-            return services;
-        }
 
         public static IServiceProvider RunMigration(this IServiceProvider service)
         {

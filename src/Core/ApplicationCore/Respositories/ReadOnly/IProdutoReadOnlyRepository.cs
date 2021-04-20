@@ -12,11 +12,7 @@ namespace ApplicationCore.Respositories.ReadOnly
         List<ProdutoEntity> ListarPorIds(IEnumerable<int> idsProdutos);
         List<ProdutoEntity> Listar(string consulta, PaginadorInfo paginador);
         ProdutoEntity Recuperar(int id, bool includeImagens = false);
-        List<ProdutoEntity> ListarProdutosPorCampanha(int idCampanha);
         List<string> ListarNomeInterno(int[] idProduto);
-        List<ProdutoDataValue> ListarDestaque();
-        List<ProdutoDataValue> ListarParaCatalago(ECategoriaProduto? categoriaProduto = null);
-        ProdutoDataValue RecuperarParaDetalhes(int idProduto);
         List<SelectListItemDataValue<EStatus>> ListarParaSelect();
     }
 }

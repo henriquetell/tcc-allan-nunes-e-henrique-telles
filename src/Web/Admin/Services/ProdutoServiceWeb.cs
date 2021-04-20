@@ -13,46 +13,18 @@ namespace Admin.Services
         private IProdutoReadOnlyRepository ProdutoReadOnlyRepository =>
             GetService<IProdutoReadOnlyRepository>();
 
-        private IProdutoImagemReadOnlyRepository ImagemReadOnlyRepository =>
-            GetService<IProdutoImagemReadOnlyRepository>();
-
-        private IProdutoSkuReadOnlyRepository ProdutoSkuReadOnlyRepository =>
-            GetService<IProdutoSkuReadOnlyRepository>();
+        private IProdutoNpsReadOnlyRepository ImagemReadOnlyRepository =>
+            GetService<IProdutoNpsReadOnlyRepository>();
 
         public ProdutoServiceWeb(IServiceProvider serviceProvider)
             : base(serviceProvider)
         { }
-
-        public List<SelectListItem> ListarSkus(int idProduto)
-        {
-            if (idProduto <= 0)
-                return new List<SelectListItem>();
-
-            var itens = ProdutoSkuReadOnlyRepository.ListarParaFiltro(idProduto);
-
-            return itens.Select(c => new SelectListItem
-            {
-                Value = c.Id.ToString(),
-                Text = $"{c.Titulo} - {c.Descricao}",
-                Group = new SelectListGroup
-                {
-                    Name = c.Status.GetDescription()
-                }
-            }).ToList();
-        }
 
         public ProdutoViewModel Recuperar(int idProduto)
         {
             var model = ProdutoReadOnlyRepository.Recuperar(idProduto, true);
             var vm = new ProdutoViewModel();
             vm.Fill(model);
-            var skus = ProdutoSkuReadOnlyRepository.Listar(idProduto);
-            vm.Skus.AddRange(skus.Select(s => new ProdutoSkuViewModel(s)));
-            vm.Skus.Add(new ProdutoSkuViewModel
-            {
-                IdProduto = idProduto
-            });
-
             return vm;
         }
 
@@ -65,7 +37,7 @@ namespace Admin.Services
                 Id = model.Id,
                 Titulo = model.Titulo,
                 Status = model.Status,
-                ImagemPrincipal = model.ProdutoImagem.OrderBy(c => c.Ordem).FirstOrDefault()?.Original
+                ImagemUrl = model.Imagem
             }).ToList();
 
             return filtro;
@@ -81,21 +53,6 @@ namespace Admin.Services
                 Text = c.Titulo,
                 Group = new SelectListGroup { Name = c.Status.GetDescription() }
             });
-        }
-
-        public IEnumerable<ProdutoImagemViewModel> Listar(int id)
-        {
-            return ImagemReadOnlyRepository.ListarPorId(id).Select(c =>
-                new ProdutoImagemViewModel
-                {
-                    Id = c.Id,
-                    IdProduto = c.IdProduto,
-                    Grande = c.Grande,
-                    Media = c.Media,
-                    Pequena = c.Pequena,
-                    Ordem = c.Ordem,
-                    Original = c.Original
-                });
         }
     }
 }

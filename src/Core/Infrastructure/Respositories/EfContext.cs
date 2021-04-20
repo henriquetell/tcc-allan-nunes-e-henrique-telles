@@ -16,8 +16,7 @@ namespace Infrastructure.Respositories
         public DbSet<ConteudoEntity> Conteudo { get; set; }
         public DbSet<ConteudoAnexoEntity> ConteudoAnexo { get; set; }
         public DbSet<ProdutoEntity> Produto { get; set; }
-        public DbSet<ProdutoSkuEntity> ProdutoSku { get; set; }
-        public DbSet<ProdutoImagemEntity> ProdutoImagem { get; set; }
+        public DbSet<ProdutoNpsEntity> ProdutoNps { get; set; }
         public DbSet<GrupoUsuarioEntity> GrupoUsuario { get; set; }
         public DbSet<GrupoUsuarioPermisaoAcaoEntity> GrupoUsuarioPermisaoAcao { get; set; }
         public DbSet<PermissaoAcaoEntity> PermissaoAcao { get; set; }

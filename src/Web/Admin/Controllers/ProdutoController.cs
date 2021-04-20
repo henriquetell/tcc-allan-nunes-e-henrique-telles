@@ -8,10 +8,8 @@ using Framework.Exceptions;
 using Framework.Extenders;
 using Framework.Security.Authorization;
 using Framework.Security.Permissoes;
-using Framework.UI.Extenders;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Admin.Controllers
@@ -30,7 +28,7 @@ namespace Admin.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AuthUsuarioFilter(ProdutoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Escrever)]
-        public IActionResult Form(ProdutoViewModel vm)
+        public async Task<IActionResult> Form(ProdutoViewModel vm)
         {
             try
             {
@@ -40,17 +38,28 @@ namespace Admin.Controllers
                     return View(vm);
                 }
 
+                if (string.IsNullOrWhiteSpace(vm.ImagemUrl) && vm.Imagem == null)
+                {
+                    ExibirMensagemErro(MensagemResource.ImagemNaoInformada);
+                    return View(vm);
+                }
+
                 var model = new ProdutoEntity
                 {
                     Id = vm.Id,
+                    IdConteudo = vm.IdConteudo ?? throw new InvalidOperationException("IdConteudo NULL"),
                     Titulo = vm.Titulo.GetFirsts(1000),
                     Codigo = vm.Codigo.GetFirsts(2000),
-                    DescricaoCurta = vm.DescricaoCurta.GetFirsts(3000),
                     DescricaoLonga = vm.DescricaoLonga,
-                    Preco = vm.Preco ?? 0,
                     Status = vm.Status ?? ApplicationCore.Enuns.EStatus.Pendente,
                     CategoriaProduto = vm.CategoriaProduto ?? ApplicationCore.Enuns.ECategoriaProduto.ProdutoFisico,
                 };
+
+                if (vm.Imagem != null)
+                {
+                    model.Imagem = $"{Guid.NewGuid()}{RecuperarExtensaoDoArquivo(vm.Imagem)}";
+                    await ProdutoService.SalvarImagemAsync(vm.Imagem.OpenReadStream(), model.Imagem);
+                }
 
                 ProdutoService.Salvar(model);
 
@@ -98,28 +107,35 @@ namespace Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [AuthUsuarioFilter(ProdutoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Leitura)]
-        public JsonResult ListarImagens(int id) => Json(ProdutoServiceWeb.Listar(id));
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AuthUsuarioFilter(ProdutoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Escrever)]
-        public async Task<IActionResult> UploadImagem(ProdutoImagemViewModel vm)
+        public async Task<IActionResult> EnviarNps(ProdutoNpsViewModel vm)
         {
             try
             {
 
-                if (vm == null || vm.IdProduto <= 0)
+                if (vm == null || vm?.IdProduto <= 0)
                     return NotFound();
 
-                if (vm.Arquivo == null)
-                    return BadRequest(MensagemResource.ArquivoNaoEnviado);
+                if (vm.Email == null)
+                {
+                    ExibirMensagemErro(MensagemResource.EmailNaoInformado);
+                    return RedirectToAction(nameof(Form), new { id = vm.IdProduto });
+                }
 
-                await ProdutoService
-                    .SalvarImagemAsync(vm.IdProduto, vm.Arquivo.OpenReadStream(), RecuperarExtensaoDoArquivo(vm.Arquivo))
-                    .ConfigureAwait(true);
+                if (vm.DataLimite.HasValue && vm.DataLimite.Value.Date < DateTime.Now.Date)
+                {
+                    ExibirMensagemErro(MensagemResource.DataLimiteNpsInvalida);
+                    return RedirectToAction(nameof(Form), new { id = vm.IdProduto });
+                }
 
-                return Ok(MensagemResource.Sucesso);
+                await ProdutoService.EnviarNps(vm.IdProduto.Value, vm.Email, vm.DataLimite);
+
+                ExibirMensagemSucesso(MensagemResource.Sucesso);
+
+                return RedirectToAction(nameof(Form), new { id = vm.IdProduto });
             }
             catch (MensagemException ex)
             {
@@ -131,111 +147,6 @@ namespace Admin.Controllers
                 AppLogger.Exception(ex);
                 return BadRequest(MensagemResource.Erro);
             }
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [AuthUsuarioFilter(ProdutoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Escrever)]
-        public IActionResult OrdernarImagens(int[] imagem)
-        {
-            try
-            {
-                if (imagem == null || !imagem.Any())
-                    return NotFound();
-
-                var idProduto = ProdutoService.OrdernarImagens(imagem.ToList());
-
-                ExibirMensagemSucesso(MensagemResource.Sucesso);
-
-                return RedirectToAction(nameof(Form), new { id = idProduto });
-            }
-            catch (MensagemException ex)
-            {
-                ExibirMensagemErro(ex);
-                AppLogger.Exception(ex);
-            }
-            catch (Exception ex)
-            {
-                ExibirMensagemErro(MensagemResource.Erro);
-                AppLogger.Exception(ex);
-            }
-
-            return RedirectToAction(nameof(Index));
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [AuthUsuarioFilter(ProdutoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Excluir)]
-        public async Task<IActionResult> ExcluirImagem(int id)
-        {
-            try
-            {
-                var idProduto = await ProdutoService
-                    .ExcluirImagemAsync(id)
-                    .ConfigureAwait(true);
-
-                ExibirMensagemSucesso(MensagemResource.ExcluirSucesso);
-
-                return RedirectToAction(nameof(Form), new { id = idProduto });
-            }
-            catch (MensagemException ex)
-            {
-                ExibirMensagemErro(ex);
-            }
-            catch (Exception ex)
-            {
-                ExibirMensagemErro(
-                    ErroRelacionamento(ex)
-                        ? MensagemResource.ErroRelacionamento
-                        : MensagemResource.Erro);
-            }
-
-            return RedirectToAction(nameof(Index));
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [AuthUsuarioFilter(ProdutoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Escrever)]
-        public IActionResult SalvarSku(ProdutoSkuViewModel vm)
-        {
-            try
-            {
-                if (vm == null)
-                    return RedirectToAction(nameof(Index));
-
-                ModelState.RemoverIf<ProdutoSkuViewModel>(c => c.Lancamento, !vm.MovimentarEstoque);
-                ModelState.RemoverIf<ProdutoSkuViewModel>(c => c.Quantidade, !vm.MovimentarEstoque);
-
-                if (ModelState.IsValid)
-                {
-                    var model = new ProdutoSkuEntity
-                    {
-                        Id = vm.IdProdutoSku,
-                        IdProduto = vm.IdProduto,
-                        Descricao = vm.Descricao,
-                        TipoSku = vm.TipoSku,
-                        Status = vm.Status
-                    };
-
-                    ProdutoService.Salvar(model);
-
-                    ExibirMensagemSucesso(MensagemResource.Sucesso);
-                }
-                else
-                    ExibirMensagemErro(MensagemResource.ModelStateInvalido);
-            }
-            catch (MensagemException ex)
-            {
-                ExibirMensagemErro(ex);
-                AppLogger.Exception(ex);
-            }
-            catch (Exception ex)
-            {
-                ExibirMensagemErro(MensagemResource.Erro);
-                AppLogger.Exception(ex);
-            }
-
-            return RedirectToAction(nameof(Form), new { id = vm?.IdProduto });
         }
     }
 }

@@ -15,5 +15,6 @@ namespace ApplicationCore.Entities
         public EStatus Status { get; set; }
 
         public ICollection<ConteudoAnexoEntity> ConteudoAnexo { get; set; } = new List<ConteudoAnexoEntity>();
+        public ICollection<ProdutoEntity> Produto { get; set; } = new List<ProdutoEntity>();
     }
 }

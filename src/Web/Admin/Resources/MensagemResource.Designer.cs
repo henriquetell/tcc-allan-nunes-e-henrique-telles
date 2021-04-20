@@ -61,7 +61,7 @@ namespace Admin.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to O arquivo não foi enviado para o servidor!.
+        ///   Looks up a localized string similar to Arquivo não enviado!.
         /// </summary>
         public static string ArquivoNaoEnviado {
             get {
@@ -106,6 +106,15 @@ namespace Admin.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Informe uma data valida..
+        /// </summary>
+        public static string DataLimiteNpsInvalida {
+            get {
+                return ResourceManager.GetString("DataLimiteNpsInvalida", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Data de validade inválida!.
         /// </summary>
         public static string DataValidadeInvalida {
@@ -120,6 +129,15 @@ namespace Admin.Resources {
         public static string DesativarSucesso {
             get {
                 return ResourceManager.GetString("DesativarSucesso", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-mail não informado!.
+        /// </summary>
+        public static string EmailNaoInformado {
+            get {
+                return ResourceManager.GetString("EmailNaoInformado", resourceCulture);
             }
         }
         
@@ -201,6 +219,15 @@ namespace Admin.Resources {
         public static string FormatoNaoAceito {
             get {
                 return ResourceManager.GetString("FormatoNaoAceito", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Imagem não informada!.
+        /// </summary>
+        public static string ImagemNaoInformada {
+            get {
+                return ResourceManager.GetString("ImagemNaoInformada", resourceCulture);
             }
         }
         

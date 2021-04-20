@@ -12,8 +12,8 @@ namespace Framework.Security.Permissoes
         public static KeyValuePair<string, AuthPermissaoTipoAcao> Leitura => new KeyValuePair<string, AuthPermissaoTipoAcao>("{1B95D655-7B2E-4C48-A84D-BD5F1470CEF6}", AuthPermissaoTipoAcao.Leitura);
 
         protected override string Grupo => NomeGrupo;
-        public static string NomeGrupo => "Produtos";
-        public static string Descricao => "Gerenciar Produtos";
+        public static string NomeGrupo => "Produtos/Serviços";
+        public static string Descricao => "Gerenciar Produtos/Serviços";
 
         public override void Init()
         {

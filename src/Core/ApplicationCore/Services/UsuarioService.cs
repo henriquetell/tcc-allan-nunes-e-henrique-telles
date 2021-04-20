@@ -41,27 +41,6 @@ namespace ApplicationCore.Services
             return usuario;
         }
 
-        public async Task RecuperarSenha(string email, string conteudoEmail)
-        {
-            var model = UsuarioRepositorio.RecuperarPorEmail(email);
-            if (model == null)
-                throw new MensagemException(UsuarioResource.NaoLocalizado);
-
-            var senha = GerarSenha();
-            model.Salt = GerarSalt();
-            model.Senha = CriptografarSenha(senha, model.Salt);
-
-            UsuarioRepositorio.Salvar(model, false);
-
-            var body = conteudoEmail.FormatWith(new
-            {
-                senha,
-                url = AppConfig.Admin.Url
-            });
-
-            await EmailClient.EnviarParaFilaAsync(new DadosEnvioEmail(model.Email, "Nova Senha! Sua senha foi alterada!", body));
-        }
-
         public void Excluir(int id) => UsuarioRepositorio.Excluir(id);
 
         public async Task Salvar(UsuarioEntity model, string conteudoEmail)
@@ -98,7 +77,7 @@ namespace ApplicationCore.Services
                 url = AppConfig.Admin.Url
             });
 
-            await EmailClient.EnviarParaFilaAsync(new DadosEnvioEmail(model.Email, "Bem-vindo! Dados de acesso!", body));
+            await EmailClient.EnviarAsync(new DadosEnvioEmail(model.Email, "Bem-vindo! Dados de acesso!", body));
         }
 
         public void SalvarImagem(int id, string imagem)
@@ -137,7 +116,7 @@ namespace ApplicationCore.Services
                 url = AppConfig.Admin.Url
             });
 
-            await EmailClient.EnviarParaFilaAsync(new DadosEnvioEmail(model.Email, "Nova Senha! Você alterou sua senha!", body));
+            await EmailClient.EnviarAsync(new DadosEnvioEmail(model.Email, "Nova Senha! Você alterou sua senha!", body));
 
         }
 

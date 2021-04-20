@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ArquivoNaoEnviado" xml:space="preserve">
-    <value>O arquivo não foi enviado para o servidor!</value>
+    <value>Arquivo não enviado!</value>
   </data>
   <data name="BemVindo" xml:space="preserve">
     <value>Bem-vindo {0}!</value>
@@ -132,11 +132,17 @@
   <data name="DadosViagemValidado" xml:space="preserve">
     <value>Arquivo validado com sucesso!</value>
   </data>
+  <data name="DataLimiteNpsInvalida" xml:space="preserve">
+    <value>Informe uma data valida.</value>
+  </data>
   <data name="DataValidadeInvalida" xml:space="preserve">
     <value>Data de validade inválida!</value>
   </data>
   <data name="DesativarSucesso" xml:space="preserve">
     <value>O registro foi desativado com sucesso!</value>
+  </data>
+  <data name="EmailNaoInformado" xml:space="preserve">
+    <value>E-mail não informado!</value>
   </data>
   <data name="EmailSucesso" xml:space="preserve">
     <value>O e-mail foi enviado com sucesso!</value>
@@ -164,6 +170,9 @@
   </data>
   <data name="FormatoNaoAceito" xml:space="preserve">
     <value>O formato do arquivo não é aceito!</value>
+  </data>
+  <data name="ImagemNaoInformada" xml:space="preserve">
+    <value>Imagem não informada!</value>
   </data>
   <data name="ModelStateInvalido" xml:space="preserve">
     <value>Por favor, preencha o formulário corretamente!</value>

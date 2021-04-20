@@ -30,21 +30,7 @@
                     <input type="password" asp-for="Senha" class="form-control input-lg" placeholder="Senha">
                     <span asp-validation-for="Senha" class="text-danger small"></span>
                 </div>
-                <div class="form-group text-right">
-                    <div class="i-checks">
-                        <label>
-                            <input type="checkbox" asp-for="LembrarMe"><i></i> Lembre-me
-                        </label>
-                    </div>
-                </div>
                 <button type="submit" class="btn btn-primary btn-lg full-width btn-rounded">ENTRAR</button>
-                <p class="text-center">
-                    <a asp-action="RecuperarSenha" class="btn btn-link text-navy">
-                        <small>
-                            <i class="fa fa-envelope"></i> Esqueceu sua senha?
-                        </small>
-                    </a>
-                </p>
             </form>
             <p class="m-t company-name text-center"> <small>&copy; @DateTime.Now.Year | @App.Value.Projeto</small> </p>
         </div>

@@ -1,4 +1,5 @@
-﻿using ApplicationCore.Entities;
+﻿using ApplicationCore.DataValue.Common;
+using ApplicationCore.Entities;
 using ApplicationCore.Enuns;
 using ApplicationCore.Respositories;
 using Framework.Data;
@@ -29,11 +30,21 @@ namespace Infrastructure.Respositories
             return Paginar(consulta, paginador);
         }
 
+        public List<SelectListItemDataValue<EStatus>> ListarParaSelect()
+        {
+            return DbContext.Conteudo.Select(c => new SelectListItemDataValue<EStatus>
+            {
+                Value = c.Id.ToString(),
+                Text = c.Titulo,
+                Enum = c.Status
+            })
+                .ToList();
+        }
 
         public ConteudoEntity Recuperar(EConteudoChave conteudoChave)
         {
             return DbContext.Conteudo
-                .Where(c => 
+                .Where(c =>
                             c.IdConteudo == conteudoChave.Id &&
                             c.Status == EStatus.Ativo)
                 .OrderByDescending(c => c.Id)

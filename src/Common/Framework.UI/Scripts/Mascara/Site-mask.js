@@ -36,7 +36,7 @@
             aplicarMascara: function (nome) {
                 var self = this;
 
-                $("[data-mascara='" + nome + "']:not([data-mascara-aplicado])", this.target).each(function () {
+                $("[data-mask='" + nome + "']:not([data-mask-applied])", this.target).each(function () {
                     var target = $(this);
                     self.mascaras[nome](target);
 
@@ -64,7 +64,7 @@
                         });
                     }
 
-                    $(this).attr("data-mascara-aplicado", "1");
+                    $(this).attr("data-mask-applied", "1");
                 });
             },
             init: function () {

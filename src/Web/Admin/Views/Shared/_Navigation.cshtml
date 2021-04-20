@@ -24,12 +24,12 @@
         <ul class="nav" id="side-menu">
             <li class="nav-header">
                 <div class="dropdown profile-element">
-                    <a href="#" data-toggle="modal" data-target="#alterarImagemModal">
-                        <span>
-                            <img alt="image" class="img-circle img-responsive img-user" src="~/images/default.jpg" asp-visibility="string.IsNullOrWhiteSpace(imagemUsuario)" asp-suppress="true" />
-                            <img alt="image" class="img-circle img-responsive img-user" src="@imagemUsuario" asp-visibility="!string.IsNullOrWhiteSpace(imagemUsuario)" asp-suppress="true" />
-                        </span>
-                    </a>
+
+                    <span>
+                        <img alt="image" class="img-circle img-responsive img-user" src="~/images/default.jpg" asp-visibility="string.IsNullOrWhiteSpace(imagemUsuario)" asp-suppress="true" />
+                        <img alt="image" class="img-circle img-responsive img-user" src="@imagemUsuario" asp-visibility="!string.IsNullOrWhiteSpace(imagemUsuario)" asp-suppress="true" />
+                    </span>
+
                     <a data-toggle="dropdown" class="dropdown-toggle text-center" href="#">
                         <span class="clear">
                             <span class="block m-t-xs">
@@ -49,19 +49,9 @@
                     <img class="img-responsive img-icon" src="~/images/icon.png" alt="Logo" />
                 </div>
             </li>
-            <li asp-auth-grupo="new[]{ DashboardPermissoes.Gerenciar }" class="@IsSelected(Html, new List<KeyValuePair<string, string>>{new KeyValuePair<string, string>("Dashboard","*")})">
-                <a asp-controller="Dashboard" asp-action="Index">
-                    <i class="fa fa-dashboard"></i> <span class="nav-label">Dashboard </span>
-                </a>
-            </li>
-            <li asp-auth-grupo="new[]{ PedidoPermissoes.Gerenciar }" class="@IsSelected(Html, new List<KeyValuePair<string, string>>{new KeyValuePair<string, string>("Pedido","*")})">
-                <a asp-controller="Pedido" asp-action="Index">
-                    <i class="fa fa-shopping-cart"></i> <span class="nav-label">Pedidos </span>
-                </a>
-            </li>
-            <li asp-auth-grupo="new[]{ ClientePermissoes.Gerenciar }" class="@IsSelected(Html, new List<KeyValuePair<string, string>>{new KeyValuePair<string, string>("Cliente","*")})">
-                <a asp-controller="Cliente" asp-action="Index">
-                    <i class="fa fa-user"></i> <span class="nav-label">Clientes </span>
+            <li asp-auth-grupo="new[]{ProdutoPermissoes.Gerenciar }" class="@IsSelected(Html, new List<KeyValuePair<string, string>>{new KeyValuePair<string, string>("Produto","*")})">
+                <a asp-controller="Produto" asp-action="Index">
+                    <i class="fa fa-shopping-bag"></i> <span class="nav-label">Produtos </span>
                 </a>
             </li>
             <li asp-auth-grupo="new[]{ ConteudoPermissoes.Gerenciar }" class="@IsSelected(Html, new List<KeyValuePair<string, string>>{new KeyValuePair<string, string>("Conteudo","*")})">
@@ -69,34 +59,6 @@
                     <i class="fa fa-file-text-o"></i> <span class="nav-label">Conteúdos </span>
                 </a>
             </li>
-            <li asp-auth-grupo="new[]{ProdutoPermissoes.Gerenciar }" class="@IsSelected(Html, new List<KeyValuePair<string, string>>{new KeyValuePair<string, string>("Produto","*")})">
-                <a asp-controller="Produto" asp-action="Index">
-                    <i class="fa fa-shopping-bag"></i> <span class="nav-label">Produtos </span>
-                </a>
-            </li>
-            <li asp-auth-grupo="new[]{CupomPermissoes.Gerenciar }" class="@IsSelected(Html, new List<KeyValuePair<string, string>>{new KeyValuePair<string, string>("Cupom","*")})">
-                <a asp-controller="Cupom" asp-action="Index">
-                    <i class="fa fa-ticket"></i> <span class="nav-label">Cupons </span>
-                </a>
-            </li>
-            <li asp-auth-grupo="new[]{ RelatorioPedidosPermissoes.Gerenciar, RelatorioFaturamentoPermissoes.Gerenciar }" class="@IsSelected(Html, new List<KeyValuePair<string, string>>{new KeyValuePair<string, string>("Relatorio","*")})">
-                <a href="#">
-                    <i class="fa fa-file-excel-o"></i> <span class="nav-label">Relatórios </span><span class="fa arrow"></span>
-                </a>
-                <ul class="nav nav-second-level">
-                    <li asp-auth-perm="@RelatorioPedidosPermissoes.Gerenciar" class="@IsSelected(Html, new List<KeyValuePair<string, string>>{new KeyValuePair<string, string>("Relatorio","Pedidos")})">
-                        <a asp-controller="Relatorio" asp-action="Pedidos">
-                            Pedidos
-                        </a>
-                    </li>
-                    <li asp-auth-perm="@RelatorioFaturamentoPermissoes.Gerenciar" class="@IsSelected(Html, new List<KeyValuePair<string, string>>{new KeyValuePair<string, string>("Relatorio","Faturamento")})">
-                        <a asp-controller="Relatorio" asp-action="Faturamento">
-                            Faturamento
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
 
             <li asp-auth-grupo="new[]{GrupoUsuarioPermissoes.Gerenciar, UsuarioPermissoes.Gerenciar }" class="@IsSelected(Html, new List<KeyValuePair<string, string>>{new KeyValuePair<string, string>("GrupoUsuario","*"),new KeyValuePair<string, string>("Usuario","*")})">
                 <a href="#">
@@ -128,4 +90,4 @@
 </nav>
 
 @await Html.PartialAsync("_AlterarSenhaPartial", new AlterarSenhaViewModel(HttpContextAccessor?.HttpContext?.Request?.Path))
-<partial name="_AlterarImagemPartial" />
+

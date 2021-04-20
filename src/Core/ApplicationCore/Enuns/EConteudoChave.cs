@@ -7,13 +7,8 @@ namespace ApplicationCore.Enuns
 {
     partial class EConteudoChave
     {
-        public static readonly EConteudoChave EmailPedidoConfirmacao = new EConteudoChave(1, "E-mail de confirmação do pedido", GetDescription(typeof(EmailPedidoDataValue)));
-        public static readonly EConteudoChave EmailPedidoPagamentoSucesso = new EConteudoChave(2, "E-mail de pagamento com sucesso", GetDescription(typeof(EmailPedidoDataValue)));
-        public static readonly EConteudoChave EmailPedidoPagamentoErro = new EConteudoChave(3, "E-mail de pagamento com erro", GetDescription(typeof(EmailPedidoDataValue)));
-        public static readonly EConteudoChave EmailPedidoCancelamento = new EConteudoChave(4, "E-mail de cancelamento", GetDescription(typeof(EmailPedidoDataValue)));
-        public static readonly EConteudoChave EmailPedidoEstorno = new EConteudoChave(5, "E-mail de pedido estornado", GetDescription(typeof(EmailPedidoDataValue)));
-        public static readonly EConteudoChave EmailCadastroRealizado = new EConteudoChave(6, "E-mail de cadastro realizado", GetDescription(typeof(EmailCadastroDataValue)));
-        public static readonly EConteudoChave EmailAlteracaoCadastro = new EConteudoChave(6, "E-mail de alteração de senha", GetDescription(typeof(EmailAlteracaoSenhaDataValue)));
+        public static readonly EConteudoChave EmailConteudoChave = new EConteudoChave(1, "E-mail de NPS", GetDescription(typeof(EmailDataValue)));
+
         private static string GetDescription(Type type, string prefix = "\t")
         {
             var props = type.GetProperties()

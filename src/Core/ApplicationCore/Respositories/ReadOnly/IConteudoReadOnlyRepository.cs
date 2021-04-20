@@ -1,4 +1,5 @@
-﻿using ApplicationCore.Entities;
+﻿using ApplicationCore.DataValue.Common;
+using ApplicationCore.Entities;
 using ApplicationCore.Enuns;
 using Framework.Data;
 using System.Collections.Generic;
@@ -9,5 +10,6 @@ namespace ApplicationCore.Respositories.ReadOnly
     {
         List<ConteudoEntity> Listar(EConteudoChave conteudoChave, string descricao, PaginadorInfo paginador);
         ConteudoEntity Recuperar(EConteudoChave conteudoChave);
+        List<SelectListItemDataValue<EStatus>> ListarParaSelect();
     }
 }

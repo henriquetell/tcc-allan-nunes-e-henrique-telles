@@ -10,9 +10,5 @@ namespace Admin.Controllers
     {
         private ConteudoServiceWeb ConteudoServiceWeb => GetService<ConteudoServiceWeb>();
         private ProdutoServiceWeb ProdutoServiceWeb => GetService<ProdutoServiceWeb>();
-
-        [HttpPost]
-        [AuthUsuarioFilter]
-        public IActionResult ListarSkus(int idProduto) => Json(ProdutoServiceWeb.ListarSkus(idProduto));
     }
 }

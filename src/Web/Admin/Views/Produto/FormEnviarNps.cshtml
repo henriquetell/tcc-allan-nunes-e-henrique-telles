@@ -1,0 +1,42 @@
+﻿@using Admin.ViewModels.Produto
+@model ProdutoNpsViewModel
+@if (Model?.IdProduto > 0)
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>
+                        <i class="fa fa-envelope"></i> Enviar NPS
+                    </h5>
+                </div>
+                <div class="ibox-content">
+                    <form asp-antiforgery="true" asp-action="EnviarNps">
+                        <input type="hidden" asp-for="IdProduto" />
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="form-group">
+                                    <label asp-for="Email"></label>
+                                    <input asp-for="Email" class="form-control" asp-placeholder="" maxlength="200" />
+                                    <span asp-validation-for="Email" class="text-danger small"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="DataLimite"></label>
+                                    <input asp-for="DataLimite" type="text" class="form-control" asp-placeholder="" asp-mask="Data" />
+                                    <span asp-validation-for="DataLimite" class="text-danger small"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions text-right" asp-auth-perm="@ProdutoPermissoes.Gerenciar" asp-auth-acao="Escrever">
+                            <button type="submit" class="btn btn-primary btn-rounded">
+                                <i class="fa fa-envelope"></i> Enviar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+}

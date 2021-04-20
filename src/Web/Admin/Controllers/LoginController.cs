@@ -29,8 +29,7 @@ namespace Admin.Controllers
 
                 var model = UsuarioService.Autenticar(vm?.Email, vm?.Senha);
 
-                await AutenticarUsuarioAsync(new UsuarioAuthViewModel(model), vm.LembrarMe)
-                            .ConfigureAwait(true);
+                await AutenticarUsuarioAsync(new UsuarioAuthViewModel(model));
 
                 ExibirMensagemInformacao(MensagemResource.BemVindo.FormatText(model.Nome));
 
@@ -57,38 +56,6 @@ namespace Admin.Controllers
             return RedirectToAction(nameof(Index), "Login");
         }
 
-        [AuthUsuarioFilter(false)]
-        public IActionResult RecuperarSenha() => View();
-
-        [HttpPost]
-        [AuthUsuarioFilter(false)]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> RecuperarSenha(RecuperarSenhaViewModel vm)
-        {
-            try
-            {
-                ModelState.Clear();
-
-                await UsuarioService.RecuperarSenha(vm?.Email, ConteudoResource.EmailRecuperacao)
-                    .ConfigureAwait(true);
-
-                ExibirMensagemSucesso(MensagemResource.RecuperarSenhaSucesso);
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch (MensagemException ex)
-            {
-                ExibirMensagem(ex);
-                AppLogger.Exception(ex);
-            }
-            catch (Exception ex)
-            {
-                ExibirMensagemErro(MensagemResource.Erro);
-                AppLogger.Exception(ex);
-            }
-
-            return View(vm);
-        }
 
         [HttpPost]
         [AuthUsuarioFilter]

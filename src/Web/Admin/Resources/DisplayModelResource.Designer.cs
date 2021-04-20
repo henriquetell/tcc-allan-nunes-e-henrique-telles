@@ -295,6 +295,15 @@ namespace Admin.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Data Limite.
+        /// </summary>
+        public static string DataLimite {
+            get {
+                return ResourceManager.GetString("DataLimite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Data de Nascimento.
         /// </summary>
         public static string DataNascimento {

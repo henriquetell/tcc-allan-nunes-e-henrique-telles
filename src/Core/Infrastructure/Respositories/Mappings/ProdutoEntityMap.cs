@@ -15,7 +15,7 @@ namespace Infrastructure.Respositories.Mappings
                 .HasMaxLength(2000)
                 .IsRequired(true);
 
-            Builder.Property(t => t.DescricaoCurta)
+            Builder.Property(t => t.Imagem)
                 .HasMaxLength(3000)
                 .IsRequired(false);
 
@@ -23,11 +23,10 @@ namespace Infrastructure.Respositories.Mappings
                 .HasColumnType("varchar(max)")
                 .IsRequired(false);
 
-            Builder.Property(t => t.Preco)
-                .HasColumnType("decimal(8,2)");
-
             Builder.HasIndex(t => t.Codigo)
                 .IsUnique();
+
+            Builder.HasOneWithMany(t => t.Conteudo);
         }
     }
 }

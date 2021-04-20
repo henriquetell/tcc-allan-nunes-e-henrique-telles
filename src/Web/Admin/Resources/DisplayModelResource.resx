@@ -498,4 +498,7 @@
   <data name="HoraValidade" xml:space="preserve">
     <value>Horário</value>
   </data>
+  <data name="DataLimite" xml:space="preserve">
+    <value>Data Limite</value>
+  </data>
 </root>

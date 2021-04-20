@@ -4,6 +4,7 @@ using Admin.ViewModels.Usuario;
 using ApplicationCore.DependencyInjection;
 using ApplicationCore.Services;
 using Framework.Configurations;
+using Framework.Extenders;
 using Framework.UI.Extenders;
 using Framework.UI.MVC.MetadataProviders;
 using Infrastructure.Configurations;
@@ -28,10 +29,20 @@ namespace Admin
     public class Startup
     {
         private readonly IConfiguration _configuration;
-        private IServiceCollection _services;
-        public Startup(IConfiguration configuration)
+        public Startup()
         {
-            _configuration = configuration;
+            _configuration = new ConfigurationBuilder()
+              .SetBasePath(Environment.CurrentDirectory)
+              .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+              .AddJsonFile(EnvironmentHelper.Desenvolvimento ? "appsettings.Development.json"
+                  : EnvironmentHelper.Homologacao
+                  ? "appsettings.Homologacao.json"
+                  : "appsettings.Production.json", optional: true, reloadOnChange: true)
+#if DEBUG
+                          .AddJsonFile("appsettings.Local.json", optional: true, reloadOnChange: true)
+#endif
+                          .AddEnvironmentVariables()
+              .Build();
         }
 
         public void ConfigureServices(IServiceCollection services)
@@ -41,7 +52,8 @@ namespace Admin
                 .Configure<InfrastructureConfig>(options => _configuration.GetSection(nameof(Infrastructure)).Bind(options))
                 .Configure<FrameworkConfig>(options => _configuration.GetSection(nameof(Framework)).Bind(options))
                 .Configure<AppConfig>(options => _configuration.GetSection(nameof(AppConfig)).Bind(options))
-                .AddInfrastructure(sp => sp.GetService<IOptions<InfrastructureConfig>>().Value);
+                .AddInfrastructure(sp => sp.GetService<IOptions<InfrastructureConfig>>().Value)
+                .AddDbContext(_configuration.GetConnectionString("DefaultConnection"));
 
             AddServiceWeb(services);
 
@@ -68,9 +80,8 @@ namespace Admin
                 {
                     options.ModelMetadataDetailsProviders.Add(new DisplayMetadataProvider(typeof(DisplayModelResource)));
                     options.AddBinders();
-                });
-
-            _services = services;
+                })
+                .AddNewtonsoftJson();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

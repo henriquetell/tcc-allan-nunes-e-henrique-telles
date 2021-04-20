@@ -1,5 +1,4 @@
-﻿using ApplicationCore.DataValue;
-using ApplicationCore.DataValue.Common;
+﻿using ApplicationCore.DataValue.Common;
 using ApplicationCore.Entities;
 using ApplicationCore.Enuns;
 using ApplicationCore.Respositories;
@@ -24,7 +23,7 @@ namespace Infrastructure.Respositories
 
         public List<ProdutoEntity> Listar(string consulta, PaginadorInfo paginador)
         {
-            var query = DbContext.Produto.Include(c => c.ProdutoImagem).AsQueryable();
+            var query = DbContext.Produto.Include(c => c.ProdutoNps).AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(consulta))
                 query = query.Where(c => c.Titulo.Contains(consulta));
@@ -35,7 +34,7 @@ namespace Infrastructure.Respositories
         public ProdutoEntity Recuperar(int id, bool includeImagens = false)
         {
             return includeImagens
-                ? DbContext.Produto.Include(i => i.ProdutoImagem).FirstOrDefault(c => c.Id == id)
+                ? DbContext.Produto.Include(i => i.ProdutoNps).FirstOrDefault(c => c.Id == id)
                 : DbContext.Produto.FirstOrDefault(c => c.Id == id);
         }
 
@@ -54,65 +53,6 @@ namespace Infrastructure.Respositories
                 .ToList();
         }
 
-        public List<ProdutoDataValue> ListarDestaque()
-        {
-            return (from p in DbContext.Produto
-                    let img = p.ProdutoImagem.OrderByDescending(i => i.Ordem).Select(i => i.Original).FirstOrDefault()
-                    where
-                    p.ProdutoImagem.Any() &&
-                    p.Status == EStatus.Ativo
-                    select new ProdutoDataValue
-                    {
-                        Id = p.Id,
-                        Titulo = p.Titulo,
-                        Codigo = p.Codigo,
-                        DescricaoCurta = p.DescricaoCurta,
-                        DescricaoLonga = p.DescricaoLonga,
-                        Preco = p.Preco,
-                        Imagem = img,
-                        CategoriaProduto = p.CategoriaProduto
-                    }).ToList();
-        }
-
-        public List<ProdutoDataValue> ListarParaCatalago(ECategoriaProduto? categoriaProduto = null)
-        {
-            var produto = categoriaProduto.HasValue
-                ? DbContext.Produto.Where(p => p.CategoriaProduto == categoriaProduto.Value && p.Status == EStatus.Ativo)
-                : DbContext.Produto.Where(p => p.Status == EStatus.Ativo);
-
-            return (from p in produto
-                    let img = p.ProdutoImagem.OrderByDescending(i => i.Ordem).Select(i => i.Original).FirstOrDefault()
-                    where p.Status == EStatus.Ativo &&
-                           p.ProdutoImagem.Any()
-                    select new ProdutoDataValue
-                    {
-                        Id = p.Id,
-                        Titulo = p.Titulo,
-                        Codigo = p.Codigo,
-                        DescricaoCurta = p.DescricaoCurta,
-                        DescricaoLonga = p.DescricaoLonga,
-                        Preco = p.Preco,
-                        Imagem = img,
-                        CategoriaProduto = p.CategoriaProduto,
-                    }).ToList();
-        }
-
-        public ProdutoDataValue RecuperarParaDetalhes(int idProduto)
-        {
-            return DbContext.Produto.Where(p=> p.Id == idProduto &&
-                    p.Status == EStatus.Ativo &&
-                    p.ProdutoImagem.Any())
-                .Select(p=> new ProdutoDataValue
-                    {
-                        Id = p.Id,
-                        Titulo = p.Titulo,
-                        Codigo = p.Codigo,
-                        DescricaoCurta = p.DescricaoCurta,
-                        DescricaoLonga = p.DescricaoLonga,
-                        Preco = p.Preco,
-                        CategoriaProduto = p.CategoriaProduto
-                    }).FirstOrDefault();
-        }
 
         public List<SelectListItemDataValue<EStatus>> ListarParaSelect()
         {

@@ -7,12 +7,12 @@ namespace ApplicationCore.Entities
     {
         public string Titulo { get; set; }
         public string Codigo { get; set; }
-        public string DescricaoCurta { get; set; }
+        public string Imagem { get; set; }
         public string DescricaoLonga { get; set; }
-        public decimal Preco { get; set; }
+        public int IdConteudo { get; set; }
         public ECategoriaProduto CategoriaProduto { get; set; }
         public EStatus Status { get; set; }
-        public ICollection<ProdutoImagemEntity> ProdutoImagem { get; set; } = new List<ProdutoImagemEntity>();
-        public ICollection<ProdutoSkuEntity> ProdutoSku { get; set; } = new List<ProdutoSkuEntity>();
+        public ICollection<ProdutoNpsEntity> ProdutoNps { get; set; } = new List<ProdutoNpsEntity>();
+        public ConteudoEntity Conteudo { get; set; }
     }
 }

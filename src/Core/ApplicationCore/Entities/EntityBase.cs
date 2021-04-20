@@ -6,10 +6,7 @@
     }
 
     public abstract class EntityBase : EntityBase<int>
-    {
-        public bool IsNew => Id == 0;
-
-    }
+    { }
 
     public interface IEntityBase { }
 
