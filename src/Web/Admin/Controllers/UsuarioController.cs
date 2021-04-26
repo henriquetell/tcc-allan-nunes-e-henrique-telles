@@ -19,15 +19,15 @@ namespace Admin.Controllers
         private UsuarioService UsuarioService => GetService<UsuarioService>();
 
 
-        [AuthUsuarioFilter(UsuarioPermissoes.Gerenciar, AuthPermissaoTipoAcao.Leitura)]
+        [AuthUsuarioFilter(UsuarioPermissoes.Gerenciar, AuthPermissaoTipoAcao.Permitir)]
         public IActionResult Index(UsuarioFiltroViewModel filtro) => View(UsuarioServiceWeb.Listar(filtro));
 
-        [AuthUsuarioFilter(UsuarioPermissoes.Gerenciar, AuthPermissaoTipoAcao.Leitura)]
+        [AuthUsuarioFilter(UsuarioPermissoes.Gerenciar, AuthPermissaoTipoAcao.Permitir)]
         public IActionResult Form(int id) => View(UsuarioServiceWeb.Recuperar(id));
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [AuthUsuarioFilter(UsuarioPermissoes.Gerenciar, AuthPermissaoTipoAcao.Escrever)]
+        [AuthUsuarioFilter(UsuarioPermissoes.Gerenciar, AuthPermissaoTipoAcao.Permitir)]
         public async Task<IActionResult> Form(UsuarioViewModel vm)
         {
             try
@@ -94,7 +94,7 @@ namespace Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [AuthUsuarioFilter(UsuarioPermissoes.Gerenciar, AuthPermissaoTipoAcao.Excluir)]
+        [AuthUsuarioFilter(UsuarioPermissoes.Gerenciar, AuthPermissaoTipoAcao.Permitir)]
         public IActionResult Excluir(int id)
         {
             try

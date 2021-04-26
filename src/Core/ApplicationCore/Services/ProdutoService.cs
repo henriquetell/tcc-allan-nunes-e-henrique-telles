@@ -1,8 +1,9 @@
-﻿using ApplicationCore.Entities;
-using ApplicationCore.Interfaces.CloudServices.CloudQueue;
+﻿using ApplicationCore.Configurations;
+using ApplicationCore.DataValue;
+using ApplicationCore.DataValue.Conteudo;
+using ApplicationCore.Entities;
 using ApplicationCore.Interfaces.CloudServices.CloudStorage;
 using ApplicationCore.Interfaces.Email;
-using ApplicationCore.Resources;
 using ApplicationCore.Respositories;
 using Framework.Extenders;
 using System;
@@ -13,17 +14,31 @@ namespace ApplicationCore.Services
 {
     public class ProdutoService : ServiceBase
     {
-        private ProdutoResource ProdutoResource => GetService<ProdutoResource>();
         private IProdutoRepository ProdutoRepository => GetService<IProdutoRepository>();
+        private IConteudoRepository ConteudoRepository => GetService<IConteudoRepository>();
         private IProdutoNpsRepository ProdutoNpsRepository => GetService<IProdutoNpsRepository>();
         private ICloudStorage CloudStorageService => GetService<ICloudStorage>();
-        private ICloudQueueService CloudQueueService => GetService<ICloudQueueService>();
+
         private IEmailClient EmailClient => GetService<IEmailClient>();
 
+        public NpsDataValue RecuperarPorProdutoNps(Guid? id, int? idProduto)
+        {
+            return ProdutoNpsRepository.RecuperarPorProdutoNps(id, idProduto);
+        }
+
+        private ApplicationCoreConfig ApplicationCoreConfig => GetService<ApplicationCoreConfig>();
         public ProdutoService(IServiceProvider serviceProvider)
             : base(serviceProvider)
         { }
 
+        public void SalvarNps(Guid id, int nota, string comentario)
+        {
+            var nps = ProdutoNpsRepository.Recuperar(id);
+            nps.Nota = nota;
+            nps.Comentario = comentario;
+            nps.DataResposta = DateTime.Now;
+            ProdutoNpsRepository.Salvar(nps);
+        }
 
         public void Excluir(int id) => ProdutoRepository.Excluir(id);
 
@@ -37,20 +52,26 @@ namespace ApplicationCore.Services
         public async Task EnviarNps(int idProduto, string email, DateTime? dataLimite)
         {
             var produto = ProdutoRepository.Recuperar(idProduto);
-
-            ProdutoNpsRepository.Salvar(new ProdutoNpsEntity
+            var conteudo = ConteudoRepository.Recuperar(produto.IdConteudo);
+            var nps = new ProdutoNpsEntity
             {
                 IdProduto = idProduto,
                 Email = email,
-                DataLimite = dataLimite
+                DataLimite = dataLimite,
+                DataEnvio = DateTime.Now
+            };
+
+            ProdutoNpsRepository.Salvar(nps);
+
+            var mensagem = conteudo.Descricao.FormatWith(new EmailNpsDataValue
+            {
+                NomeProduto = produto.Titulo,
+                Url = new Uri(ApplicationCoreConfig.UrlPesquisaNps, $"pesquisa/{produto.Id}/{nps.Id}").AbsoluteUri
             });
 
-            var mensagem = produto.Conteudo.Descricao.FormatWith(new
+            var assunto = conteudo.Assunto.FormatWith(new EmailNpsDataValue
             {
-            });
-
-            var assunto = produto.Conteudo.Descricao.FormatWith(new
-            {
+                NomeProduto = produto.Titulo
             });
 
             await EmailClient.EnviarAsync(new DadosEnvioEmail(email, assunto, mensagem));

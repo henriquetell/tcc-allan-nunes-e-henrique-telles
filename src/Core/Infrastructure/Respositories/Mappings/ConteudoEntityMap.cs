@@ -11,10 +11,6 @@ namespace Infrastructure.Respositories.Mappings
                 .HasColumnType("varchar(max)")
                 .IsRequired();
 
-            Builder.Property(t => t.DescricaoComplemento)
-                .HasColumnType("varchar(max)")
-                .IsRequired(false);
-
             Builder.Property(t => t.Assunto)
                 .HasColumnType("varchar(500)")
                 .IsRequired(false);

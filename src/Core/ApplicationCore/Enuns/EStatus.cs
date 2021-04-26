@@ -8,9 +8,6 @@ namespace ApplicationCore.Enuns
         Ativo = 1,
 
         [Description(nameof(Inativo))]
-        Inativo = 2,
-
-        [Description(nameof(Pendente))]
-        Pendente = 3
+        Inativo = 2
     }
 }

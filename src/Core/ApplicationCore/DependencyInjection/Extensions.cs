@@ -1,4 +1,5 @@
-﻿using ApplicationCore.Interfaces.Email.Eventos;
+﻿using ApplicationCore.Configurations;
+using ApplicationCore.Interfaces.Email.Eventos;
 using ApplicationCore.Services;
 using Framework.Resources;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,7 +11,8 @@ namespace ApplicationCore.DependencyInjection
     public static class Extensions
     {
 
-        public static IServiceCollection AddCore(this IServiceCollection services) => services
+        public static IServiceCollection AddCore(this IServiceCollection services, Func<IServiceProvider, ApplicationCoreConfig> applicationCoreConfig) => services
+            .AddSingleton(applicationCoreConfig)
             .AddServices()
             .AddCoreResource()
             .AddTransient(typeof(EmailEventInvoker<>));

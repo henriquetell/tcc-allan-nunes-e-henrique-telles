@@ -61,7 +61,7 @@ namespace Framework.UI.Security.Authorization
             if (funcionalidade == null)
                 throw new Exception("Permissão não registrada");
 
-            var funcAcao = funcionalidade.Acoes.FirstOrDefault(a => a.Acao == AuthPermissaoTipoAcao.Leitura);
+            var funcAcao = funcionalidade.Acoes.FirstOrDefault(a => a.Acao == AuthPermissaoTipoAcao.Permitir);
             if (funcAcao == null)
                 throw new Exception("Ação não registrada para a permissão");
 

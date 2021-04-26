@@ -17,15 +17,15 @@ namespace Admin.Controllers
         private GrupoUsuarioServiceWeb GrupoAcessoServiceWeb => GetService<GrupoUsuarioServiceWeb>();
         private GrupoUsuarioService GrupoUsuarioServico => GetService<GrupoUsuarioService>();
 
-        [AuthUsuarioFilter(GrupoUsuarioPermissoes.Gerenciar, AuthPermissaoTipoAcao.Leitura)]
+        [AuthUsuarioFilter(GrupoUsuarioPermissoes.Gerenciar, AuthPermissaoTipoAcao.Permitir)]
         public IActionResult Index(GrupoUsuarioFiltroViewModel filtro) => View(GrupoAcessoServiceWeb.Listar(filtro));
 
-        [AuthUsuarioFilter(GrupoUsuarioPermissoes.Gerenciar, AuthPermissaoTipoAcao.Leitura)]
+        [AuthUsuarioFilter(GrupoUsuarioPermissoes.Gerenciar, AuthPermissaoTipoAcao.Permitir)]
         public IActionResult Form(int id) => View(GrupoAcessoServiceWeb.Recuperar(id));
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [AuthUsuarioFilter(GrupoUsuarioPermissoes.Gerenciar, AuthPermissaoTipoAcao.Escrever)]
+        [AuthUsuarioFilter(GrupoUsuarioPermissoes.Gerenciar, AuthPermissaoTipoAcao.Permitir)]
         public IActionResult Form(GrupoUsuarioViewModel vm)
         {
             try
@@ -65,7 +65,7 @@ namespace Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [AuthUsuarioFilter(GrupoUsuarioPermissoes.Gerenciar, AuthPermissaoTipoAcao.Excluir)]
+        [AuthUsuarioFilter(GrupoUsuarioPermissoes.Gerenciar, AuthPermissaoTipoAcao.Permitir)]
         public IActionResult Excluir(int id)
         {
             try

@@ -16,7 +16,7 @@
     </div>
     <div class="col-lg-4">
         <div class="title-action">
-            <a asp-action="Form" class="btn btn-default btn-rounded" asp-auth-perm="@GrupoUsuarioPermissoes.Gerenciar" asp-auth-acao="Escrever">
+            <a asp-action="Form" class="btn btn-default btn-rounded">
                 <i class="fa fa-plus"></i> Cadastrar
             </a>
         </div>
@@ -95,7 +95,7 @@
                                                         <a asp-action="Form" asp-route-id="@item.Id" class="btn btn-sm btn-primary btn-outline btn-circle">
                                                             <i class="fa fa-check"></i>
                                                         </a>
-                                                        <form method="post" asp-action="Excluir" asp-route-id="@item.Id" data-form-excluir="false" asp-auth-perm="@GrupoUsuarioPermissoes.Gerenciar" asp-auth-acao="Excluir">
+                                                        <form method="post" asp-action="Excluir" asp-route-id="@item.Id" data-form-excluir="false">
                                                             <button type="submit" class="btn btn-sm btn-danger btn-outline btn-circle">
                                                                 <i class="fa fa-trash-o"></i>
                                                             </button>

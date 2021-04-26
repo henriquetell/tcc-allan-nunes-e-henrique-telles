@@ -8,17 +8,12 @@ namespace Admin.Extenders
     {
         public static IHtmlContent CriarBadge(this EStatus status)
         {
-            switch (status)
+            return status switch
             {
-                case EStatus.Ativo:
-                    return new HtmlString($"<span class=\"badge badge-primary\">{status.GetDescription()}</span>");
-                case EStatus.Inativo:
-                    return new HtmlString($"<span class=\"badge badge-danger\">{status.GetDescription()}</span>");
-                case EStatus.Pendente:
-                    return new HtmlString($"<span class=\"badge badge-warning\">{status.GetDescription()}</span>");
-                default:
-                    return new HtmlString("");
-            }
+                EStatus.Ativo => new HtmlString($"<span class=\"badge badge-primary\">{status.GetDescription()}</span>"),
+                EStatus.Inativo => new HtmlString($"<span class=\"badge badge-danger\">{status.GetDescription()}</span>"),
+                _ => new HtmlString(""),
+            };
         }
 
         public static IHtmlContent CriarBadge(this int value) => new HtmlString($"<span class=\"badge badge-primary\">{value}</span>");

@@ -7,7 +7,7 @@ namespace ApplicationCore.Enuns
 {
     partial class EConteudoChave
     {
-        public static readonly EConteudoChave EmailConteudoChave = new EConteudoChave(1, "E-mail de NPS", GetDescription(typeof(EmailDataValue)));
+        public static readonly EConteudoChave EmailConteudoChave = new EConteudoChave(1, "E-mail de NPS", GetDescription(typeof(EmailNpsDataValue)));
 
         private static string GetDescription(Type type, string prefix = "\t")
         {

@@ -19,19 +19,19 @@ namespace Admin.Controllers
         private ConteudoServiceWeb ConteudoServiceWeb => GetService<ConteudoServiceWeb>();
         private ConteudoService ConteudoService => GetService<ConteudoService>();
 
-        [AuthUsuarioFilter(ConteudoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Leitura)]
+        [AuthUsuarioFilter(ConteudoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Permitir)]
         public IActionResult Index(ConteudoFiltroViewModel filtro)
         {
             ModelState.Clear();
             return View(ConteudoServiceWeb.Listar(filtro));
         }
 
-        [AuthUsuarioFilter(ConteudoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Leitura)]
+        [AuthUsuarioFilter(ConteudoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Permitir)]
         public IActionResult Form(int id) => View(ConteudoServiceWeb.Recuperar(id));
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [AuthUsuarioFilter(ConteudoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Escrever)]
+        [AuthUsuarioFilter(ConteudoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Permitir)]
         public IActionResult Form(ConteudoViewModel vm)
         {
             try
@@ -48,7 +48,6 @@ namespace Admin.Controllers
                     Status = vm.Status,
                     Titulo = vm.Titulo,
                     Descricao = vm.Descricao,
-                    DescricaoComplemento = vm.DescricaoComplemento,
                     Assunto = vm.Assunto,
                     IdConteudo = vm.IdConteudoChave.GetValueOrDefault()
                 };
@@ -75,7 +74,7 @@ namespace Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [AuthUsuarioFilter(ConteudoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Escrever)]
+        [AuthUsuarioFilter(ConteudoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Permitir)]
         public async Task<IActionResult> UploadAnexoAsync(ConteudoAnexoViewModel vm)
         {
             try
@@ -108,7 +107,7 @@ namespace Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [AuthUsuarioFilter(ConteudoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Excluir)]
+        [AuthUsuarioFilter(ConteudoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Permitir)]
         public async Task<IActionResult> ExcluirAnexoAsync(int id)
         {
             try

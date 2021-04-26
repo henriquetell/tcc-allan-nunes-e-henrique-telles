@@ -1,12 +1,9 @@
 ﻿using Admin.ViewModels.Usuario;
-using Framework.Configurations;
 using Framework.Security.Authorization;
-using Framework.UI.Extenders;
 using Framework.UI.Security.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 
@@ -52,21 +49,7 @@ namespace Admin.Filters
             else
             {
                 if (!usuario.Autenticado)
-                {
-                    var config = filterContext.HttpContext.RequestServices.GetService<IOptions<FrameworkConfig>>().Value;
-                    if (string.IsNullOrWhiteSpace(config.Security.LockUrl))
-                    {
-                        RedirectToLogin(filterContext, true);
-                        return;
-                    }
-
-                    var idUsuario = filterContext.HttpContext.GetLastUsuario();
-
-                    if (idUsuario > 0)
-                        RedirectToLogin(filterContext, true, config.Security.LockUrl);
-                    else
                         filterContext.Result = new UnauthorizedResult();
-                }
                 else if (IdPermissao != Guid.Empty && !usuario.ValidarAcesso(IdPermissao, Acao))
                     RedirectToLogin(filterContext, true);
                 else
@@ -76,16 +59,13 @@ namespace Admin.Filters
 
         private static void RedirectToLogin(ActionExecutingContext filterContext, bool semAcesso = false, string url = null)
         {
-            var config = filterContext.HttpContext.RequestServices.GetService<IOptions<FrameworkConfig>>().Value;
-
             var urlQueryString = new List<string>();
-
             if (semAcesso)
                 urlQueryString.Add($"{nameof(semAcesso)}={semAcesso}");
 
             urlQueryString.Add($"href={filterContext.HttpContext.Request.Path}");
 
-            url = (url ?? $"{config.Security.LogoutUrl}") + "?" + string.Join("&", urlQueryString.ToArray());
+            url += string.Join("&", urlQueryString.ToArray());
 
             if (filterContext.HttpContext.Request.Headers["X-Requested-With"].Count > 0)
             {

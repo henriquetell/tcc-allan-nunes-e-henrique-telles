@@ -18,7 +18,7 @@ namespace Admin.TagHelpers
         private const string AuthAcaoAttributeName = "asp-auth-acao";
 
         [HtmlAttributeName(AuthAcaoAttributeName)]
-        public AuthPermissaoTipoAcao Acao { get; set; } = AuthPermissaoTipoAcao.Leitura;
+        public AuthPermissaoTipoAcao Acao { get; set; } = AuthPermissaoTipoAcao.Permitir;
 
         private readonly IHttpContextAccessor _httpContextAccessor;
 

@@ -99,17 +99,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label asp-for="DescricaoComplemento"></label>
-                                    <p class="text-muted"><i class="fa fa-info-circle"></i> Utilize as variáveis do <b>DescricaoComplementoObject</b> diretamente ex: <b>{PrecoDe}</b>.</p>
-                                    <textarea asp-for="DescricaoComplemento" class="form-control" summernote data-height="300"></textarea>
-                                    <span asp-validation-for="DescricaoComplemento" class="text-danger small"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-actions text-right" asp-auth-perm="@ConteudoPermissoes.Gerenciar" asp-auth-acao="Escrever">
+                        <div class="form-actions text-right">
                             <button type="submit" class="btn btn-primary btn-rounded">
                                 <i class="fa fa-check"></i> Salvar
                             </button>
@@ -128,16 +118,14 @@
                     </h5>
                 </div>
                 <div class="ibox-content">
-                    <asp asp-auth-perm="@ProdutoPermissoes.Gerenciar" asp-auth-acao="Escrever">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <form asp-antiforgery="true" asp-action="UploadAnexoAsync" id="UploadDropzone" class="dropzone" method="post" enctype="multipart/form-data">
-                                    <input type="hidden" name="IdConteudo" value="@Model.Id" />
-                                </form>
-                            </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form asp-antiforgery="true" asp-action="UploadAnexoAsync" id="UploadDropzone" class="dropzone" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="IdConteudo" value="@Model.Id" />
+                            </form>
                         </div>
-                        <div class="hr-line-dashed" asp-visibility="@Model.Anexos.Any()" asp-suppress="true"></div>
-                    </asp>
+                    </div>
+                    <div class="hr-line-dashed" asp-visibility="@Model.Anexos.Any()" asp-suppress="true"></div>
                     <div class="row">
                         @foreach (var item in Model.Anexos.OrderBy(c => c.Id))
                         {
@@ -168,7 +156,7 @@
                                                     <button type="button" data-clipboard-text="@CloudStorage.RecuperarAnexoUrl(item.Anexo)" class="btn btn-sm btn-primary btn-outline btn-rounded" title="Copiar URL">
                                                         <i class="fa fa-copy"></i> Copiar
                                                     </button>
-                                                    <button type="submit" class="btn btn-sm btn-danger btn-outline btn-rounded" title="Excluir Anexo" asp-auth-perm="@ConteudoPermissoes.Gerenciar" asp-auth-acao="Excluir">
+                                                    <button type="submit" class="btn btn-sm btn-danger btn-outline btn-rounded" title="Excluir Anexo">
                                                         <i class="fa fa-trash-o"></i> Excluir
                                                     </button>
                                                 </form>

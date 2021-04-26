@@ -15,8 +15,6 @@ namespace Admin.ViewModels.Conteudo
         [Required(ErrorMessageResourceType = typeof(ModelStateResource), ErrorMessageResourceName = nameof(ModelStateResource.Obrigatorio))]
         public string Descricao { get; set; }
 
-        public string DescricaoComplemento { get; set; }
-
         [Required(ErrorMessageResourceType = typeof(ModelStateResource), ErrorMessageResourceName = nameof(ModelStateResource.Obrigatorio))]
         public string Assunto { get; set; }
 

@@ -42,7 +42,7 @@ namespace Infrastructure.Respositories
             {
                 GrupoUsuario = grupoAcesso,
                 Status = EStatus.Ativo,
-                Email = "allan.n.rodrigues@hotmail.com",
+                Email = "admin@admin.com",
                 Nome = "Administrador",
                 Salt = salt,
                 Senha = Convert.ToBase64String(KeyDerivation.Pbkdf2("123456", salt, KeyDerivationPrf.HMACSHA1, 10000, 256 / 8))
@@ -53,9 +53,7 @@ namespace Infrastructure.Respositories
                 .InfoIf(usrAdmin?.Id == 0, "Usuário Administrador não encontrado, criando...");
 
             var permissoesAcoes = new[] {
-                GrupoUsuarioPermissoes.Leitura,
-                GrupoUsuarioPermissoes.Escrever,
-                GrupoUsuarioPermissoes.Excluir
+                GrupoUsuarioPermissoes.Permitir
             };
 
             foreach (var permissao in permissoesAcoes)
@@ -81,20 +79,8 @@ namespace Infrastructure.Respositories
             SeedEntity(new PermissaoAcaoEntity
             {
                 IdPermissao = GrupoUsuarioPermissoes.Gerenciar.ToGuid(),
-                Id = GrupoUsuarioPermissoes.Leitura.Key.ToGuid(),
-                TipoAcao = (int)AuthPermissaoTipoAcao.Leitura
-            }, idsComparacao, false);
-            SeedEntity(new PermissaoAcaoEntity
-            {
-                IdPermissao = GrupoUsuarioPermissoes.Gerenciar.ToGuid(),
-                Id = GrupoUsuarioPermissoes.Escrever.Key.ToGuid(),
-                TipoAcao = (int)AuthPermissaoTipoAcao.Escrever
-            }, idsComparacao, false);
-            SeedEntity(new PermissaoAcaoEntity
-            {
-                IdPermissao = GrupoUsuarioPermissoes.Gerenciar.ToGuid(),
-                Id = GrupoUsuarioPermissoes.Excluir.Key.ToGuid(),
-                TipoAcao = (int)AuthPermissaoTipoAcao.Excluir
+                Id = GrupoUsuarioPermissoes.Permitir.Key.ToGuid(),
+                TipoAcao = (int)AuthPermissaoTipoAcao.Permitir
             }, idsComparacao, false);
         }
 
@@ -113,7 +99,7 @@ namespace Infrastructure.Respositories
             var dbSet = Set<TEntity>();
 
             var entityType = Model.FindEntityType(typeof(TEntity));
-            propriedadeComparacao = propriedadeComparacao ?? new[] { entityType.FindPrimaryKey().Properties[0].Name };
+            propriedadeComparacao ??= new[] { entityType.FindPrimaryKey().Properties[0].Name };
             var parameter = Expression.Parameter(typeof(TEntity), "x");
 
             var consulta = dbSet.AsQueryable();

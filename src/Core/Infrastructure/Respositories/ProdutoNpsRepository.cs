@@ -29,5 +29,20 @@ namespace Infrastructure.Respositories
                 .OrderByDescending(w => w.DataEnvio)
                 .ToList();
         }
+
+        public NpsDataValue RecuperarPorProdutoNps(Guid? id, int? idProduto)
+        {
+            return DbContext.ProdutoNps.Where(w => w.IdProduto == idProduto && w.Id == id)
+               .Select(w => new NpsDataValue
+               {
+                   Id = w.Id,
+                   Titulo = w.Produto.Titulo,
+                   DescricaoLonga = w.Produto.DescricaoLonga,
+                   Imagem = w.Produto.Imagem,
+                   DataLimite = w.DataLimite,
+                   Respondido = w.DataResposta.HasValue
+               })
+               .FirstOrDefault();
+        }
     }
 }

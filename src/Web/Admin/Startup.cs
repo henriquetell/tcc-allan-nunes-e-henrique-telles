@@ -1,6 +1,7 @@
 ﻿using Admin.Resources;
 using Admin.Services;
 using Admin.ViewModels.Usuario;
+using ApplicationCore.Configurations;
 using ApplicationCore.DependencyInjection;
 using ApplicationCore.Services;
 using Framework.Configurations;
@@ -48,10 +49,10 @@ namespace Admin
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .AddCore()
                 .Configure<InfrastructureConfig>(options => _configuration.GetSection(nameof(Infrastructure)).Bind(options))
-                .Configure<FrameworkConfig>(options => _configuration.GetSection(nameof(Framework)).Bind(options))
+                .Configure<ApplicationCoreConfig>(options => _configuration.GetSection("ApplicationCore").Bind(options))
                 .Configure<AppConfig>(options => _configuration.GetSection(nameof(AppConfig)).Bind(options))
+                .AddCore(sp => sp.GetService<IOptions<ApplicationCoreConfig>>().Value)
                 .AddInfrastructure(sp => sp.GetService<IOptions<InfrastructureConfig>>().Value)
                 .AddDbContext(_configuration.GetConnectionString("DefaultConnection"));
 

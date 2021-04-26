@@ -49,7 +49,6 @@ namespace Admin.Services
                 IdConteudoChave = model.IdConteudo,
                 Status = model.Status,
                 Descricao = model.Descricao,
-                DescricaoComplemento = model.DescricaoComplemento,
                 Titulo = model.Titulo,
                 Assunto = model.Assunto,
                 Anexos = anexos.Select(c => new ConteudoAnexoViewModel

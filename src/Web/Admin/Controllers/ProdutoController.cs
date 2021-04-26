@@ -19,15 +19,15 @@ namespace Admin.Controllers
         private ProdutoServiceWeb ProdutoServiceWeb => GetService<ProdutoServiceWeb>();
         private ProdutoService ProdutoService => GetService<ProdutoService>();
 
-        [AuthUsuarioFilter(ProdutoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Leitura)]
+        [AuthUsuarioFilter(ProdutoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Permitir)]
         public IActionResult Index(ProdutoFiltroViewModel filtro) => View(ProdutoServiceWeb.Listar(filtro));
 
-        [AuthUsuarioFilter(ProdutoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Leitura)]
+        [AuthUsuarioFilter(ProdutoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Permitir)]
         public IActionResult Form(int id) => View(ProdutoServiceWeb.Recuperar(id));
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [AuthUsuarioFilter(ProdutoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Escrever)]
+        [AuthUsuarioFilter(ProdutoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Permitir)]
         public async Task<IActionResult> Form(ProdutoViewModel vm)
         {
             try
@@ -51,7 +51,7 @@ namespace Admin.Controllers
                     Titulo = vm.Titulo.GetFirsts(1000),
                     Codigo = vm.Codigo.GetFirsts(2000),
                     DescricaoLonga = vm.DescricaoLonga,
-                    Status = vm.Status ?? ApplicationCore.Enuns.EStatus.Pendente,
+                    Status = vm.Status ?? throw new InvalidOperationException("Status NULL"),
                     CategoriaProduto = vm.CategoriaProduto ?? ApplicationCore.Enuns.ECategoriaProduto.ProdutoFisico,
                 };
 
@@ -83,7 +83,7 @@ namespace Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [AuthUsuarioFilter(ProdutoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Excluir)]
+        [AuthUsuarioFilter(ProdutoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Permitir)]
         public IActionResult Excluir(int id)
         {
             try
@@ -110,7 +110,7 @@ namespace Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [AuthUsuarioFilter(ProdutoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Escrever)]
+        [AuthUsuarioFilter(ProdutoPermissoes.Gerenciar, AuthPermissaoTipoAcao.Permitir)]
         public async Task<IActionResult> EnviarNps(ProdutoNpsViewModel vm)
         {
             try

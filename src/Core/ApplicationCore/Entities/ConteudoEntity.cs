@@ -8,7 +8,6 @@ namespace ApplicationCore.Entities
         public string Titulo { get; set; }
         public string Descricao { get; set; }
         public string Assunto { get; set; }
-        public string DescricaoComplemento { get; set; }
         public int IdConteudo { get; set; }
         public EConteudoChave ConteudoChave => (EConteudoChave) IdConteudo;
 
