@@ -1,20 +1,17 @@
 ﻿using Admin.ViewModels.Usuario;
-using ApplicationCore.Entities;
 using ApplicationCore.Respositories.ReadOnly;
+using Framework.Extenders;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Framework.Extenders;
 
 namespace Admin.Services
 {
     public class UsuarioServiceWeb : BaseServiceWeb
     {
         private IUsuarioReadOnlyRepository UsuarioReadOnlyRepository => GetService<IUsuarioReadOnlyRepository>();
-        private IMemoryCache MemoryCache => GetService<IMemoryCache>();
 
         public UsuarioServiceWeb(IServiceProvider serviceProvider)
             : base(serviceProvider)
@@ -35,26 +32,6 @@ namespace Admin.Services
                 IdGrupoUsuario = model.IdGrupoUsuario,
                 Imagem = model.Imagem
             };
-        }
-
-        public async Task<string> RecuperarImagemAsync(int id)
-        {
-            var cache = await MemoryCache.GetOrCreateAsync($"ImagemUsuario|{id}", entry =>
-            {
-                entry.SetSlidingExpiration(TimeSpan.FromDays(30));
-                UsuarioEntity model = null;
-                try
-                {
-                    model = UsuarioReadOnlyRepository.Recuperar(id);
-                }
-                catch (Exception ex)
-                {
-                    AppLogger.Exception(ex);
-                }
-                return Task.FromResult(model?.Imagem);
-            });
-
-            return cache;
         }
 
         public UsuarioFiltroViewModel Listar(UsuarioFiltroViewModel filtro)

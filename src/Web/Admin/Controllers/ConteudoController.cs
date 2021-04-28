@@ -61,13 +61,11 @@ namespace Admin.Controllers
             catch (MensagemException ex)
             {
                 ExibirMensagemErro(ex);
-                AppLogger.Exception(ex);
                 return View(vm);
             }
             catch (Exception ex)
             {
                 ExibirMensagemErro(MensagemResource.Erro);
-                AppLogger.Exception(ex);
                 return RedirectToAction(nameof(Form));
             }
         }
@@ -95,12 +93,10 @@ namespace Admin.Controllers
             }
             catch (MensagemException ex)
             {
-                AppLogger.Exception(ex);
                 return BadRequest(ex.GetMessages());
             }
             catch (Exception ex)
             {
-                AppLogger.Exception(ex);
                 return BadRequest(MensagemResource.Erro);
             }
         }

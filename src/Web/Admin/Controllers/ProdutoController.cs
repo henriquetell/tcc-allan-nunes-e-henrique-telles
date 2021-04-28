@@ -48,8 +48,8 @@ namespace Admin.Controllers
                 {
                     Id = vm.Id,
                     IdConteudo = vm.IdConteudo ?? throw new InvalidOperationException("IdConteudo NULL"),
-                    Titulo = vm.Titulo.GetFirsts(1000),
-                    Codigo = vm.Codigo.GetFirsts(2000),
+                    Titulo = vm.Titulo,
+                    Codigo = vm.Codigo,
                     DescricaoLonga = vm.DescricaoLonga,
                     Status = vm.Status ?? throw new InvalidOperationException("Status NULL"),
                     CategoriaProduto = vm.CategoriaProduto ?? ApplicationCore.Enuns.ECategoriaProduto.ProdutoFisico,
@@ -70,12 +70,10 @@ namespace Admin.Controllers
             catch (MensagemException ex)
             {
                 ExibirMensagemErro(ex);
-                AppLogger.Exception(ex);
             }
             catch (Exception ex)
             {
                 ExibirMensagemErro(MensagemResource.Erro);
-                AppLogger.Exception(ex);
             }
 
             return View(vm);
@@ -134,19 +132,17 @@ namespace Admin.Controllers
                 await ProdutoService.EnviarNps(vm.IdProduto.Value, vm.Email, vm.DataLimite);
 
                 ExibirMensagemSucesso(MensagemResource.Sucesso);
-
-                return RedirectToAction(nameof(Form), new { id = vm.IdProduto });
             }
             catch (MensagemException ex)
             {
-                AppLogger.Exception(ex);
-                return BadRequest(ex.GetMessages());
+                ExibirMensagemErro(ex.GetMessages());
             }
             catch (Exception ex)
             {
-                AppLogger.Exception(ex);
-                return BadRequest(MensagemResource.Erro);
+                ExibirMensagemErro(MensagemResource.Erro);
             }
+
+            return RedirectToAction(nameof(Form), new { id = vm.IdProduto });
         }
     }
 }

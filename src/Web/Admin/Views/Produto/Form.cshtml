@@ -46,7 +46,7 @@
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <label asp-for="Titulo"></label>
-                                            <input asp-for="Titulo" class="form-control" asp-placeholder="" maxlength="1000" />
+                                            <input asp-for="Titulo" class="form-control"  maxlength="1000" />
                                             <span asp-validation-for="Titulo" class="text-danger small"></span>
                                         </div>
                                     </div>
@@ -63,7 +63,7 @@
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <label asp-for="Codigo"></label>
-                                            <input asp-for="Codigo" class="form-control" asp-placeholder="" maxlength="200" />
+                                            <input asp-for="Codigo" class="form-control"  maxlength="200" />
                                             <span asp-validation-for="Codigo" class="text-danger small"></span>
                                         </div>
                                     </div>
@@ -99,6 +99,11 @@
                                 <div class="col-md-3">
                                     <div class="ibox-content text-center">
                                         <img alt="image" class="rounded-circle" src="@CloudStorage.RecuperarImagemUrl(Model.ImagemUrl)" width="200">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group text-center">
+                                        @Model.TotalAvaliacao.CriarBadgeAvaliacaoNps()
                                     </div>
                                 </div>
                             }

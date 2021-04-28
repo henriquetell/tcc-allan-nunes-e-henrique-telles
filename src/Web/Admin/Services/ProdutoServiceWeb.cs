@@ -37,7 +37,9 @@ namespace Admin.Services
                 Id = model.Id,
                 Titulo = model.Titulo,
                 Status = model.Status,
-                ImagemUrl = model.Imagem
+                ImagemUrl = model.Imagem,
+                TotalDetratores = model.TotalDetratores,
+                TotalPromotores = model.TotalPromotores
             }).ToList();
 
             return filtro;

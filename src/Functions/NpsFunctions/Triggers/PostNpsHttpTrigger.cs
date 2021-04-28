@@ -1,3 +1,4 @@
+using ApplicationCore.Interfaces.CloudServices.CloudQueue;
 using ApplicationCore.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,17 +13,18 @@ using System.Threading.Tasks;
 
 namespace NpsFunctions.Triggers
 {
-    public class PostNpsTrigger
+    public class PostNpsHttpTrigger
     {
-        private readonly ILogger<GetNpsTrigger> _log;
+        private readonly ILogger<GetNpsHttpTrigger> _log;
         private readonly ProdutoService _produtoService;
-        public PostNpsTrigger(ILogger<GetNpsTrigger> log, ProdutoService produtoService)
+     
+        public PostNpsHttpTrigger(ILogger<GetNpsHttpTrigger> log, ProdutoService produtoService)
         {
             _log = log;
             _produtoService = produtoService;
 
         }
-        [FunctionName(nameof(PostNpsTrigger))]
+        [FunctionName(nameof(PostNpsHttpTrigger))]
         public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "salvar-nps/produto/{idProduto:int?}/nps/{id:guid?}")] HttpRequest req,
             int? idProduto,
@@ -39,7 +41,7 @@ namespace NpsFunctions.Triggers
             var requestBody = await request.ReadToEndAsync();
             var payload = JsonConvert.DeserializeObject<SalvarNpsCommand>(requestBody);
 
-            _produtoService.SalvarNps(id.Value, payload.Nota, payload.Comentario);
+            await _produtoService.SalvarNps(id.Value, payload.Nota.Value, payload.Comentario);
 
             return new OkObjectResult(null);
         }

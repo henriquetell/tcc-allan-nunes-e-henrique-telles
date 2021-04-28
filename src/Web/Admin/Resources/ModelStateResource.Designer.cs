@@ -88,24 +88,6 @@ namespace Admin.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A quantidade deve ser de 1 até 12 parcelas.
-        /// </summary>
-        public static string RangeParcelamentoProduto {
-            get {
-                return ResourceManager.GetString("RangeParcelamentoProduto", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to O valor deve ser de 1 até 99..
-        /// </summary>
-        public static string RangeValorDescontoCupom {
-            get {
-                return ResourceManager.GetString("RangeValorDescontoCupom", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to É obrigatório informar uma descrição para a emissão do relatório!.
         /// </summary>
         public static string RelatorioDescricaoObrigatorio {

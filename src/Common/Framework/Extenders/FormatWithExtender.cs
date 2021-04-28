@@ -10,15 +10,6 @@ namespace Framework.Extenders
 {
     public static class FormatWithExtender
     {
-
-        public static string FormatWith(this string input, string jsonSource,
-            IFormatProvider provider = null)
-        {
-            var jObjectSource = JObject.Parse(jsonSource);
-
-            return FormatWith(input, jObjectSource, provider);
-        }
-
         public static string FormatWith(this string input, object source,
             IFormatProvider provider = null)
         {

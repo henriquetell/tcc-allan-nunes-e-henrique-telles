@@ -61,24 +61,6 @@ namespace Admin.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adquirente Código de Retorno.
-        /// </summary>
-        public static string AdquirenteCodigoRetorno {
-            get {
-                return ResourceManager.GetString("AdquirenteCodigoRetorno", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Adquirente Mensagem.
-        /// </summary>
-        public static string AdquirenteMensagem {
-            get {
-                return ResourceManager.GetString("AdquirenteMensagem", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Alterar a senha.
         /// </summary>
         public static string AlterarSenha {
@@ -97,101 +79,11 @@ namespace Admin.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bairro.
-        /// </summary>
-        public static string Bairro {
-            get {
-                return ResourceManager.GetString("Bairro", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tel. Celular.
-        /// </summary>
-        public static string Celular {
-            get {
-                return ResourceManager.GetString("Celular", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cidade.
-        /// </summary>
-        public static string Cidade {
-            get {
-                return ResourceManager.GetString("Cidade", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Código.
         /// </summary>
         public static string Codigo {
             get {
                 return ResourceManager.GetString("Codigo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Código da Autorização.
-        /// </summary>
-        public static string CodigoAutorizacao {
-            get {
-                return ResourceManager.GetString("CodigoAutorizacao", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Código do Faturamento.
-        /// </summary>
-        public static string CodigoFaturamento {
-            get {
-                return ResourceManager.GetString("CodigoFaturamento", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Código Pagamento.
-        /// </summary>
-        public static string CodigoPagamento {
-            get {
-                return ResourceManager.GetString("CodigoPagamento", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Código Retorno Adquirente.
-        /// </summary>
-        public static string CodigoRetornoAdquirenciaEstorno {
-            get {
-                return ResourceManager.GetString("CodigoRetornoAdquirenciaEstorno", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Código Retorno Provedor.
-        /// </summary>
-        public static string CodigoRetornoProvedor {
-            get {
-                return ResourceManager.GetString("CodigoRetornoProvedor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Código Retorno Provedor.
-        /// </summary>
-        public static string CodigoRetornoProvedorEstorno {
-            get {
-                return ResourceManager.GetString("CodigoRetornoProvedorEstorno", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Complemento.
-        /// </summary>
-        public static string Complemento {
-            get {
-                return ResourceManager.GetString("Complemento", resourceCulture);
             }
         }
         
@@ -214,47 +106,11 @@ namespace Admin.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Data da Cobrança.
-        /// </summary>
-        public static string DataCobranca {
-            get {
-                return ResourceManager.GetString("DataCobranca", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Data da Conclusão.
-        /// </summary>
-        public static string DataConclusao {
-            get {
-                return ResourceManager.GetString("DataConclusao", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Data de Criação.
         /// </summary>
         public static string DataCriacao {
             get {
                 return ResourceManager.GetString("DataCriacao", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Data Envio E-mail Voucher.
-        /// </summary>
-        public static string DataEnvioEmail {
-            get {
-                return ResourceManager.GetString("DataEnvioEmail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Data de Estorno.
-        /// </summary>
-        public static string DataEstorno {
-            get {
-                return ResourceManager.GetString("DataEstorno", resourceCulture);
             }
         }
         
@@ -304,42 +160,6 @@ namespace Admin.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Data de Nascimento.
-        /// </summary>
-        public static string DataNascimento {
-            get {
-                return ResourceManager.GetString("DataNascimento", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Data do Pagamento.
-        /// </summary>
-        public static string DataPagamento {
-            get {
-                return ResourceManager.GetString("DataPagamento", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Data PagSeguro.
-        /// </summary>
-        public static string DataPagSeguro {
-            get {
-                return ResourceManager.GetString("DataPagSeguro", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Data de Validade.
-        /// </summary>
-        public static string DataValidade {
-            get {
-                return ResourceManager.GetString("DataValidade", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Descrição.
         /// </summary>
         public static string Descricao {
@@ -376,119 +196,11 @@ namespace Admin.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to CPF Titular do Cartão.
-        /// </summary>
-        public static string DocumentoTitularCartao {
-            get {
-                return ResourceManager.GetString("DocumentoTitularCartao", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to E-mail.
         /// </summary>
         public static string Email {
             get {
                 return ResourceManager.GetString("Email", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to E-mail de cancelamento.
-        /// </summary>
-        public static string EmailCancelamento {
-            get {
-                return ResourceManager.GetString("EmailCancelamento", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to E-mail de Compra.
-        /// </summary>
-        public static string EmailCompraSucesso {
-            get {
-                return ResourceManager.GetString("EmailCompraSucesso", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to E-mail de confirmação.
-        /// </summary>
-        public static string EmailConfirmacao {
-            get {
-                return ResourceManager.GetString("EmailConfirmacao", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to E-mail de estorno.
-        /// </summary>
-        public static string EmailEstorno {
-            get {
-                return ResourceManager.GetString("EmailEstorno", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to E-mail de pagamento com erro.
-        /// </summary>
-        public static string EmailPagamentoErro {
-            get {
-                return ResourceManager.GetString("EmailPagamentoErro", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to E-mail de pagamento com sucesso.
-        /// </summary>
-        public static string EmailPagamentoSucesso {
-            get {
-                return ResourceManager.GetString("EmailPagamentoSucesso", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to E-mail Pessoal.
-        /// </summary>
-        public static string EmailPessoal {
-            get {
-                return ResourceManager.GetString("EmailPessoal", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to E-mail Secundário.
-        /// </summary>
-        public static string EmailSecundario {
-            get {
-                return ResourceManager.GetString("EmailSecundario", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to E-mail.
-        /// </summary>
-        public static string EmailTeste {
-            get {
-                return ResourceManager.GetString("EmailTeste", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Emissão.
-        /// </summary>
-        public static string Emissao {
-            get {
-                return ResourceManager.GetString("Emissao", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Erro.
-        /// </summary>
-        public static string ErroEstorno {
-            get {
-                return ResourceManager.GetString("ErroEstorno", resourceCulture);
             }
         }
         
@@ -529,155 +241,11 @@ namespace Admin.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Município.
-        /// </summary>
-        public static string IdMunicipio {
-            get {
-                return ResourceManager.GetString("IdMunicipio", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Braspag Transaction ID.
-        /// </summary>
-        public static string IdPagamento {
-            get {
-                return ResourceManager.GetString("IdPagamento", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Parceiro.
-        /// </summary>
-        public static string IdParceiro {
-            get {
-                return ResourceManager.GetString("IdParceiro", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Nº Pedido.
-        /// </summary>
-        public static string IdPedido {
-            get {
-                return ResourceManager.GetString("IdPedido", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Nº Pedido Cliente.
-        /// </summary>
-        public static string IdPedidoCliente {
-            get {
-                return ResourceManager.GetString("IdPedidoCliente", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Pedido Item.
-        /// </summary>
-        public static string IdPedidoItem {
-            get {
-                return ResourceManager.GetString("IdPedidoItem", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Produto.
-        /// </summary>
-        public static string IdProduto {
-            get {
-                return ResourceManager.GetString("IdProduto", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SKU.
-        /// </summary>
-        public static string IdProdutoSku {
-            get {
-                return ResourceManager.GetString("IdProdutoSku", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SKU.
-        /// </summary>
-        public static string IdSku {
-            get {
-                return ResourceManager.GetString("IdSku", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Lançamento.
         /// </summary>
         public static string Lancamento {
             get {
                 return ResourceManager.GetString("Lancamento", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Logradouro.
-        /// </summary>
-        public static string Logradouro {
-            get {
-                return ResourceManager.GetString("Logradouro", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Mensagem da Solicitação.
-        /// </summary>
-        public static string Mensagem {
-            get {
-                return ResourceManager.GetString("Mensagem", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Mensagem Adquirente.
-        /// </summary>
-        public static string MensagemRetornoAdquirenciaEstorno {
-            get {
-                return ResourceManager.GetString("MensagemRetornoAdquirenciaEstorno", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Mensagem Retorno Provedor.
-        /// </summary>
-        public static string MensagemRetornoProvedor {
-            get {
-                return ResourceManager.GetString("MensagemRetornoProvedor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Mensagem Retorno Provedor.
-        /// </summary>
-        public static string MensagemRetornoProvedorEstorno {
-            get {
-                return ResourceManager.GetString("MensagemRetornoProvedorEstorno", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Movimentar Estoque.
-        /// </summary>
-        public static string MovimentarEstoque {
-            get {
-                return ResourceManager.GetString("MovimentarEstoque", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Município.
-        /// </summary>
-        public static string Municipio {
-            get {
-                return ResourceManager.GetString("Municipio", resourceCulture);
             }
         }
         
@@ -691,29 +259,11 @@ namespace Admin.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nome.
-        /// </summary>
-        public static string NomePortadorCartao {
-            get {
-                return ResourceManager.GetString("NomePortadorCartao", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Nova senha.
         /// </summary>
         public static string NovaSenha {
             get {
                 return ResourceManager.GetString("NovaSenha", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to NSU.
-        /// </summary>
-        public static string NSU {
-            get {
-                return ResourceManager.GetString("NSU", resourceCulture);
             }
         }
         
@@ -727,24 +277,6 @@ namespace Admin.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Nº Cartão.
-        /// </summary>
-        public static string NumeroCartaoMascarado {
-            get {
-                return ResourceManager.GetString("NumeroCartaoMascarado", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to N° Comprovante.
-        /// </summary>
-        public static string NumeroComprovante {
-            get {
-                return ResourceManager.GetString("NumeroComprovante", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Observação.
         /// </summary>
         public static string Observacao {
@@ -754,164 +286,11 @@ namespace Admin.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Órgão Expedidor.
-        /// </summary>
-        public static string OrgaoExpedidor {
-            get {
-                return ResourceManager.GetString("OrgaoExpedidor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to UF Órgão Expedidor.
-        /// </summary>
-        public static string OrgaoExpedidorUf {
-            get {
-                return ResourceManager.GetString("OrgaoExpedidorUf", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Descrição da Taxa de Cancelamento.
-        /// </summary>
-        public static string PedidoEstornoViewModel_Descricao {
-            get {
-                return ResourceManager.GetString("PedidoEstornoViewModel_Descricao", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Produto.
-        /// </summary>
-        public static string PedidoEstornoViewModel_IdPedidoItem {
-            get {
-                return ResourceManager.GetString("PedidoEstornoViewModel_IdPedidoItem", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Valor Taxa de Cancelamento.
-        /// </summary>
-        public static string PedidoEstornoViewModel_Valor {
-            get {
-                return ResourceManager.GetString("PedidoEstornoViewModel_Valor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Pedido ID.
-        /// </summary>
-        public static string PedidoId {
-            get {
-                return ResourceManager.GetString("PedidoId", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Preço.
-        /// </summary>
-        public static string Preco {
-            get {
-                return ResourceManager.GetString("Preco", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Preço De.
-        /// </summary>
-        public static string PrecoDe {
-            get {
-                return ResourceManager.GetString("PrecoDe", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Preço Por.
-        /// </summary>
-        public static string PrecoPor {
-            get {
-                return ResourceManager.GetString("PrecoPor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Prévia.
-        /// </summary>
-        public static string Previa {
-            get {
-                return ResourceManager.GetString("Previa", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Profissão.
-        /// </summary>
-        public static string Profissao {
-            get {
-                return ResourceManager.GetString("Profissao", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Quantidade.
         /// </summary>
         public static string Quantidade {
             get {
                 return ResourceManager.GetString("Quantidade", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Quantidade Disponível.
-        /// </summary>
-        public static string QuantidadeDisponivel {
-            get {
-                return ResourceManager.GetString("QuantidadeDisponivel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Quantidade Inicial.
-        /// </summary>
-        public static string QuantidadeInicial {
-            get {
-                return ResourceManager.GetString("QuantidadeInicial", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Quantidade Max. Parcelas.
-        /// </summary>
-        public static string QuantidadeMaximaParcela {
-            get {
-                return ResourceManager.GetString("QuantidadeMaximaParcela", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Quant. Parcelas.
-        /// </summary>
-        public static string QuantidadeMaximaParcelamento {
-            get {
-                return ResourceManager.GetString("QuantidadeMaximaParcelamento", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Quant. Parcelas.
-        /// </summary>
-        public static string QuantidadeParcela {
-            get {
-                return ResourceManager.GetString("QuantidadeParcela", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Referência.
-        /// </summary>
-        public static string Referencia {
-            get {
-                return ResourceManager.GetString("Referencia", resourceCulture);
             }
         }
         
@@ -961,128 +340,11 @@ namespace Admin.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Status Estorno.
-        /// </summary>
-        public static string StatusEstorno {
-            get {
-                return ResourceManager.GetString("StatusEstorno", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Status PagSeguro.
-        /// </summary>
-        public static string StatusPagSeguro {
-            get {
-                return ResourceManager.GetString("StatusPagSeguro", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Status do Pedido.
-        /// </summary>
-        public static string StatusPedido {
-            get {
-                return ResourceManager.GetString("StatusPedido", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Status Captura.
-        /// </summary>
-        public static string StatusTransacaoCaptura {
-            get {
-                return ResourceManager.GetString("StatusTransacaoCaptura", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Taxa de Cancelamento.
-        /// </summary>
-        public static string TaxaCancelamento {
-            get {
-                return ResourceManager.GetString("TaxaCancelamento", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tel. Comercial.
-        /// </summary>
-        public static string TelefoneComercial {
-            get {
-                return ResourceManager.GetString("TelefoneComercial", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tel. Residencial.
-        /// </summary>
-        public static string TelefoneResidencial {
-            get {
-                return ResourceManager.GetString("TelefoneResidencial", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to TEL. Titular do Cartão.
-        /// </summary>
-        public static string TelefoneTitularCartao {
-            get {
-                return ResourceManager.GetString("TelefoneTitularCartao", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tipo do Documento.
-        /// </summary>
-        public static string TipoDocumento {
-            get {
-                return ResourceManager.GetString("TipoDocumento", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tipo de Faturamento.
-        /// </summary>
-        public static string TipoFaturamento {
-            get {
-                return ResourceManager.GetString("TipoFaturamento", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tipo do Pagamento.
-        /// </summary>
-        public static string TipoPagamento {
-            get {
-                return ResourceManager.GetString("TipoPagamento", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Tipo.
-        /// </summary>
-        public static string TipoSku {
-            get {
-                return ResourceManager.GetString("TipoSku", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Título.
         /// </summary>
         public static string Titulo {
             get {
                 return ResourceManager.GetString("Titulo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to UF.
-        /// </summary>
-        public static string Uf {
-            get {
-                return ResourceManager.GetString("Uf", resourceCulture);
             }
         }
         
@@ -1096,119 +358,11 @@ namespace Admin.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Validade.
-        /// </summary>
-        public static string Validade {
-            get {
-                return ResourceManager.GetString("Validade", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Valor.
         /// </summary>
         public static string Valor {
             get {
                 return ResourceManager.GetString("Valor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Valor De.
-        /// </summary>
-        public static string ValorDe {
-            get {
-                return ResourceManager.GetString("ValorDe", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Valor do Estorno.
-        /// </summary>
-        public static string ValorEstorno {
-            get {
-                return ResourceManager.GetString("ValorEstorno", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Valor Frete.
-        /// </summary>
-        public static string ValorFrete {
-            get {
-                return ResourceManager.GetString("ValorFrete", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Valor Residual.
-        /// </summary>
-        public static string ValorMaximoEstorno {
-            get {
-                return ResourceManager.GetString("ValorMaximoEstorno", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Valor Pagamento.
-        /// </summary>
-        public static string ValorPagamento {
-            get {
-                return ResourceManager.GetString("ValorPagamento", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Valor Parcela.
-        /// </summary>
-        public static string ValorParcela {
-            get {
-                return ResourceManager.GetString("ValorParcela", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Valor Por.
-        /// </summary>
-        public static string ValorPor {
-            get {
-                return ResourceManager.GetString("ValorPor", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Valor Taxa.
-        /// </summary>
-        public static string ValorTaxa {
-            get {
-                return ResourceManager.GetString("ValorTaxa", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Total.
-        /// </summary>
-        public static string ValorTotal {
-            get {
-                return ResourceManager.GetString("ValorTotal", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Total Itens.
-        /// </summary>
-        public static string ValorTotalItens {
-            get {
-                return ResourceManager.GetString("ValorTotalItens", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Total Taxas.
-        /// </summary>
-        public static string ValorTotalTaxas {
-            get {
-                return ResourceManager.GetString("ValorTotalTaxas", resourceCulture);
             }
         }
     }

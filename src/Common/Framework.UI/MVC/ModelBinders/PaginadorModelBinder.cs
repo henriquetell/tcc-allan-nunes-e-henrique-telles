@@ -1,6 +1,7 @@
 ﻿using Framework.Extenders;
 using Framework.UI.MVC.Models;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System;
 using System.Threading.Tasks;
 
 namespace Framework.UI.MVC.ModelBinders
@@ -30,7 +31,7 @@ namespace Framework.UI.MVC.ModelBinders
             if (value == null)
                 return null;
 
-            return value.ToInt32();
+            return Convert.ToInt32(value);
         }
 
         public IModelBinder GetBinder(ModelBinderProviderContext context) => this;

@@ -93,6 +93,8 @@ namespace Infrastructure.Migrations
                     IdConteudo = table.Column<int>(nullable: false),
                     CategoriaProduto = table.Column<int>(nullable: false),
                     Status = table.Column<byte>(nullable: false),
+                    TotalPromotores = table.Column<int>(nullable: true),
+                    TotalDetratores = table.Column<int>(nullable: true),
                     DataAtualizacao = table.Column<DateTime>(nullable: true),
                     DataCriacao = table.Column<DateTime>(nullable: false)
                 },

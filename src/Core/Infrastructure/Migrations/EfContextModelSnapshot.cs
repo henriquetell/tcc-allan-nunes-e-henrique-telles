@@ -237,6 +237,12 @@ namespace Infrastructure.Migrations
                         .HasColumnType("varchar(1000)")
                         .HasMaxLength(1000);
 
+                    b.Property<int?>("TotalDetratores")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TotalPromotores")
+                        .HasColumnType("int");
+
                     b.HasKey("Id")
                         .HasName("PK_Produto");
 

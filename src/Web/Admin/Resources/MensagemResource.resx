@@ -120,23 +120,8 @@
   <data name="ArquivoNaoEnviado" xml:space="preserve">
     <value>Arquivo não enviado!</value>
   </data>
-  <data name="BemVindo" xml:space="preserve">
-    <value>Bem-vindo {0}!</value>
-  </data>
-  <data name="CepInvalido" xml:space="preserve">
-    <value>O formato do CEP é inválido.</value>
-  </data>
-  <data name="DadosViagemSucesso" xml:space="preserve">
-    <value>Arquivo importado com sucesso!</value>
-  </data>
-  <data name="DadosViagemValidado" xml:space="preserve">
-    <value>Arquivo validado com sucesso!</value>
-  </data>
   <data name="DataLimiteNpsInvalida" xml:space="preserve">
     <value>Informe uma data valida.</value>
-  </data>
-  <data name="DataValidadeInvalida" xml:space="preserve">
-    <value>Data de validade inválida!</value>
   </data>
   <data name="DesativarSucesso" xml:space="preserve">
     <value>O registro foi desativado com sucesso!</value>
@@ -147,23 +132,11 @@
   <data name="EmailSucesso" xml:space="preserve">
     <value>O e-mail foi enviado com sucesso!</value>
   </data>
-  <data name="EmailTesteInvalido" xml:space="preserve">
-    <value>E-mail teste inválido!</value>
-  </data>
-  <data name="EmissaoRelatorioSucesso" xml:space="preserve">
-    <value>O relatório foi emitido com sucesso!</value>
-  </data>
   <data name="Erro" xml:space="preserve">
     <value>Não foi possível processar sua solicitação, ocorreu um erro!</value>
   </data>
   <data name="ErroRelacionamento" xml:space="preserve">
     <value>Não foi possível processar sua solicitação, existem registros vinculados a este!</value>
-  </data>
-  <data name="EstornoEfetuadoSucesso" xml:space="preserve">
-    <value>O estorno foi efetuado com sucesso!</value>
-  </data>
-  <data name="ExcluirRelatorioSucesso" xml:space="preserve">
-    <value>O relatório foi excluído com sucesso!</value>
   </data>
   <data name="ExcluirSucesso" xml:space="preserve">
     <value>O registro foi excluído com sucesso!</value>
@@ -177,17 +150,8 @@
   <data name="ModelStateInvalido" xml:space="preserve">
     <value>Por favor, preencha o formulário corretamente!</value>
   </data>
-  <data name="MovimentarEstoqueErro" xml:space="preserve">
-    <value>Não foi possível movimentar o estoque. Tente novamente!</value>
-  </data>
-  <data name="MovimentarEstoqueSucesso" xml:space="preserve">
-    <value>O Estoque foi movimentado com sucesso!</value>
-  </data>
   <data name="NenhumRegistroSelecionado" xml:space="preserve">
     <value>Nenhum registro foi selecionado!</value>
-  </data>
-  <data name="PrazoPreenchimentoSucesso" xml:space="preserve">
-    <value>O prazo para preenchimento do formulário foi alterado com sucesso!</value>
   </data>
   <data name="RecuperarSenhaSucesso" xml:space="preserve">
     <value>Uma nova senha foi envidada para o seu e-mail. Obrigado!</value>
@@ -195,13 +159,7 @@
   <data name="SenhaAlteradaSucesso" xml:space="preserve">
     <value>Sua senha foi alterada com sucesso!</value>
   </data>
-  <data name="SolicitacaoEmissaoRelatorioSucesso" xml:space="preserve">
-    <value>O seu relatório foi enviado para emissão, aguarde até o termino do processo!</value>
-  </data>
   <data name="Sucesso" xml:space="preserve">
     <value>Registro salvo com sucesso!</value>
-  </data>
-  <data name="SucessoEstorno" xml:space="preserve">
-    <value>O estorno foi realizado com sucesso!</value>
   </data>
 </root>

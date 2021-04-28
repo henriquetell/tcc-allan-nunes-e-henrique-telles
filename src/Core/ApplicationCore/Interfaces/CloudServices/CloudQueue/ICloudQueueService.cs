@@ -5,6 +5,6 @@ namespace ApplicationCore.Interfaces.CloudServices.CloudQueue
 {
     public interface ICloudQueueService
     {
-        Task SendAsync(object item, CloudQueueNames queueName, TimeSpan? initialVisibilityDelay = null);
+        Task SendAsync(object item, string queueName, TimeSpan? initialVisibilityDelay = null);
     }
 }

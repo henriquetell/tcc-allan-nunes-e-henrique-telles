@@ -9,19 +9,19 @@ using System;
 
 namespace NpsFunctions.Triggers
 {
-    public class GetNpsTrigger
+    public class GetNpsHttpTrigger
     {
-        private readonly ILogger<GetNpsTrigger> _log;
+        private readonly ILogger<GetNpsHttpTrigger> _log;
         private readonly ProdutoService _produtoService;
         private readonly ICloudStorage _cloudStorage;
-        public GetNpsTrigger(ILogger<GetNpsTrigger> log, ProdutoService produtoService, ICloudStorage cloudStorage)
+        public GetNpsHttpTrigger(ILogger<GetNpsHttpTrigger> log, ProdutoService produtoService, ICloudStorage cloudStorage)
         {
             _log = log;
             _produtoService = produtoService;
             _cloudStorage = cloudStorage;
         }
 
-        [FunctionName(nameof(GetNpsTrigger))]
+        [FunctionName(nameof(GetNpsHttpTrigger))]
         public IActionResult Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "recuperar-nps/produto/{idProduto:int?}/nps/{id:guid?}")] HttpRequest reg,
             int? idProduto,

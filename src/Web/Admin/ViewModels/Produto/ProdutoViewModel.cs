@@ -26,6 +26,12 @@ namespace Admin.ViewModels.Produto
         [Required(ErrorMessageResourceType = typeof(ModelStateResource), ErrorMessageResourceName = nameof(ModelStateResource.Obrigatorio))]
         public ECategoriaProduto? CategoriaProduto { get; set; }
 
+
+        public int? TotalDetratores { get; set; }
+        public int? TotalPromotores { get; set; }
+
+        public int TotalAvaliacao => ((TotalPromotores ?? 0) - (TotalPromotores ?? 0));
+
         public void Fill(ProdutoEntity model)
         {
             if (model == null)
@@ -39,6 +45,8 @@ namespace Admin.ViewModels.Produto
             DescricaoLonga = model.DescricaoLonga;
             Status = model.Status;
             CategoriaProduto = model.CategoriaProduto;
+            TotalPromotores = model.TotalPromotores;
+            TotalDetratores = model.TotalDetratores;
         }
     }
 }

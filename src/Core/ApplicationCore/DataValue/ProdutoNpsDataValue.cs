@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationCore.Enuns;
+using System;
 
 namespace ApplicationCore.DataValue
 {
@@ -11,6 +12,6 @@ namespace ApplicationCore.DataValue
         public DateTime? DataEnvio { get; set; }
         public DateTime? DataLimite { get; set; }
         public DateTime? DataResposta { get; set; }
-        public int? Nota { get; set; }
+        public ENotaNps? Nota { get; set; }
     }
 }

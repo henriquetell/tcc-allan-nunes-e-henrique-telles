@@ -70,56 +70,11 @@ namespace Admin.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bem-vindo {0}!.
-        /// </summary>
-        public static string BemVindo {
-            get {
-                return ResourceManager.GetString("BemVindo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to O formato do CEP é inválido..
-        /// </summary>
-        public static string CepInvalido {
-            get {
-                return ResourceManager.GetString("CepInvalido", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Arquivo importado com sucesso!.
-        /// </summary>
-        public static string DadosViagemSucesso {
-            get {
-                return ResourceManager.GetString("DadosViagemSucesso", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Arquivo validado com sucesso!.
-        /// </summary>
-        public static string DadosViagemValidado {
-            get {
-                return ResourceManager.GetString("DadosViagemValidado", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Informe uma data valida..
         /// </summary>
         public static string DataLimiteNpsInvalida {
             get {
                 return ResourceManager.GetString("DataLimiteNpsInvalida", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Data de validade inválida!.
-        /// </summary>
-        public static string DataValidadeInvalida {
-            get {
-                return ResourceManager.GetString("DataValidadeInvalida", resourceCulture);
             }
         }
         
@@ -151,24 +106,6 @@ namespace Admin.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to E-mail teste inválido!.
-        /// </summary>
-        public static string EmailTesteInvalido {
-            get {
-                return ResourceManager.GetString("EmailTesteInvalido", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to O relatório foi emitido com sucesso!.
-        /// </summary>
-        public static string EmissaoRelatorioSucesso {
-            get {
-                return ResourceManager.GetString("EmissaoRelatorioSucesso", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Não foi possível processar sua solicitação, ocorreu um erro!.
         /// </summary>
         public static string Erro {
@@ -183,24 +120,6 @@ namespace Admin.Resources {
         public static string ErroRelacionamento {
             get {
                 return ResourceManager.GetString("ErroRelacionamento", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to O estorno foi efetuado com sucesso!.
-        /// </summary>
-        public static string EstornoEfetuadoSucesso {
-            get {
-                return ResourceManager.GetString("EstornoEfetuadoSucesso", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to O relatório foi excluído com sucesso!.
-        /// </summary>
-        public static string ExcluirRelatorioSucesso {
-            get {
-                return ResourceManager.GetString("ExcluirRelatorioSucesso", resourceCulture);
             }
         }
         
@@ -241,38 +160,11 @@ namespace Admin.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Não foi possível movimentar o estoque. Tente novamente!.
-        /// </summary>
-        public static string MovimentarEstoqueErro {
-            get {
-                return ResourceManager.GetString("MovimentarEstoqueErro", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to O Estoque foi movimentado com sucesso!.
-        /// </summary>
-        public static string MovimentarEstoqueSucesso {
-            get {
-                return ResourceManager.GetString("MovimentarEstoqueSucesso", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Nenhum registro foi selecionado!.
         /// </summary>
         public static string NenhumRegistroSelecionado {
             get {
                 return ResourceManager.GetString("NenhumRegistroSelecionado", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to O prazo para preenchimento do formulário foi alterado com sucesso!.
-        /// </summary>
-        public static string PrazoPreenchimentoSucesso {
-            get {
-                return ResourceManager.GetString("PrazoPreenchimentoSucesso", resourceCulture);
             }
         }
         
@@ -295,29 +187,11 @@ namespace Admin.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to O seu relatório foi enviado para emissão, aguarde até o termino do processo!.
-        /// </summary>
-        public static string SolicitacaoEmissaoRelatorioSucesso {
-            get {
-                return ResourceManager.GetString("SolicitacaoEmissaoRelatorioSucesso", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Registro salvo com sucesso!.
         /// </summary>
         public static string Sucesso {
             get {
                 return ResourceManager.GetString("Sucesso", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to O estorno foi realizado com sucesso!.
-        /// </summary>
-        public static string SucessoEstorno {
-            get {
-                return ResourceManager.GetString("SucessoEstorno", resourceCulture);
             }
         }
     }

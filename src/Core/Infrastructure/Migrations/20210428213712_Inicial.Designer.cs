@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(EfContext))]
-    [Migration("20210426213725_Inicial")]
+    [Migration("20210428213712_Inicial")]
     partial class Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -238,6 +238,12 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("varchar(1000)")
                         .HasMaxLength(1000);
+
+                    b.Property<int?>("TotalDetratores")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("TotalPromotores")
+                        .HasColumnType("int");
 
                     b.HasKey("Id")
                         .HasName("PK_Produto");

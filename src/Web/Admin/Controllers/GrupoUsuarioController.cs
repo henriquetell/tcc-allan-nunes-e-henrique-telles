@@ -52,12 +52,10 @@ namespace Admin.Controllers
             catch (MensagemException ex)
             {
                 ExibirMensagemErro(ex);
-                AppLogger.Exception(ex);
             }
             catch (Exception ex)
             {
                 ExibirMensagemErro(MensagemResource.Erro);
-                AppLogger.Exception(ex);
             }
 
             return RedirectToAction(nameof(Form), new { vm?.Id });

@@ -20,6 +20,6 @@ namespace Framework.Extenders
 
 
         private static string NormalizadarNome(string nome) =>
-            Regex.Replace(nome.RemoveAcentuacao(), "\\s", "");
+            Regex.Replace(nome, "\\s", "");
     }
 }

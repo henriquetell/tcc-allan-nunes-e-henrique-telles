@@ -31,19 +31,15 @@ namespace Admin.Controllers
 
                 await AutenticarUsuarioAsync(new UsuarioAuthViewModel(model));
 
-                ExibirMensagemInformacao(MensagemResource.BemVindo.FormatText(model.Nome));
-
                 return RedirectToAction(nameof(Index), "Home");
             }
             catch (MensagemException ex)
             {
                 ExibirMensagemErro(ex);
-                AppLogger.Exception(ex);
             }
             catch (Exception ex)
             {
                 ExibirMensagemErro(MensagemResource.Erro);
-                AppLogger.Exception(ex);
             }
 
             return View(vm);
@@ -74,12 +70,10 @@ namespace Admin.Controllers
             catch (MensagemException ex)
             {
                 ExibirMensagemErro(ex);
-                AppLogger.Exception(ex);
             }
             catch (Exception ex)
             {
                 ExibirMensagemErro(MensagemResource.Erro);
-                AppLogger.Exception(ex);
             }
 
             if (!string.IsNullOrWhiteSpace(vm?.ReturnUrl))

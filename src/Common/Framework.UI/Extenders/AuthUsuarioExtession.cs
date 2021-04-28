@@ -41,17 +41,6 @@ namespace Framework.UI.Extenders
             return new AuthUsuario<TIdentificacao>(claims);
         }
 
-        public static AuthUsuario GetAuthUsuario(this HttpContext httpContext)
-        {
-            var claims = httpContext.User.Claims;
-            return new AuthUsuario(claims.Any());
-        }
-
-        public static int GetLastUsuario(this HttpContext httpContext)
-        {
-            int.TryParse(httpContext.Request.Cookies["asp-usuario"], out var idUsuario);
-            return idUsuario;
-        }
 
         public static Task DesautenticarAsync(this HttpContext httpContext) => httpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
     }

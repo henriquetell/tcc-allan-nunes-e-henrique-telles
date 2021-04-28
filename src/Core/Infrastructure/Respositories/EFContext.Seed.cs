@@ -1,8 +1,5 @@
 ﻿using ApplicationCore.Entities;
 using ApplicationCore.Enuns;
-using ApplicationCore.Extenders;
-using ApplicationCore.Interfaces.Logging;
-using Framework.Extenders;
 using Framework.Security.Authorization;
 using Framework.Security.Permissoes;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
@@ -16,16 +13,16 @@ namespace Infrastructure.Respositories
 {
     partial class EfContext
     {
-        public void Seed(IAppLogger appLogger)
+        public void Seed()
         {
             SeedPermissao();
-            SeedGrupoAcessoUsuarioAdmin(appLogger);
+            SeedGrupoAcessoUsuarioAdmin();
             SaveChanges();
         }
 
         #region SeedPermissao e SeedGrupoAcessoUsuarioAdmin
 
-        private void SeedGrupoAcessoUsuarioAdmin(IAppLogger appLogger)
+        private void SeedGrupoAcessoUsuarioAdmin()
         {
             var grupoAcesso = SeedEntity(new GrupoUsuarioEntity
             {
@@ -48,10 +45,6 @@ namespace Infrastructure.Respositories
                 Senha = Convert.ToBase64String(KeyDerivation.Pbkdf2("123456", salt, KeyDerivationPrf.HMACSHA1, 10000, 256 / 8))
             }, new[] { nameof(UsuarioEntity.Email) }, forcarAtualizacao: false, recuperarSeExistir: true);
 
-            appLogger
-                .WarningIf(usrAdmin?.Status == EStatus.Ativo, "Usuário Administrador encontrado com o status de ativo")
-                .InfoIf(usrAdmin?.Id == 0, "Usuário Administrador não encontrado, criando...");
-
             var permissoesAcoes = new[] {
                 GrupoUsuarioPermissoes.Permitir
             };
@@ -61,7 +54,7 @@ namespace Infrastructure.Respositories
                 SeedEntity(new GrupoUsuarioPermisaoAcaoEntity
                 {
                     GrupoUsuario = grupoAcesso,
-                    IdPermissaoAcao = permissao.Key.ToGuid()
+                    IdPermissaoAcao = new Guid(permissao.Key)
                 }, new[] { nameof(GrupoUsuarioPermisaoAcaoEntity.IdGrupoUsuario), nameof(GrupoUsuarioPermisaoAcaoEntity.IdPermissaoAcao) }, false);
             }
         }
@@ -72,14 +65,14 @@ namespace Infrastructure.Respositories
 
             SeedEntity(new PermissaoEntity
             {
-                Id = GrupoUsuarioPermissoes.Gerenciar.ToGuid(),
+                Id = new Guid(GrupoUsuarioPermissoes.Gerenciar),
                 Descricao = GrupoUsuarioPermissoes.Descricao,
                 NomeGrupo = GrupoUsuarioPermissoes.NomeGrupo
             }, false);
             SeedEntity(new PermissaoAcaoEntity
             {
-                IdPermissao = GrupoUsuarioPermissoes.Gerenciar.ToGuid(),
-                Id = GrupoUsuarioPermissoes.Permitir.Key.ToGuid(),
+                IdPermissao = new Guid(GrupoUsuarioPermissoes.Gerenciar),
+                Id = new Guid(GrupoUsuarioPermissoes.Permitir.Key),
                 TipoAcao = (int)AuthPermissaoTipoAcao.Permitir
             }, idsComparacao, false);
         }

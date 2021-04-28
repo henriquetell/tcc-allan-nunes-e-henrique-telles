@@ -65,8 +65,6 @@ namespace Admin.Controllers
             {
                 ExibirMensagemErro(MensagemResource.Erro);
 
-                AppLogger.Exception(ex);
-
                 return RedirectToAction(nameof(Form));
             }
         }
@@ -87,7 +85,6 @@ namespace Admin.Controllers
             }
             catch (Exception ex)
             {
-                AppLogger.Exception(ex);
                 return BadRequest();
             }
         }

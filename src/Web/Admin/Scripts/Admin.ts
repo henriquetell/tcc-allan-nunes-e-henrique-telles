@@ -31,14 +31,6 @@ class Admin {
             Dropzone.autoDiscover = false;
         }
 
-        const clip = new ClipboardJS("[data-clipboard-text]");
-        clip.on("success", e => {
-            toastr["success"]("Texto copiado com sucesso!");
-            e.clearSelection();
-        });
-        clip.on("error", e => {
-            toastr["error"]("Não foi possível copiar o texto!");
-        });
         if (toastr) {
             toastr.options.closeButton = true;
             toastr.options.debug = false;
@@ -140,23 +132,6 @@ class Admin {
             $("#imagemCropper").cropper("zoom", -0.1);
         });
 
-        $("#alterarImagemModal").on("show.bs.modal", () => {
-            $("#imagemCropper").cropper({
-                aspectRatio: 1,
-                viewMode: 1,
-                cropBoxResizable: false,
-                zoomOnWheel: false,
-                zoomOnTouch: false,
-                minContainerWidth: 254,
-                minCropBoxWidth: 250,
-                minCropBoxHeight: 250,
-                checkCrossOrigin: false
-            });
-        });
-
-        $("#alterarImagemModal").on("hidden.bs.modal", () => {
-            $("#imagemCropper").cropper("destroy");
-        });
 
         $((e: any) => {
             for (let prop in Admin.instance.layout) {
@@ -197,40 +172,6 @@ class Admin {
         $((document) as any).on("click", "button[chosen-todos]", function (e) {
             $($(this).data("target") + " option:not([selected])").attr("selected", "selected");
             $($(this).data("target")).trigger("change").trigger("chosen:updated");
-        });
-
-        $("a[data-popup]").on("click", function (event: JQuery.Event) {
-            event.preventDefault();
-            const url = $(this).data("url");
-            const contentType = $(this).data("content-type");
-            if (contentType === "application/pdf") {
-                $.magnificPopup.open({
-                    modal: false,
-                    type: "iframe",
-                    items: { src: url },
-                    iframe: {
-                        markup: `<div class="mfp-iframe-scaler mpf-pdf"><div class="mfp-close"></div>${`<object style="width: 100%; height: 800px" data="${url}" type="${contentType}"></object>`}</div>`
-                    },
-                    ajax: {
-                        settings: {
-                            type: "GET",
-                            ajaxLoader: false
-                        }
-                    }
-                });
-            } else {
-                $.magnificPopup.open({
-                    modal: false,
-                    type: "image",
-                    items: { src: url },
-                    ajax: {
-                        settings: {
-                            type: "GET",
-                            ajaxLoader: false
-                        }
-                    }
-                });
-            }
         });
 
         $.extend(true, $.magnificPopup.defaults, {

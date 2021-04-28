@@ -2,6 +2,8 @@
 using ApplicationCore.DataValue;
 using ApplicationCore.DataValue.Conteudo;
 using ApplicationCore.Entities;
+using ApplicationCore.Enuns;
+using ApplicationCore.Interfaces.CloudServices.CloudQueue;
 using ApplicationCore.Interfaces.CloudServices.CloudStorage;
 using ApplicationCore.Interfaces.Email;
 using ApplicationCore.Respositories;
@@ -18,8 +20,30 @@ namespace ApplicationCore.Services
         private IConteudoRepository ConteudoRepository => GetService<IConteudoRepository>();
         private IProdutoNpsRepository ProdutoNpsRepository => GetService<IProdutoNpsRepository>();
         private ICloudStorage CloudStorageService => GetService<ICloudStorage>();
-
         private IEmailClient EmailClient => GetService<IEmailClient>();
+        private ICloudQueueService CloudQueueService => GetService<ICloudQueueService>();
+
+        public void ProcessarProdutoAvaliacaoNps(int idProduto)
+        {
+            var produto = ProdutoRepository.Recuperar(idProduto);
+            var promotores = new ENotaNps[]
+            {
+                ENotaNps.PromotorDez,
+                ENotaNps.PromotorNove
+            };
+            var detratores = new ENotaNps[]
+            {
+                ENotaNps.DetratorUm,
+                ENotaNps.DetratorDois,
+                ENotaNps.DetratorTres,
+                ENotaNps.DetratorQuatro,
+                ENotaNps.DetratorCinco,
+                ENotaNps.DetratorSeis
+            };
+            produto.TotalPromotores = ProdutoNpsRepository.TotalPorTipo(idProduto, promotores);
+            produto.TotalDetratores = ProdutoNpsRepository.TotalPorTipo(idProduto, detratores);
+            ProdutoRepository.Salvar(produto);
+        }
 
         public NpsDataValue RecuperarPorProdutoNps(Guid? id, int? idProduto)
         {
@@ -31,13 +55,15 @@ namespace ApplicationCore.Services
             : base(serviceProvider)
         { }
 
-        public void SalvarNps(Guid id, int nota, string comentario)
+        public async Task SalvarNps(Guid id, ENotaNps nota, string comentario)
         {
             var nps = ProdutoNpsRepository.Recuperar(id);
             nps.Nota = nota;
             nps.Comentario = comentario;
             nps.DataResposta = DateTime.Now;
             ProdutoNpsRepository.Salvar(nps);
+
+            await CloudQueueService.SendAsync(nps.IdProduto, CloudQueueNames.ProcessarNpsQueue);
         }
 
         public void Excluir(int id) => ProdutoRepository.Excluir(id);

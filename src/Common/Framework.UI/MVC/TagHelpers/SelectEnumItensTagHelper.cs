@@ -46,14 +46,14 @@ namespace Framework.UI.MVC.TagHelpers
 
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            IEnumerable<VamoJuntoSelectEnumIten> datasource;
+            IEnumerable<DataSelectEnumIten> datasource;
             if (EnumType.IsEnum)
                 datasource = DataSourceFromEnum();
 
             else if (typeof(ValueObjects.IEnumeration).IsAssignableFrom(EnumType))
-                datasource = DataSourceFromVamoJuntoEnumeration();
+                datasource = DataSourceFromEnumeration();
             else
-                throw new Exception("O Tipo deve ser um enum ou VamoJuntoEnumeration");
+                throw new Exception("O Tipo deve ser um enum ou Enumeration");
 
             foreach (var item in datasource)
             {
@@ -65,7 +65,7 @@ namespace Framework.UI.MVC.TagHelpers
             }
         }
 
-        private IEnumerable<VamoJuntoSelectEnumIten> DataSourceFromEnum()
+        private IEnumerable<DataSelectEnumIten> DataSourceFromEnum()
         {
             var selectedValues = CurrentValues ?? Enumerable.Empty<string>();
 
@@ -81,11 +81,11 @@ namespace Framework.UI.MVC.TagHelpers
 
                 var selected = selectedValues != null && selectedValues.Contains(memberValue);
 
-                yield return new VamoJuntoSelectEnumIten(memberValue, description.Description, selected);
+                yield return new DataSelectEnumIten(memberValue, description.Description, selected);
             }
         }
 
-        private IEnumerable<VamoJuntoSelectEnumIten> DataSourceFromVamoJuntoEnumeration()
+        private IEnumerable<DataSelectEnumIten> DataSourceFromEnumeration()
         {
             var selectedValues = CurrentValues ?? Enumerable.Empty<string>();
 
@@ -94,7 +94,7 @@ namespace Framework.UI.MVC.TagHelpers
                   .Where(info => EnumType.IsAssignableFrom(info.FieldType))
                   .Select(info => info.GetValue(null))
                   .Cast<ValueObjects.IEnumeration>()
-                  .Select(info => new VamoJuntoSelectEnumIten(
+                  .Select(info => new DataSelectEnumIten(
                       info.Value,
                       info.DisplayName,
                       selectedValues.Contains(info.Value) ||
@@ -102,13 +102,13 @@ namespace Framework.UI.MVC.TagHelpers
                      ));
         }
 
-        private struct VamoJuntoSelectEnumIten
+        private struct DataSelectEnumIten
         {
             public readonly string Value;
             public readonly string Display;
             public readonly bool Selected;
 
-            public VamoJuntoSelectEnumIten(string value, string display, bool selected)
+            public DataSelectEnumIten(string value, string display, bool selected)
             {
                 Value = value;
                 Display = display;

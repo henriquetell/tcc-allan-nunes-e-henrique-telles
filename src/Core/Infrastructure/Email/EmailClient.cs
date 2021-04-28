@@ -1,12 +1,8 @@
-﻿using ApplicationCore.Extenders;
-using ApplicationCore.Interfaces.CloudServices.CloudQueue;
-using ApplicationCore.Interfaces.Email;
-using ApplicationCore.Interfaces.Logging;
+﻿using ApplicationCore.Interfaces.Email;
 using Framework.Extenders;
 using Infrastructure.Configurations;
 using Microsoft.Extensions.DependencyInjection;
 using System;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Threading.Tasks;
@@ -17,8 +13,6 @@ namespace Infrastructure.Email
     {
         private readonly IServiceProvider _serviceProvider;
 
-        private IAppLogger<EmailClient> AppLogger => _serviceProvider.GetService<IAppLogger<EmailClient>>();
-        private ICloudQueueService CloudQueueService => _serviceProvider.GetService<ICloudQueueService>();
         private InfrastructureConfig InfrastructureConfig => _serviceProvider.GetService<InfrastructureConfig>();
 
         public EmailClient(IServiceProvider serviceProvider)
@@ -28,8 +22,6 @@ namespace Infrastructure.Email
 
         public async Task EnviarAsync(DadosEnvioEmail dadosEmail)
         {
-            AppLogger.Info($"Enviando e-mail \"{dadosEmail.Assunto}\" para \"{string.Join(";", dadosEmail.Destinatario.Select(c => c.Value))}\"");
-
             using var smtp = new SmtpClient();
             using var mensagem = new MailMessage();
 
@@ -40,21 +32,11 @@ namespace Infrastructure.Email
             mensagem.IsBodyHtml = true;
 
             foreach (var item in dadosEmail.Destinatario)
-                mensagem.To.Add(item.Value);
+                mensagem.To.Add(item);
 
             BindMailMessage(mensagem);
 
-            try
-            {
-                var envioTimer = AppLogger.StartTimer();
-                await smtp.SendMailAsync(mensagem);
-                envioTimer.Stop((t, l) => l.Info($"Tempo para envio de e-mail: {TimeSpan.FromMilliseconds(t)}"));
-            }
-            catch (Exception ex)
-            {
-                AppLogger.Exception(ex, "Erro ao enviar o e-mail");
-                throw;
-            }
+            await smtp.SendMailAsync(mensagem);
         }
 
         private void BindSmtpClient(SmtpClient smtpClient)
@@ -74,7 +56,6 @@ namespace Infrastructure.Email
             if ((EnvironmentHelper.Desenvolvimento || EnvironmentHelper.Homologacao) &&
                 !string.IsNullOrWhiteSpace(InfrastructureConfig.Email.DebugEmail))
             {
-                AppLogger.Info($"Usando configuração de debug, o e-email será enviado para: {InfrastructureConfig.Email.DebugEmail}");
                 mensagem.To.Clear();
 
                 foreach (var e in InfrastructureConfig.Email.DebugEmail.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries))

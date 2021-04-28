@@ -82,6 +82,7 @@
                                             <tr>
                                                 <th img>&nbsp;</th>
                                                 <th>Produto</th>
+                                                <th status>NPS</th>
                                                 <th status>Status</th>
                                                 <th>Ações</th>
                                             </tr>
@@ -89,23 +90,24 @@
                                         <tbody>
                                             @foreach (var item in Model.Itens)
                                             {
-                                                <tr>
-                                                    <td img>
-                                                        <asp asp-visibility="!string.IsNullOrEmpty(item.ImagemUrl)">
-                                                            <img alt="Produto" src="@CloudStorage.RecuperarImagemUrl(item.ImagemUrl)" class="img-responsive img-circle img-small" />
-                                                        </asp>
-                                                        <asp asp-visibility="string.IsNullOrEmpty(item.ImagemUrl)">
-                                                            <img alt="Produto" src="~/images/produto-sem-foto-a.gif" class="img-responsive img-circle img-small" />
-                                                        </asp>
-                                                    </td>
-                                                    <td>@item.Titulo</td>
-                                                    <td status>@item.Status?.CriarBadge()</td>
-                                                    <td>
-                                                        <a asp-action="Form" asp-route-id="@item.Id" class="btn btn-sm btn-primary btn-outline btn-circle">
-                                                            <i class="fa fa-check"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
+                                            <tr>
+                                                <td img>
+                                                    <asp asp-visibility="!string.IsNullOrEmpty(item.ImagemUrl)">
+                                                        <img alt="Produto" src="@CloudStorage.RecuperarImagemUrl(item.ImagemUrl)" class="img-responsive img-circle img-small" />
+                                                    </asp>
+                                                    <asp asp-visibility="string.IsNullOrEmpty(item.ImagemUrl)">
+                                                        <img alt="Produto" src="~/images/produto-sem-foto-a.gif" class="img-responsive img-circle img-small" />
+                                                    </asp>
+                                                </td>
+                                                <td>@item.Titulo</td>
+                                                <td status>@item.TotalAvaliacao.CriarBadgeAvaliacaoNps()</td>
+                                                <td status>@item.Status?.CriarBadge()</td>
+                                                <td>
+                                                    <a asp-action="Form" asp-route-id="@item.Id" class="btn btn-sm btn-primary btn-outline btn-circle">
+                                                        <i class="fa fa-check"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
                                             }
                                         </tbody>
                                     </table>

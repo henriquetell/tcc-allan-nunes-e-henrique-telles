@@ -23,20 +23,5 @@ namespace Framework.Extenders
 
             return en.ToString();
         }
-
-        public static bool TryParse<TEnum>(string value, out TEnum result) where TEnum : struct
-        {
-            if (string.IsNullOrWhiteSpace(value) ||
-                !typeof(TEnum).IsEnum)
-            {
-                result = default(TEnum);
-                return false;
-            }
-
-            if (Enum.TryParse(value, out result))
-                return Enum.IsDefined(typeof(TEnum), result);
-
-            return false;
-        }
     }
 }

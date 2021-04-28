@@ -1,6 +1,4 @@
-﻿using ApplicationCore.Extenders;
-using ApplicationCore.Interfaces.Logging;
-using ApplicationCore.Respositories;
+﻿using ApplicationCore.Respositories;
 using Framework.Configurations;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -12,7 +10,6 @@ namespace ApplicationCore.Services
     {
         private readonly IServiceProvider _serviceProvider;
 
-        protected IAppLogger AppLogger => _serviceProvider.AppLogger(GetType());
         protected AppConfig AppConfig => GetService<IOptions<AppConfig>>()?.Value;
         protected ServiceBase(IServiceProvider serviceProvider)
         {

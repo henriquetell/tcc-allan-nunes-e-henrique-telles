@@ -1,6 +1,4 @@
-﻿using ApplicationCore.Extenders;
-using ApplicationCore.Interfaces.CloudServices.CloudStorage;
-using ApplicationCore.Interfaces.Logging;
+﻿using ApplicationCore.Interfaces.CloudServices.CloudStorage;
 using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Infrastructure.Configurations;
@@ -16,13 +14,10 @@ namespace Infrastructure.CloudServices
 {
     public class AzureStorage : CloudServiceBase, ICloudStorage
     {
-        private readonly IAppLogger _appLogger;
 
         public AzureStorage(IServiceProvider serviceProvider)
                : base(serviceProvider)
-        {
-            _appLogger = serviceProvider.GetService<IAppLogger<AzureStorage>>();
-        }
+        {}
 
         private StorageConfig StorageConfig => GetService<InfrastructureConfig>().Storage;
 
@@ -52,12 +47,10 @@ namespace Infrastructure.CloudServices
             if (sobrescrever ?? false)
             {
                 var deleted = await destBlob.DeleteIfExistsAsync();
-                _appLogger.InfoIf(deleted, $"O blob {nomeBlob} existia e foi excluído");
             }
 
-            var timer = _appLogger.Warning($"Enviando {nomeBlob} para {diretorio}").StartTimer();
             await destBlob.UploadAsync(arquivo);
-            timer.Stop((t, l) => l.Warning($"Tempo para envio do arquivo: {TimeSpan.FromMilliseconds(t)}"));
+
         }
 
         public async Task<string> UploadAsync(string nomeBlob, string body, string diretorio, bool? sobrescrever = null)
@@ -70,13 +63,13 @@ namespace Infrastructure.CloudServices
             if (sobrescrever ?? false)
             {
                 var deleted = await destBlob.DeleteIfExistsAsync();
-                _appLogger.InfoIf(deleted, $"O blob {nomeBlob} existia e foi excluído");
+
             }
 
-            var timer = _appLogger.Warning($"Enviando {nomeBlob} para {diretorio}").StartTimer();
+
             using var stream = new MemoryStream(Encoding.ASCII.GetBytes(body));
             var info = await destBlob.UploadAsync(stream);
-            timer.Stop((t, l) => l.Warning($"Tempo para envio do arquivo: {TimeSpan.FromMilliseconds(t)}"));
+
             return $"{StorageConfig.Url}{diretorio}/{nomeBlob}";
         }
 

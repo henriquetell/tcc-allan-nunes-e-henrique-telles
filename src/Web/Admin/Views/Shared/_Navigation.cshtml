@@ -2,9 +2,6 @@
 @inject AuthUsuario<UsuarioAuthViewModel> Usuario
 @inject UsuarioServiceWeb UsuarioServiceWeb
 @inject IHttpContextAccessor HttpContextAccessor
-@{
-    var imagemUsuario = await UsuarioServiceWeb.RecuperarImagemAsync(Usuario.Identificao.Id);
-}
 @functions{
     static string IsSelected(IHtmlHelper html, IEnumerable<KeyValuePair<string, string>> nav, string cssClass = null)
     {

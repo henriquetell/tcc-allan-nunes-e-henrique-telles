@@ -120,26 +120,11 @@
   <data name="AlterarSenha" xml:space="preserve">
     <value>Alterar a senha</value>
   </data>
-  <data name="Bairro" xml:space="preserve">
-    <value>Bairro</value>
-  </data>
-  <data name="Celular" xml:space="preserve">
-    <value>Tel. Celular</value>
-  </data>
-  <data name="CodigoAutorizacao" xml:space="preserve">
-    <value>Código da Autorização</value>
-  </data>
   <data name="ConfirmarNovaSenha" xml:space="preserve">
     <value>Confirmação da nova senha</value>
   </data>
   <data name="ConteudoChave" xml:space="preserve">
     <value>Conteúdo Chave</value>
-  </data>
-  <data name="DataCobranca" xml:space="preserve">
-    <value>Data da Cobrança</value>
-  </data>
-  <data name="DataEnvioEmail" xml:space="preserve">
-    <value>Data Envio E-mail Voucher</value>
   </data>
   <data name="DataFim" xml:space="preserve">
     <value>Data Final</value>
@@ -147,20 +132,11 @@
   <data name="DataInicio" xml:space="preserve">
     <value>Data Inicial</value>
   </data>
-  <data name="DataNascimento" xml:space="preserve">
-    <value>Data de Nascimento</value>
-  </data>
-  <data name="DataPagamento" xml:space="preserve">
-    <value>Data do Pagamento</value>
-  </data>
   <data name="Descricao" xml:space="preserve">
     <value>Descrição</value>
   </data>
   <data name="Email" xml:space="preserve">
     <value>E-mail</value>
-  </data>
-  <data name="EmailPessoal" xml:space="preserve">
-    <value>E-mail Pessoal</value>
   </data>
   <data name="IdConteudoChave" xml:space="preserve">
     <value>Conteúdo Chave</value>
@@ -168,53 +144,11 @@
   <data name="IdGrupoUsuario" xml:space="preserve">
     <value>Grupo</value>
   </data>
-  <data name="IdMunicipio" xml:space="preserve">
-    <value>Município</value>
-  </data>
-  <data name="IdParceiro" xml:space="preserve">
-    <value>Parceiro</value>
-  </data>
-  <data name="IdPedido" xml:space="preserve">
-    <value>Nº Pedido</value>
-  </data>
-  <data name="IdPedidoCliente" xml:space="preserve">
-    <value>Nº Pedido Cliente</value>
-  </data>
-  <data name="IdProduto" xml:space="preserve">
-    <value>Produto</value>
-  </data>
-  <data name="Logradouro" xml:space="preserve">
-    <value>Logradouro</value>
-  </data>
-  <data name="Municipio" xml:space="preserve">
-    <value>Município</value>
-  </data>
   <data name="Nome" xml:space="preserve">
-    <value>Nome</value>
-  </data>
-  <data name="NomePortadorCartao" xml:space="preserve">
     <value>Nome</value>
   </data>
   <data name="NovaSenha" xml:space="preserve">
     <value>Nova senha</value>
-  </data>
-  <data name="NumeroCartaoMascarado" xml:space="preserve">
-    <value>Nº Cartão</value>
-  </data>
-  <data name="OrgaoExpedidor" xml:space="preserve">
-    <value>Órgão Expedidor</value>
-  </data>
-  <data name="OrgaoExpedidorUf" xml:space="preserve">
-    <value>UF Órgão Expedidor</value>
-  </data>
-  <data name="Profissao" xml:space="preserve">
-    <value>Profissão</value>
-  </data>
-  <data name="QuantidadeMaximaParcela" xml:space="preserve">
-    <value>Quantidade Max. Parcelas</value>
-  </data>
-  <data name="QuantidadeParcela" xml:space="preserve">
-    <value>Quant. Parcelas</value>
   </data>
   <data name="Senha" xml:space="preserve">
     <value>Senha</value>
@@ -228,44 +162,14 @@
   <data name="Status" xml:space="preserve">
     <value>Status</value>
   </data>
-  <data name="TelefoneComercial" xml:space="preserve">
-    <value>Tel. Comercial</value>
-  </data>
-  <data name="TelefoneResidencial" xml:space="preserve">
-    <value>Tel. Residencial</value>
-  </data>
-  <data name="TipoDocumento" xml:space="preserve">
-    <value>Tipo do Documento</value>
-  </data>
   <data name="Titulo" xml:space="preserve">
     <value>Título</value>
-  </data>
-  <data name="Uf" xml:space="preserve">
-    <value>UF</value>
   </data>
   <data name="Usuario" xml:space="preserve">
     <value>Usuário</value>
   </data>
   <data name="Valor" xml:space="preserve">
     <value>Valor</value>
-  </data>
-  <data name="ValorDe" xml:space="preserve">
-    <value>Valor De</value>
-  </data>
-  <data name="ValorEstorno" xml:space="preserve">
-    <value>Valor do Estorno</value>
-  </data>
-  <data name="ValorMaximoEstorno" xml:space="preserve">
-    <value>Valor Residual</value>
-  </data>
-  <data name="ValorPagamento" xml:space="preserve">
-    <value>Valor Pagamento</value>
-  </data>
-  <data name="ValorParcela" xml:space="preserve">
-    <value>Valor Parcela</value>
-  </data>
-  <data name="ValorPor" xml:space="preserve">
-    <value>Valor Por</value>
   </data>
   <data name="Observacao" xml:space="preserve">
     <value>Observação</value>
@@ -276,29 +180,8 @@
   <data name="SenhaAtual" xml:space="preserve">
     <value>Senha atual</value>
   </data>
-  <data name="IdPedidoItem" xml:space="preserve">
-    <value>Pedido Item</value>
-  </data>
-  <data name="TaxaCancelamento" xml:space="preserve">
-    <value>Taxa de Cancelamento</value>
-  </data>
-  <data name="PedidoEstornoViewModel_IdPedidoItem" xml:space="preserve">
-    <value>Produto</value>
-  </data>
-  <data name="PedidoEstornoViewModel_Descricao" xml:space="preserve">
-    <value>Descrição da Taxa de Cancelamento</value>
-  </data>
-  <data name="PedidoEstornoViewModel_Valor" xml:space="preserve">
-    <value>Valor Taxa de Cancelamento</value>
-  </data>
-  <data name="Emissao" xml:space="preserve">
-    <value>Emissão</value>
-  </data>
   <data name="Numero" xml:space="preserve">
     <value>Número</value>
-  </data>
-  <data name="Validade" xml:space="preserve">
-    <value>Validade</value>
   </data>
   <data name="DataFinal" xml:space="preserve">
     <value>Data Final</value>
@@ -306,98 +189,8 @@
   <data name="DataInicial" xml:space="preserve">
     <value>Data Inicial</value>
   </data>
-  <data name="StatusPedido" xml:space="preserve">
-    <value>Status do Pedido</value>
-  </data>
-  <data name="Mensagem" xml:space="preserve">
-    <value>Mensagem da Solicitação</value>
-  </data>
-  <data name="DataConclusao" xml:space="preserve">
-    <value>Data da Conclusão</value>
-  </data>
-  <data name="QuantidadeInicial" xml:space="preserve">
-    <value>Quantidade Inicial</value>
-  </data>
-  <data name="MovimentarEstoque" xml:space="preserve">
-    <value>Movimentar Estoque</value>
-  </data>
-  <data name="QuantidadeDisponivel" xml:space="preserve">
-    <value>Quantidade Disponível</value>
-  </data>
-  <data name="Preco" xml:space="preserve">
-    <value>Preço</value>
-  </data>
-  <data name="AdquirenteCodigoRetorno" xml:space="preserve">
-    <value>Adquirente Código de Retorno</value>
-  </data>
-  <data name="AdquirenteMensagem" xml:space="preserve">
-    <value>Adquirente Mensagem</value>
-  </data>
-  <data name="IdPagamento" xml:space="preserve">
-    <value>Braspag Transaction ID</value>
-  </data>
-  <data name="NumeroComprovante" xml:space="preserve">
-    <value>N° Comprovante</value>
-  </data>
-  <data name="PedidoId" xml:space="preserve">
-    <value>Pedido ID</value>
-  </data>
-  <data name="StatusTransacaoCaptura" xml:space="preserve">
-    <value>Status Captura</value>
-  </data>
-  <data name="TipoPagamento" xml:space="preserve">
-    <value>Tipo do Pagamento</value>
-  </data>
-  <data name="CodigoRetornoAdquirenciaEstorno" xml:space="preserve">
-    <value>Código Retorno Adquirente</value>
-  </data>
-  <data name="CodigoRetornoProvedor" xml:space="preserve">
-    <value>Código Retorno Provedor</value>
-  </data>
-  <data name="CodigoRetornoProvedorEstorno" xml:space="preserve">
-    <value>Código Retorno Provedor</value>
-  </data>
-  <data name="MensagemRetornoAdquirenciaEstorno" xml:space="preserve">
-    <value>Mensagem Adquirente</value>
-  </data>
-  <data name="MensagemRetornoProvedor" xml:space="preserve">
-    <value>Mensagem Retorno Provedor</value>
-  </data>
-  <data name="MensagemRetornoProvedorEstorno" xml:space="preserve">
-    <value>Mensagem Retorno Provedor</value>
-  </data>
-  <data name="StatusEstorno" xml:space="preserve">
-    <value>Status Estorno</value>
-  </data>
-  <data name="EmailTeste" xml:space="preserve">
-    <value>E-mail</value>
-  </data>
   <data name="IdConteudo" xml:space="preserve">
     <value>Conteúdo</value>
-  </data>
-  <data name="ValorTotalTaxas" xml:space="preserve">
-    <value>Total Taxas</value>
-  </data>
-  <data name="ValorTaxa" xml:space="preserve">
-    <value>Valor Taxa</value>
-  </data>
-  <data name="ValorTotal" xml:space="preserve">
-    <value>Total</value>
-  </data>
-  <data name="ValorTotalItens" xml:space="preserve">
-    <value>Total Itens</value>
-  </data>
-  <data name="EmailCompraSucesso" xml:space="preserve">
-    <value>E-mail de Compra</value>
-  </data>
-  <data name="DataEstorno" xml:space="preserve">
-    <value>Data de Estorno</value>
-  </data>
-  <data name="CodigoFaturamento" xml:space="preserve">
-    <value>Código do Faturamento</value>
-  </data>
-  <data name="TipoFaturamento" xml:space="preserve">
-    <value>Tipo de Faturamento</value>
   </data>
   <data name="DescricaoCurta" xml:space="preserve">
     <value>Descrição Curta</value>
@@ -405,95 +198,20 @@
   <data name="DescricaoLonga" xml:space="preserve">
     <value>Descrição Longa</value>
   </data>
-  <data name="Previa" xml:space="preserve">
-    <value>Prévia</value>
-  </data>
-  <data name="PrecoDe" xml:space="preserve">
-    <value>Preço De</value>
-  </data>
-  <data name="PrecoPor" xml:space="preserve">
-    <value>Preço Por</value>
-  </data>
-  <data name="TipoSku" xml:space="preserve">
-    <value>Tipo</value>
-  </data>
-  <data name="Cidade" xml:space="preserve">
-    <value>Cidade</value>
-  </data>
-  <data name="Complemento" xml:space="preserve">
-    <value>Complemento</value>
-  </data>
-  <data name="EmailSecundario" xml:space="preserve">
-    <value>E-mail Secundário</value>
-  </data>
-  <data name="IdProdutoSku" xml:space="preserve">
-    <value>SKU</value>
-  </data>
-  <data name="ValorFrete" xml:space="preserve">
-    <value>Valor Frete</value>
-  </data>
   <data name="Lancamento" xml:space="preserve">
     <value>Lançamento</value>
   </data>
   <data name="Quantidade" xml:space="preserve">
     <value>Quantidade</value>
   </data>
-  <data name="QuantidadeMaximaParcelamento" xml:space="preserve">
-    <value>Quant. Parcelas</value>
-  </data>
-  <data name="IdSku" xml:space="preserve">
-    <value>SKU</value>
-  </data>
   <data name="Codigo" xml:space="preserve">
     <value>Código</value>
-  </data>
-  <data name="CodigoPagamento" xml:space="preserve">
-    <value>Código Pagamento</value>
-  </data>
-  <data name="DataPagSeguro" xml:space="preserve">
-    <value>Data PagSeguro</value>
-  </data>
-  <data name="DocumentoTitularCartao" xml:space="preserve">
-    <value>CPF Titular do Cartão</value>
-  </data>
-  <data name="ErroEstorno" xml:space="preserve">
-    <value>Erro</value>
-  </data>
-  <data name="NSU" xml:space="preserve">
-    <value>NSU</value>
-  </data>
-  <data name="Referencia" xml:space="preserve">
-    <value>Referência</value>
-  </data>
-  <data name="StatusPagSeguro" xml:space="preserve">
-    <value>Status PagSeguro</value>
-  </data>
-  <data name="TelefoneTitularCartao" xml:space="preserve">
-    <value>TEL. Titular do Cartão</value>
   </data>
   <data name="DescricaoComplemento" xml:space="preserve">
     <value>Descrição Complemento</value>
   </data>
   <data name="DataCriacao" xml:space="preserve">
     <value>Data de Criação</value>
-  </data>
-  <data name="EmailCancelamento" xml:space="preserve">
-    <value>E-mail de cancelamento</value>
-  </data>
-  <data name="EmailConfirmacao" xml:space="preserve">
-    <value>E-mail de confirmação</value>
-  </data>
-  <data name="EmailEstorno" xml:space="preserve">
-    <value>E-mail de estorno</value>
-  </data>
-  <data name="EmailPagamentoErro" xml:space="preserve">
-    <value>E-mail de pagamento com erro</value>
-  </data>
-  <data name="EmailPagamentoSucesso" xml:space="preserve">
-    <value>E-mail de pagamento com sucesso</value>
-  </data>
-  <data name="DataValidade" xml:space="preserve">
-    <value>Data de Validade</value>
   </data>
   <data name="HoraValidade" xml:space="preserve">
     <value>Horário</value>

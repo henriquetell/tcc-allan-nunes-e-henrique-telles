@@ -6,6 +6,20 @@ namespace Admin.Extenders
 {
     public static class HtmlExtender
     {
+        public static IHtmlContent CriarBadgeAvaliacaoNps(this int valor)
+        {
+            if (valor >= 75)
+                return new HtmlString($"<span class=\"badge badge-primary\">Excelente</span>");
+
+            if (valor >= 50 && valor < 75)
+                return new HtmlString($"<span class=\"badge badge-info\">Muito bom</span>");
+
+            if (valor >= 0 && valor < 50)
+                return new HtmlString($"<span class=\"badge badge-warning\">Razoável</span>");
+
+            return new HtmlString($"<span class=\"badge badge-danger\">Ruim</span>");
+        }
+
         public static IHtmlContent CriarBadge(this EStatus status)
         {
             return status switch

@@ -14,5 +14,7 @@ namespace ApplicationCore.Entities
         public EStatus Status { get; set; }
         public ICollection<ProdutoNpsEntity> ProdutoNps { get; set; } = new List<ProdutoNpsEntity>();
         public ConteudoEntity Conteudo { get; set; }
+        public int? TotalPromotores { get; set; }
+        public int? TotalDetratores { get; set; }
     }
 }

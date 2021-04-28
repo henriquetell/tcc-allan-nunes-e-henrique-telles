@@ -25,9 +25,10 @@
                             <thead>
                                 <tr>
                                     <th>Data Envio</th>
+                                    <th>Data Limite</th>
                                     <th>E-mail</th>
                                     <th>Data da Resposta</th>
-                                    <th>Data Limite</th>
+                                    <th>Tipo</th>
                                     <th>Nota</th>
                                     <th>Comentário</th>
                                 </tr>
@@ -35,14 +36,15 @@
                             <tbody>
                                 @foreach (var item in nps)
                                 {
-                                    <tr>
-                                        <td>@item.DataEnvio?.ToString("d")</td>
-                                        <td>@item.Email</td>
-                                        <td>@item.DataResposta?.ToString("d")</td>
-                                        <td>@item.DataLimite?.ToString("d")</td>
-                                        <td>@item.Nota</td>
-                                        <td>@item.Comentario</td>
-                                    </tr>
+                                <tr>
+                                    <td>@item.DataEnvio?.ToString("d")</td>
+                                    <td>@item.DataLimite?.ToString("d")</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.DataResposta?.ToString("d")</td>
+                                    <td>@item.Nota?.GetDescription()</td>
+                                    <td>@((int?)item.Nota)</td>
+                                    <td>@item.Comentario</td>
+                                </tr>
                                 }
                             </tbody>
                         </table>

@@ -1,5 +1,6 @@
 ﻿using ApplicationCore.DataValue;
 using ApplicationCore.Entities;
+using ApplicationCore.Enuns;
 using ApplicationCore.Respositories;
 using System;
 using System.Collections.Generic;
@@ -43,6 +44,16 @@ namespace Infrastructure.Respositories
                    Respondido = w.DataResposta.HasValue
                })
                .FirstOrDefault();
+        }
+
+        public int? TotalPorTipo(int idProduto, ENotaNps[] tipos)
+        {
+            return DbContext.ProdutoNps
+                .Where(c => c.IdProduto == idProduto &&
+                            c.DataResposta.HasValue &&
+                            c.Nota.HasValue &&
+                    tipos.Contains(c.Nota.Value))
+                .Sum(c => (int)c.Nota.Value);
         }
     }
 }

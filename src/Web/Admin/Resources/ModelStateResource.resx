@@ -126,12 +126,6 @@
   <data name="Obrigatorio" xml:space="preserve">
     <value>Obrigatório</value>
   </data>
-  <data name="RangeParcelamentoProduto" xml:space="preserve">
-    <value>A quantidade deve ser de 1 até 12 parcelas</value>
-  </data>
-  <data name="RangeValorDescontoCupom" xml:space="preserve">
-    <value>O valor deve ser de 1 até 99.</value>
-  </data>
   <data name="RelatorioDescricaoObrigatorio" xml:space="preserve">
     <value>É obrigatório informar uma descrição para a emissão do relatório!</value>
   </data>
