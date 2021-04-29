@@ -12,9 +12,14 @@ namespace Admin.ViewModels.Produto
 
         [Required(ErrorMessageResourceType = typeof(ModelStateResource), ErrorMessageResourceName = nameof(ModelStateResource.Obrigatorio))]
         public string Titulo { get; set; }
+        [Required(ErrorMessageResourceType = typeof(ModelStateResource), ErrorMessageResourceName = nameof(ModelStateResource.Obrigatorio))]
         public string Codigo { get; set; }
+
+        [Required(ErrorMessageResourceType = typeof(ModelStateResource), ErrorMessageResourceName = nameof(ModelStateResource.Obrigatorio))]
         public IFormFile Imagem { get; set; }
         public string ImagemUrl { get; set; }
+
+        [Required(ErrorMessageResourceType = typeof(ModelStateResource), ErrorMessageResourceName = nameof(ModelStateResource.Obrigatorio))]
         public string DescricaoLonga { get; set; }
 
         [Required(ErrorMessageResourceType = typeof(ModelStateResource), ErrorMessageResourceName = nameof(ModelStateResource.Obrigatorio))]
@@ -30,7 +35,7 @@ namespace Admin.ViewModels.Produto
         public int? TotalDetratores { get; set; }
         public int? TotalPromotores { get; set; }
 
-        public int TotalAvaliacao => ((TotalPromotores ?? 0) - (TotalPromotores ?? 0));
+        public int TotalAvaliacao => ((TotalPromotores ?? 0) - (TotalDetratores ?? 0)) * 10;
 
         public void Fill(ProdutoEntity model)
         {

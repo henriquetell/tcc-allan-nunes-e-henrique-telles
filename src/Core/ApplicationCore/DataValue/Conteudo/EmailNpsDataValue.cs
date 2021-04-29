@@ -2,8 +2,8 @@
 {
     public class EmailNpsDataValue
     {
-        public string NomeProduto { get; set; }
+        public string Produto { get; set; }
         public string Url { get; set; }
-
+        public string Descricao { get; internal set; }
     }
 }

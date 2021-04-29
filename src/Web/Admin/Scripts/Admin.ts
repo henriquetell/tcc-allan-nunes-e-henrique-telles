@@ -64,7 +64,7 @@ class Admin {
         $("[summernote]").each((index: number, item: any) => {
             var height = $(item).data("height");
             if (height === undefined || height === "")
-                height = 500;
+                height = 120;
             $(item).summernote({
                 height: height,
                 lang: "pt-BR",

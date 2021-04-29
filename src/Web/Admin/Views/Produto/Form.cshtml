@@ -40,13 +40,17 @@
                     <form asp-antiforgery="true" asp-action="Form" enctype="multipart/form-data">
                         <input type="hidden" asp-for="Id" />
                         <input type="hidden" asp-for="ImagemUrl" />
+                        @if (Model.Id > 0)
+                        {
+                            @Model.TotalAvaliacao.CriarAlertAvaliacaoNps();
+                        }
                         <div class="row">
                             <div class="col-md-9">
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <label asp-for="Titulo"></label>
-                                            <input asp-for="Titulo" class="form-control"  maxlength="1000" />
+                                            <input asp-for="Titulo" class="form-control" maxlength="1000" />
                                             <span asp-validation-for="Titulo" class="text-danger small"></span>
                                         </div>
                                     </div>
@@ -63,7 +67,7 @@
                                     <div class="col-md-8">
                                         <div class="form-group">
                                             <label asp-for="Codigo"></label>
-                                            <input asp-for="Codigo" class="form-control"  maxlength="200" />
+                                            <input asp-for="Codigo" class="form-control" maxlength="200" />
                                             <span asp-validation-for="Codigo" class="text-danger small"></span>
                                         </div>
                                     </div>
@@ -94,17 +98,11 @@
                                     </div>
                                 </div>
                             </div>
-                            @if (!string.IsNullOrWhiteSpace(Model.ImagemUrl))
+                            @if (!string.IsNullOrWhiteSpace(Model?.ImagemUrl))
                             {
-                                <div class="col-md-3">
-                                    <div class="ibox-content text-center">
+                                <div class="col-md-3 text-center">
+                                    <br />
                                         <img alt="image" class="rounded-circle" src="@CloudStorage.RecuperarImagemUrl(Model.ImagemUrl)" width="200">
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group text-center">
-                                        @Model.TotalAvaliacao.CriarBadgeAvaliacaoNps()
-                                    </div>
                                 </div>
                             }
                         </div>
@@ -112,8 +110,8 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label asp-for="DescricaoLonga"></label>
-                                    <textarea asp-for="DescricaoLonga" class="form-control" summernote data-height="250"></textarea>
                                     <span asp-validation-for="DescricaoLonga" class="text-danger small"></span>
+                                    <textarea asp-for="DescricaoLonga" class="form-control" summernote data-height="250"></textarea>
                                 </div>
                             </div>
                         </div>

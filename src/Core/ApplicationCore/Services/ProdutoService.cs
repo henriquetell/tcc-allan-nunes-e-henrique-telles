@@ -91,13 +91,14 @@ namespace ApplicationCore.Services
 
             var mensagem = conteudo.Descricao.FormatWith(new EmailNpsDataValue
             {
-                NomeProduto = produto.Titulo,
+                Produto = produto.Titulo,
+                Descricao = produto.DescricaoLonga,
                 Url = new Uri(ApplicationCoreConfig.UrlPesquisaNps, $"pesquisa/{produto.Id}/{nps.Id}").AbsoluteUri
             });
 
             var assunto = conteudo.Assunto.FormatWith(new EmailNpsDataValue
             {
-                NomeProduto = produto.Titulo
+                Produto = produto.Titulo
             });
 
             await EmailClient.EnviarAsync(new DadosEnvioEmail(email, assunto, mensagem));

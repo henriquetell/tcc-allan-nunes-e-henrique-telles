@@ -9,15 +9,29 @@ namespace Admin.Extenders
         public static IHtmlContent CriarBadgeAvaliacaoNps(this int valor)
         {
             if (valor >= 75)
-                return new HtmlString($"<span class=\"badge badge-primary\">Excelente</span>");
+                return new HtmlString($"<span class=\"badge badge-primary\">Excelente: <b>{valor}</b></span>");
 
             if (valor >= 50 && valor < 75)
-                return new HtmlString($"<span class=\"badge badge-info\">Muito bom</span>");
+                return new HtmlString($"<span class=\"badge badge-info\">Muito bom: <b>{valor}</b></span>");
 
             if (valor >= 0 && valor < 50)
-                return new HtmlString($"<span class=\"badge badge-warning\">Razoável</span>");
+                return new HtmlString($"<span class=\"badge badge-warning\">Razoável: <b>{valor}</b></span>");
 
-            return new HtmlString($"<span class=\"badge badge-danger\">Ruim</span>");
+            return new HtmlString($"<span class=\"badge badge-danger\">Ruim: <b>{valor}</b></span>");
+        }
+
+        public static IHtmlContent CriarAlertAvaliacaoNps(this int valor)
+        {
+            if (valor >= 75)
+                return new HtmlString($"<div class=\"alert alert-success text-center\">NPS Excelente. <b>{valor}</b></div>");
+
+            if (valor >= 50 && valor < 75)
+                return new HtmlString($"<div class=\"alert alert-info text-center\">NPS Muito bom. <b>{valor}</b></div>");
+
+            if (valor >= 0 && valor < 50)
+                return new HtmlString($"<div class=\"alert alert-warning text-center\">NPS Razoável. <b>{valor}</b></div>");
+
+            return new HtmlString($"<div class=\"alert alert-danger text-center\">NPS Ruim. <b>{valor}</b></div>");
         }
 
         public static IHtmlContent CriarBadge(this EStatus status)

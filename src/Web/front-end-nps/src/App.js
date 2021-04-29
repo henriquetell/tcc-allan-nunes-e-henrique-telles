@@ -144,21 +144,19 @@ function Nps() {
                     })}
                   </Row>
                   <br />
-                  {nps > 0 && (
-                    <Row>
-                      <Col>
-                        <Form>
-                          <Form.Group controlId="comentario">
-                            <Form.Label>Comentário adicional</Form.Label>
-                            <Form.Control as="textarea" rows={3} onChange={comentarioOnChange} disabled={loading} />
-                          </Form.Group>
-                          <Button variant="primary" type="Button" onClick={confirmOnClick} disabled={loading || nps === 0}>
-                            Confirmar e Enviar
+                  <Row>
+                    <Col>
+                      <Form>
+                        <Form.Group controlId="comentario">
+                          <Form.Label>Comentário adicional</Form.Label>
+                          <Form.Control as="textarea" rows={3} onChange={comentarioOnChange} disabled={loading} />
+                        </Form.Group>
+                        <Button variant="primary" type="Button" onClick={confirmOnClick} disabled={loading || nps === 0}>
+                          Confirmar e Enviar
                         </Button>
-                        </Form>
-                      </Col>
-                    </Row>
-                  )}
+                      </Form>
+                    </Col>
+                  </Row>
                 </>
               )
             }
