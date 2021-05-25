@@ -24,7 +24,7 @@ namespace NpsFunctions.Triggers
 
         [FunctionName(nameof(GetNpsHttpTrigger))]
         public IActionResult Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "recuperar-nps/produto/{idProduto:int?}/nps/{id:guid?}")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "recuperar-nps/{idProduto:int?}/{id:guid?}")] HttpRequest req,
             int? idProduto,
             Guid? id)
         {
@@ -33,14 +33,22 @@ namespace NpsFunctions.Triggers
 
             if (idProduto == null || id == null)
                 return new UnauthorizedResult();
+            try
+            {
+                var nps = _produtoService.RecuperarPorProdutoNps(id, idProduto);
+                if (nps == null || (nps.DataLimite.HasValue && nps.DataLimite.Value.Date < DateTime.Now.Date))
+                    return new UnauthorizedResult();
 
-            var nps = _produtoService.RecuperarPorProdutoNps(id, idProduto);
-            if (nps == null || (nps.DataLimite.HasValue && nps.DataLimite.Value.Date < DateTime.Now.Date))
-                return new UnauthorizedResult();
+                nps.Imagem = _cloudStorage.RecuperarImagemUrl(nps.Imagem).AbsoluteUri;
 
-            nps.Imagem = _cloudStorage.RecuperarImagemUrl(nps.Imagem).AbsoluteUri;
+                return new OkObjectResult(nps);
+            }
+            catch (Exception ex)
+            {
+                _log.LogError(ex, "Ocorreru um erro");
 
-            return new OkObjectResult(nps);
+                return new BadRequestResult();
+            }
         }
     }
 }

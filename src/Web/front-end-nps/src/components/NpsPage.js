@@ -25,7 +25,8 @@ function NpsPage() {
       try {
         setLoading(true);
         const result = await axios.get(
-          `${process.env.REACT_APP_API_ENDPOINT}/api/recuperar-nps/produto/${productId}/nps/${npsId}`,
+          `${process.env.REACT_APP_API_ENDPOINT}/api/recuperar-nps/${productId}/${npsId}`,
+          { headers: { 'x-access-token': '5FEC3F5D-098D-47F9-BC3C-15D71E730770' } }
         );
         setState(result.data);
         setLoading(false);
@@ -57,8 +58,9 @@ function NpsPage() {
     try {
       setLoading(true);
       await axios.put(
-        `${process.env.REACT_APP_API_ENDPOINT}/api/salvar-nps/produto/${productId}/nps/${npsId}`,
-        { nota: nps, comentario: comentario }
+        `${process.env.REACT_APP_API_ENDPOINT}/api/salvar-nps/${productId}/${npsId}`,
+        { nota: nps, comentario: comentario },
+        { headers: { 'x-access-token': '5FEC3F5D-098D-47F9-BC3C-15D71E730770' } }
       );
       setLoading(false);
       setError(false);
@@ -83,12 +85,12 @@ function NpsPage() {
       {!error && loading && <Spinner animation="grow" />}
       {!error && !loading && state && state.id !== undefined && (
         <>
-          <Container fluid>
+          <Container>
             <header className="App-header">
               {!state.respondido ? (<>
                 <img src={state.imagem} className="App-logo" alt="logo" />
                 <p>
-                  {state.titulo}
+                  <b>{state.titulo}</b>
                 </p>
                 <div
                   dangerouslySetInnerHTML={{
@@ -103,17 +105,24 @@ function NpsPage() {
               (
                 <>
                   <Row>
-                    {range.map(i => {
-                      return (
-                        <Col>
-                          <Button variant={i === nps ? "primary " : rangeColors[i]} onClick={() => { onClick(i) }} disabled={loading}>{i}</Button>
-                        </Col>
-                      );
-                    })}
+                    <Col>
+                      {range.map(i => {
+                        return (
+                          <>
+                            <Button size="lg" variant={i === nps ? "primary " : rangeColors[i]} onClick={() => { onClick(i) }} disabled={loading} style={{ marginBottom: 10 }}>{i}</Button>{' '}
+                          </>
+                        );
+                      })}
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      {nps === null ? <p><b>Selecione</b> uma nota entre 0 pouco satisfeito, 10 muito satisfeito.</p> : <p>{`Você selecionou a nota ${nps}, escreva um comentário e clicar em confirmar e enviar.`}</p>}
+                    </Col>
                   </Row>
                   <br />
                   <Row>
-                    <Col>
+                    <Col xm={8}>
                       <Form>
                         <Form.Group controlId="comentario">
                           <Form.Label>Comentário adicional</Form.Label>
@@ -130,8 +139,9 @@ function NpsPage() {
             }
           </Container>
         </>
-      )}
-    </div>
+      )
+      }
+    </div >
   );
 }
 
