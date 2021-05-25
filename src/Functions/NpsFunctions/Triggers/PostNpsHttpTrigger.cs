@@ -1,4 +1,3 @@
-using ApplicationCore.Interfaces.CloudServices.CloudQueue;
 using ApplicationCore.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,12 +12,13 @@ using System.Threading.Tasks;
 
 namespace NpsFunctions.Triggers
 {
-    public class PostNpsHttpTrigger
+    public class PostNpsHttpTrigger : BaseTrigger
     {
         private readonly ILogger<GetNpsHttpTrigger> _log;
         private readonly ProdutoService _produtoService;
      
-        public PostNpsHttpTrigger(ILogger<GetNpsHttpTrigger> log, ProdutoService produtoService)
+        public PostNpsHttpTrigger(ILogger<GetNpsHttpTrigger> log, ProdutoService produtoService, IServiceProvider serviceProvider)
+                   : base(log, serviceProvider)
         {
             _log = log;
             _produtoService = produtoService;
@@ -30,6 +30,9 @@ namespace NpsFunctions.Triggers
             int? idProduto,
             Guid? id)
         {
+            if (!ValidateAuthorization(req))
+                return new UnauthorizedResult();
+
             if (idProduto == null || id == null)
                 return new UnauthorizedResult();
 

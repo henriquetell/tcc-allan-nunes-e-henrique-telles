@@ -9,12 +9,13 @@ using System;
 
 namespace NpsFunctions.Triggers
 {
-    public class GetNpsHttpTrigger
+    public class GetNpsHttpTrigger : BaseTrigger
     {
         private readonly ILogger<GetNpsHttpTrigger> _log;
         private readonly ProdutoService _produtoService;
         private readonly ICloudStorage _cloudStorage;
-        public GetNpsHttpTrigger(ILogger<GetNpsHttpTrigger> log, ProdutoService produtoService, ICloudStorage cloudStorage)
+        public GetNpsHttpTrigger(ILogger<GetNpsHttpTrigger> log, ProdutoService produtoService, ICloudStorage cloudStorage, IServiceProvider serviceProvider)
+            : base(log, serviceProvider)
         {
             _log = log;
             _produtoService = produtoService;
@@ -23,10 +24,13 @@ namespace NpsFunctions.Triggers
 
         [FunctionName(nameof(GetNpsHttpTrigger))]
         public IActionResult Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "recuperar-nps/produto/{idProduto:int?}/nps/{id:guid?}")] HttpRequest reg,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "recuperar-nps/produto/{idProduto:int?}/nps/{id:guid?}")] HttpRequest req,
             int? idProduto,
             Guid? id)
         {
+            if (!ValidateAuthorization(req))
+                return new UnauthorizedResult();
+
             if (idProduto == null || id == null)
                 return new UnauthorizedResult();
 
